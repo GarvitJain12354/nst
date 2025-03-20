@@ -659,17 +659,17 @@ h2 {
 }
 @media only screen and (min-width: 768px) {
   h2 {
-    font-size: 8rem;
+    font-size: 5rem;
   }
 }
 @media only screen and (min-width: 1200px) {
   h2 {
-    font-size: 9rem;
+    font-size: 6rem;
   }
 }
 @media only screen and (min-width: 1400px) {
   h2 {
-    font-size: 10rem;
+    font-size:7rem;
   }
 }
 @media only screen and (min-width: 1600px) {
@@ -4399,11 +4399,11 @@ form textarea:required:valid {
     color: var(--t-bright);
   }
   .menu__link.active {
-    color: var(--t-bright);
+    color: var(--t-opp-bright);
     background-color: transparent;
   }
   .menu__link.active .menu__caption {
-    color: var(--t-bright);
+    color: var(--t-opp-bright);
     -moz-background-size: 0 1px, 100% 1px;
     background-size: 0 1px, 100% 1px;
   }
@@ -5674,6 +5674,18 @@ form textarea:required:valid {
 .gallery__descr h5,
 .gallery__descr p {
   display: none;
+}
+@media only screen and (max-width: 768px) {
+  .content__block.grid-block{
+    padding: 10px;
+  }
+  .grid-item{
+    padding: 1rem 1rem;
+  }
+  .image-slider-wrapper{
+    margin-top: 50vh;
+  }
+
 }
 @media only screen and (min-width: 1200px) {
   .gallery__descr {
@@ -7127,6 +7139,7 @@ form textarea:required:valid {
 
 .contact-data__title {
   margin-bottom: 2.5rem;
+  /* transform: translateY(10rem); */
 }
 @media only screen and (min-width: 768px) {
   .contact-data__title {
@@ -7149,7 +7162,7 @@ form textarea:required:valid {
 /* ------------------------------------------------*/
 .logo-img {
   height: auto;
-  width: 120px;
+  width: 20px;
   object-fit: contain;
   padding: 10px;
   /* background-color: #0000007e; */
@@ -7157,9 +7170,9 @@ form textarea:required:valid {
 @media screen and (max-width: 768px) {
   .logo-img {
      height: 60px !important;
-     width: 50px;
+     width: 250px !important;
   }
-  
+ 
 }
 .imag {
   /* height: 100%; */
