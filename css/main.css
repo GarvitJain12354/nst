@@ -579,11 +579,19 @@ h1 {
     font-size: 16rem;
   }
 }
-/* .headline__title{
-  font-size: 10rem;
-width: 80%;
-  background-color: red;
-} */
+.headline__title{
+  font-size: 8rem;
+width: 100%;
+  /* background-color: red; */
+  /* text-wrap: nowrap; */
+}
+@media screen and (max-width: 768px) {
+  .headline__title {
+    font-size: 5.6rem;
+    max-width: fit-content;
+  }
+  
+}
 @media only screen and (min-width: 992px) {
   .headline-80-desktop .headline__title {
     max-width: fit-content;
