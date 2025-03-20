@@ -4187,13 +4187,17 @@ form textarea:required:valid {
   position: fixed;
   top: 2rem;
   left: 2rem;
+  height: 10px;
   overflow: hidden;
   -webkit-backdrop-filter: blur(6px);
   backdrop-filter: blur(6px);
   border-radius: var(--_radius-s);
   z-index: 100;
 }
-
+.logo a{
+  color:transparent;
+  text-decoration: none;
+}
 @media only screen and (min-width: 768px) {
   .logo {
     top: 3rem;
@@ -4205,6 +4209,7 @@ form textarea:required:valid {
 .logo__link {
   display: flex;
   align-items: center;
+
 }
 
 .logo__link svg {
@@ -7126,9 +7131,11 @@ form textarea:required:valid {
 /* Features Contact Data End */
 /* ------------------------------------------------*/
 .logo-img {
-  height: 75px;
+  height: auto;
+  width: 120px;
+  object-fit: contain;
   padding: 10px;
-  background-color: #0000007e;
+  /* background-color: #0000007e; */
 }
 
 .imag {
@@ -7251,6 +7258,10 @@ form textarea:required:valid {
 
 .mobile-menu__item {
   padding: 15px;
+  border-bottom: 1px solid #4444445b;
+  width: 95%;
+  margin: auto;
+  /* Optional: Add a border between items */
 }
 
 .mobile-menu__link {
