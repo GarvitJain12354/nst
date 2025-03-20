@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>3D Simulation Dashboard</title>
+    <link rel="stylesheet" href="css/main.css" />
+    <style>
+        body {
+          margin: 0;
+          font-family: Arial, sans-serif;
+          background-color: #181818; /* Default dark theme background */
+          color: #ffffff; /* Default dark theme text color */
+        }
+      
+        /* Light Theme Styles */
+        body[data-theme="light"] {
+          background-color: #ffffff; /* White background for light theme */
+          color: #000000; /* Black text for light theme */
+        }
+      
+        .dashboard {
+          display: flex;
+        }
+      
+        .sidebar {
+          width: 260px;
+          height: 100vh;
+          padding: 20px;
+          background-color: #232323fd; /* Dark theme sidebar background */
+          border-right: 2px solid #333;
+          box-shadow: 3px 0 5px rgba(0, 0, 0, 0.826);
+          display: flex;
+          flex-direction: column;
+        }
+      
+        /* Light Theme Sidebar */
+        body[data-theme="light"] .sidebar {
+          background-color: #ffffff; /* White background for sidebar in light theme */
+          border-right: 2px solid #ddd; /* Lighter border for light theme */
+        }
+      
+        .sidebar h2 {
+          margin-top: 0;
+          font-size: 1.4em;
+          color: #f5f5f5; /* Light text for dark theme */
+        }
+      
+        /* Light Theme Sidebar Heading */
+        body[data-theme="light"] .sidebar h2 {
+          color: #333; /* Dark text for light theme */
+        }
+      
+        #texture-list {
+          flex-grow: 1;
+          overflow-y: auto;
+          padding-right: 5px;
+        }
+      
+        .texture-option {
+          display: flex;
+          align-items: center;
+          cursor: pointer;
+          margin-bottom: 15px;
+          padding: 8px;
+          border-radius: 8px;
+          transition: background-color 0.3s ease;
+          box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+          background-color: #333; /* Dark theme texture option background */
+          color: #ffffff; /* White text for dark theme */
+        }
+      
+        /* Light Theme Texture Option */
+        body[data-theme="light"] .texture-option {
+          background-color: #f5f5f5; /* Light gray background for texture option in light theme */
+          border: 1px solid #ddd; /* Light border for better visibility */
+          color: #000000; /* Black text for light theme */
+        }
+      
+        .texture-option:hover {
+          background-color: #444444; /* Dark theme hover background */
+        }
+      
+        /* Light Theme Texture Option Hover */
+        body[data-theme="light"] .texture-option:hover {
+          background-color: #e0e0e0; /* Light grey hover background for light theme */
+        }
+      
+        .texture-option img {
+          width: 55px;
+          height: 55px;
+          margin-right: 12px;
+          border-radius: 6px;
+          border: 2px solid #555; /* Dark theme image border */
+        }
+      
+        /* Light Theme Image Border */
+        body[data-theme="light"] .texture-option img {
+          border: 2px solid #ccc; /* Lighter border for light theme */
+        }
+      
+        main {
+          flex-grow: 1;
+          height: 100vh;
+          position: relative;
+        }
+      
+        .control-group {
+          margin-top: 20px;
+        }
+      
+        label {
+          display: block;
+          margin-bottom: 5px;
+          color: #d3d3d3; /* Light text for dark theme */
+        }
+      
+        /* Light Theme Label Text */
+        body[data-theme="light"] label {
+          color: #333; /* Dark text for light theme */
+        }
+      
+        input[type="range"],
+        input[type="color"] {
+          width: 100%;
+          margin-bottom: 15px;
+          outline: none;
+        }
+      
+        input[type="color"] {
+          padding: 5px;
+          background-color: #333; /* Dark theme color picker background */
+          border: none;
+          border-radius: 4px;
+          height: 40px;
+        }
+      
+        /* Light Theme Color Picker */
+        body[data-theme="light"] input[type="color"] {
+          background-color: #e0e0e0; /* Light gray background for color picker in light theme */
+        }
+      </style>
+</head>
+<body>
+    <button id="color-switcher">Switch Theme</button>
+    <div class="dashboard">
+        <aside class="sidebar">
+            <h2>Textures</h2>
+            <div id="texture-list">
+                <div class="texture-option" data-texture="image/stone1.jpg">
+                    <img src="image/stone1.jpg" alt="Texture 1" />
+                    Texture 1
+                </div>
+                <div class="texture-option" data-texture="image/stone2.jpg">
+                    <img src="image/stone2.jpg" alt="Texture 2" />
+                    Texture 2
+                </div>
+                <div class="texture-option" data-texture="image/stone3.jpg">
+                    <img src="image/stone3.jpg" alt="Texture 3" />
+                    Texture 3
+                </div>
+                <div class="texture-option" data-texture="image/stone4.jpg">
+                    <img src="image/stone4.jpg" alt="Texture 4" />
+                    Texture 4
+                </div>
+            </div>
+            <div class="control-group">
+                <h2>Light Controls</h2>
+                <label for="light-intensity">Intensity:</label>
+                <input
+                    type="range"
+ id="light-intensity"
+                    min="0"
+                    max="2"
+                    step="0.1"
+                    value="1"
+                />
+                <label for="light-color">Color:</label>
+                <input type="color" id="light-color" value="#ffffff" />
+            </div>
+        </aside>
+        <main id="simulation-area"></main>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.135.0/examples/js/controls/OrbitControls.js"></script>
+
+    <script>
+        // Theme Switching Logic
+        function switchTheme(theme) {
+          document.body.setAttribute("data-theme", theme);
+          localStorage.setItem("theme", theme);
+        }
+
+        function initializeTheme() {
+          const savedTheme = localStorage.getItem("theme") || "dark";
+          document.body.setAttribute("data-theme", savedTheme);
+        }
+
+        document.getElementById("color-switcher").addEventListener("click", () => {
+          const currentTheme = document.body.getAttribute("data-theme");
+          const newTheme = currentTheme === "dark" ? "light" : "dark";
+          switchTheme(newTheme);
+        });
+
+        initializeTheme();
+
+        // Rest of your JavaScript code...
+    </script>
+</body>
+</html>

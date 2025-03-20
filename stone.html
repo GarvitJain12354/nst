@@ -1,0 +1,748 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Pavers</title>
+    <link rel="icon" href="../image/newlogo.png" sizes="any" />
+
+    <link rel="stylesheet" type="text/css" href="../css/plugins.css" />
+    <link rel="stylesheet" type="text/css" href="../css/main.css" />
+
+    <style>
+      .filter-container {
+        margin: 20px;
+        display: flex;
+        gap: 40px;
+        flex-wrap: wrap;
+        justify-content: center;
+        padding: 20px 0;
+      }
+
+      .filter-container select {
+        padding: 10px;
+        font-size: 16px;
+        color: #f0f0f0;
+        background-color: #333;
+        border: 1px solid #555;
+        border-radius: 5px;
+        outline: none;
+        cursor: pointer;
+        transition: background-color 0.3s ease, border 0.3s ease;
+      }
+
+      .filter-container select:hover {
+        background-color: #444;
+        border-color: #777;
+      }
+
+      .prodimg-container {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 20px;
+        justify-content: center;
+        margin-top: 20px;
+      }
+
+      .stone-card {
+        background-color: #292929;
+        border: 1px solid #444;
+        border-radius: 8px;
+        width: 300px;
+        padding: 5px;
+        text-align: center;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+      }
+
+      .stone-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.4);
+      }
+
+      .stone-card img {
+        width: 100%;
+        height: 200px;
+        object-fit: cover;
+        border-radius: 5px;
+        margin-bottom: 10px;
+      }
+
+      .stone-card h3 {
+        font-size: 18px;
+        margin: 10px 0 5px;
+        color: #f0f0f0;
+      }
+
+      .stone-card p {
+        font-size: 14px;
+        color: #aaa;
+        margin: 10px 0;
+      }
+
+      .contact-data-wrapper {
+    display: flex;
+    flex-direction: row; /* Aligns sections horizontally */
+    justify-content: space-between; /* Spaces them evenly */
+    flex-wrap: wrap; /* Ensures responsiveness */
+    gap: 30px; /* Adds spacing between sections */
+  }
+
+  .contact-data__item {
+    flex: 1; /* Distributes space evenly */
+    min-width: 200px; /* Prevents items from shrinking */
+  }
+
+  .contact-data__item .contact-data__text {
+    line-height: 1.2; /* Reduce default line spacing */
+    margin-bottom: 5px; /* Reduce gap between lines */
+}
+
+
+  @media (max-width: 768px) {
+    .contact-data-wrapper {
+      flex-direction: column; /* Stack items on mobile */
+      align-items: center;
+    }
+  }
+    </style>
+  </head>
+  <body>
+    <div id="mobileMenu" class="mobile-menu">
+      <button
+        id="mobileMenuClose"
+        onclick="closeMobileMenu()"
+        class="mobile-menu__close-btn"
+      >
+        <i class="ph ph-x-circle"></i>
+      </button>
+      <nav>
+        <ul class="mobile-menu__list">
+          <li class="mobile-menu__item">
+            <a class="mobile-menu__link btn" href="/index.html#home">
+              <i class="ph ph-house-simple"></i>
+              <span class="mobile-menu__caption">Home</span>
+            </a>
+          </li>
+          <li class="mobile-menu__item">
+            <a class="mobile-menu__link btn" href="/gallery.html">
+              <i class="ph ph-squares-four"></i>
+              <span class="mobile-menu__caption">Gallery</span>
+            </a>
+          </li>
+          <li class="mobile-menu__item">
+            <a class="mobile-menu__link btn" href="/products.html">
+              <i class="ph ph-sticker"></i>
+              <span class="mobile-menu__caption">Products</span>
+            </a>
+          </li>
+          <!-- <li class="mobile-menu__item">
+            <a class="mobile-menu__link btn" href="/workflow.html">
+              <i class="ph ph-article"></i>
+              <span class="mobile-menu__caption">Workflow</span>
+            </a>
+          </li> -->
+          <li class="mobile-menu__item">
+            <a class="mobile-menu__link btn" href="/categories.html">
+              <i class="ph ph-user"></i>
+              <span class="mobile-menu__caption">Categories</span>
+            </a>
+          </li>
+          <li class="mobile-menu__item">
+            <a class="mobile-menu__link btn" href="/about.html">
+              <i class="ph ph-envelope"></i>
+              <span class="mobile-menu__caption">About</span>
+            </a>
+          </li>
+          <li class="mobile-menu__item">
+            <a class="mobile-menu__link btn" href="/index.html#contact">
+              <i class="ph ph-envelope"></i>
+              <span class="mobile-menu__caption">Contact</span>
+            </a>
+          </li>
+        </ul>
+      </nav>
+    </div>
+
+    <!-- Mobile Menu Toggle Button -->
+    <button
+      id="mobileMenuToggle"
+      onclick="openMobileMenu()"
+      class="mobile-menu-toggle-btn d-md-none"
+    >
+      <i class="ph ph-text-indent"></i>
+    </button>
+    <button id="back-button" class="back-button" onclick="goBack()">
+      <i class="ph ph-arrow-u-up-left"></i>
+    </button>
+    <!-- Header Start -->
+    <header
+      style="z-index: 1000"
+      id="header"
+      class="header d-flex justify-content-center loading__fade"
+    >
+      <!-- Navigation Menu Start -->
+      <div class="header__navigation d-flex justify-content-start">
+        <nav id="menu" class="menu">
+          <ul class="menu__list d-flex justify-content-start">
+            <li class="menu__item">
+              <a class="menu__link btn" href="/index.html#home">
+                <span class="menu__caption">Home</span>
+                <i class="ph ph-house-simple"></i>
+              </a>
+            </li>
+            <li class="menu__item">
+              <a class="menu__link btn" href="/gallery.html">
+                <span class="menu__caption">Gallery</span>
+                <i class="ph ph-squares-four"></i>
+              </a>
+            </li>
+            <li class="menu__item">
+              <a class="menu__link btn" href="/products.html">
+                <span class="menu__caption">Products</span>
+                <i class="ph ph-sticker"></i>
+              </a>
+            </li>
+           
+            <li class="menu__item">
+              <a class="menu__link btn" href="categories.html">
+                <span class="menu__caption">Categories</span>
+                <i class="ph ph-user"></i>
+              </a>
+            </li>
+            <li class="menu__item">
+              <a class="menu__link btn" href="/about.html">
+                <span class="menu__caption">About</span>
+                <i class="ph ph-envelope"></i>
+              </a>
+            </li>
+            <li class="menu__item">
+              <a class="menu__link btn" href="index.html#contact">
+                <span class="menu__caption">Contact</span>
+                <i class="ph ph-envelope"></i>
+              </a>
+            </li>
+          </ul>
+        </nav>
+      </div>
+      <!-- Navigation Menu End -->
+    </header>
+    <!-- Header End -->
+
+    <!-- Fixed Logo Start -->
+    <div class="logo loading__fade">
+      <a href="/index.html#home" class="logo__link">
+        <!-- logo icon -->
+        <img class="logo-img" src="../image/newlogo.png" alt="" />
+        <!-- logo text -->
+        <!-- <span class="logo-text">NsT*</span> -->
+      </a>
+    </div>
+    <!-- Fixed Logo End -->
+
+    <!-- Fixed Color Switch Start -->
+    <div class="color loading__fade">
+      <button
+        id="color-switcher"
+        class="color-switcher"
+        type="button"
+        role="switch"
+        onclick=" SwitchColor()"
+        aria-label="light/dark mode"
+        aria-checked="true"
+      ></button>
+    </div>
+
+    <section
+      style="z-index: 10"
+      id="services"
+      class="inner inner-stack-bottom services"
+    >
+      <div class="inner__wrapper">
+        <div class="container-fluid p-0">
+          <div class="row g-0" >
+            <!-- Inner Section Name Start -->
+           
+            <!-- Inner Section Name End -->
+
+            <!-- Inner Section Content Start -->
+            <div class="col-12 ">
+              <div style="z-index: 1" class="inner__content">
+                <!-- Content Block - H2 Section Title Start -->
+                <div class="content__block pre-stack-text-block">
+                  <div style="margin: 0px 0 30px 0 ;display: flex; justify-content: center;">
+                    <h2
+                      style="
+                      width: 100%;
+                        font-size: 30px;
+                        display: inline;
+                        text-align: center;
+                        font-weight: 400;
+                      "
+                      class="cta"
+                    >
+                      Enhance your outdoor spaces with the unmatched <br> beauty of
+                      natural stone collection.
+                    </h2>
+                  </div>
+                </div>
+                <!-- Content Block - H2 Section Title End -->
+              </div>
+              <div class="container">
+                <!-- Filter Options -->
+                <div class="filter-container">
+                  <select id="typeFilter">
+                    <option value="">All Types</option>
+                  </select>
+                  <select id="colorFilter">
+                    <option value="">All Colors</option>
+                  </select>
+                </div>
+
+                <!-- Stone Display -->
+                <div class="prodimg-container"></div>
+              </div>
+            </div>
+            <!-- Inner Section Content End -->
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- Inner Section - Contact - Start -->
+    <section
+      id="contact"
+      class="inner contact inner-grid-bottom no-padding-bottom"
+      style="z-index: 100; padding-top: 100px"
+    >
+    <div class="inner__wrapper">
+      <div class="container-fluid p-0">
+        <div class="row g-0">
+          <!-- Inner Section Name Start -->
+          <div class="col-12 col-xl-2" style="opacity: 0">
+            <div class="inner__name">
+              <div class="content__block name-block">
+                <span class="section-name icon-right animate-in-up">
+                  <span class="section-name-caption">Contact</span>
+                  <i class="ph ph-arrow-down-right"></i>
+                </span>
+              </div>
+            </div>
+          </div>
+          <!-- Inner Section Name End -->
+    
+          <!-- Inner Section Content Start -->
+          <div class="col-12 col-xl-8">
+            <div class="inner__content">
+              <div class="content__block grid-block">
+                <div class="container-fluid p-0 contact-data">
+                  <div class="row g-0 contact-data-wrapper">
+                    <!-- Location -->
+                    <div class="contact-data__item grid-item">
+                      <p class="contact-data__title tagline-chapter animate-in-up">Location</p>
+                      <p class="contact-data__text small type-basic-160lh">
+                        <a class="link-small-160lh animate-in-up" href="https://maps.app.goo.gl/g28hCHCGMMyEEqMU7" target="_blank">
+                          14004 Woodbine Avenue <br />Stouffville (Gormley),<br />Ontario, L0H 1G0 Canada
+                        </a>
+                      </p>
+                    </div>
+                    <!-- Hours of Operation -->
+                    <div class="contact-data__item grid-item">
+                      <p class="contact-data__title tagline-chapter animate-in-up">Hours of Operation</p>
+                      <p class="contact-data__text small type-basic-160lh">
+                        <span class="animate-in-up">Monday - Friday: 8:00 AM - 4:30 PM</span><br />
+                        <span class="animate-in-up">Saturday: Appointments only</span><br />
+                        <span class="animate-in-up">Sunday: Closed</span>
+                      </p>
+                    </div>
+                    <!-- Phone -->
+                    <div class="contact-data__item grid-item">
+                      <p class="contact-data__title tagline-chapter animate-in-up">Phone</p>
+                      <p class="contact-data__text small type-basic-160lh">
+                        <a class="link-small-160lh animate-in-up" href="tel:+16472877869">+1 (647) 287-7869</a><br />
+                        <a class="link-small-160lh animate-in-up" href="tel:+16475233623">+1 (647)-523-3623</a>
+                      </p>
+                    </div>
+                    <!-- Email -->
+                    <div class="contact-data__item grid-item">
+                      <p class="contact-data__title tagline-chapter animate-in-up">Email</p>
+                      <p class="contact-data__text small type-basic-160lh">
+                        <a class="link-small-160lh animate-in-up" href="mailto:naturalstonetraders@gmail.com">naturalstonetraders@gmail.com</a><br />
+                        <a class="link-small-160lh animate-in-up" href="mailto:sales.nststone@gmail.com">sales.nststone@gmail.com</a>
+                      </p>
+                    </div>
+                    <!-- Areas We Serve -->
+                    <div style="padding-top: 30px;" class="contact-data__item">
+                      <p class="contact-data__title tagline-chapter animate-in-up">
+                        Area we serve
+                      </p>
+                      <div class="contact-data__text small" id="areas-we-serve"></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- Inner Section Content End -->
+          <div class="col-12 col-xl-2"></div>
+        </div>
+      </div>
+    </div>
+      <div
+        style="
+          display: flex;
+          width: 100%;
+          text-decoration: none;
+          text-align: center;
+          padding-top: 50px;
+        "
+        class="col-12 col-md-6 col-lg-3 contact-data__item grid-item"
+      >
+        <div
+          style="
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+          "
+          class="contact-data__title tagline-chapter animate-in-up"
+        >
+          <span style="text-decoration: none; word-wrap: break-word"
+            >Copyright © 2024 Natural Stone Traders Inc. | All Rights
+            Reserved.</span
+          >
+          <span style="color: #a17c30; opacity: 0.7; text-decoration: underline"
+            >Powered by Knaptix</span
+          >
+        </div>
+      </div>
+    </section>
+    <div class="bottom__background bottom-bg-01">
+      <div class="bottom-bg-01__02 animate-card-2">
+        <img
+          class="hero-img"
+          src="img/backgrounds/stonehaha.webp"
+          alt="Template background image"
+        />
+      </div>
+      <div class="bottom-bg-01__01 animate-card-2">
+        <img
+          class="hero-img"
+          src="img/backgrounds/stonehaha.webp"
+          alt="Template background image"
+        />
+      </div>
+    </div>
+
+    <!-- Inner Section - Contact - End -->
+    <script>
+      const areasWeServe = [
+        "Ajax",
+        "Barrie",
+        "Bolton",
+        "Brampton",
+        "Caledon",
+        "Chatham",
+        "Hamilton",
+        "Kingston",
+        "Markham",
+        "Scarborough",
+        "Ottawa",
+        "Pickering",
+        "Oro Medonte",
+        "Sunderland",
+        "Stouffville",
+        "Richmond Hill",
+        "Toronto",
+        "Uxbridge",
+        "Whitby",
+        "Quebec",
+        "Montreal",
+      ];
+
+      const contentData = [
+        // Sandstone
+        {
+          name: "Dove Grey Sandstone",
+          image: "image/stone/NST Sandstone/dovegray/dove grey 6-min.jpg",
+          type: "sandstone",
+          color: "dove Grey",
+          slug: "dove-grey-sandstone",
+        },
+        {
+          name: "Grey Rundle Sandstone",
+          image: "image/stone/NST Sandstone/grey rundle/DSC_0274-min.JPG",
+          type: "sandstone",
+          color: "grey",
+          slug: "grey-rundle-sandstone",
+        },
+        {
+          name: "Slate Grey Sandstone",
+          image: "image/stone/NST Sandstone/slategrey/DSC_0508-min.JPG",
+          type: "sandstone",
+          color: "slate Grey",
+          slug: "slate-grey-sandstone",
+        },
+        {
+          name: "Bronte/Brown Sandstone",
+          image:
+            "image/stone/NST Sandstone/bronte/autumn-Brown-sandstone-005[1].jpg",
+          type: "sandstone",
+          color: "brown",
+          slug: "bronte-brown-sandstone",
+        },
+        {
+          name: "Imperial Black Sandstone",
+          image: "image/stone/NST Sandstone/impblack/DSC_0177-min.JPG",
+          type: "sandstone",
+          color: "black",
+          slug: "imperial-black-sandstone",
+        },
+        {
+          name: "Pristine White Sandstone",
+          image:
+            "image/stone/NST Sandstone/Pristine White/WhatsApp Image 2024-12-11 at 2.52.22 PM.jpeg",
+          type: "sandstone",
+          color: "white",
+          slug: "pristine-white-sandstone",
+        },
+        {
+          name: "Ivory Rundle Sandstone",
+          image:
+            "image/stone/NST Sandstone/Ivory Rundle/WhatsApp Image 2024-12-11 at 2.55.28 PM.jpeg",
+          type: "sandstone",
+          color: "ivory",
+          slug: "ivory-rundle-sandstone",
+        },
+        {
+          name: "Lavender Sandstone",
+          image:
+            "image/stone/NST Sandstone/Lavender/WhatsApp Image 2024-12-11 at 2.59.57 PM.jpeg",
+          type: "sandstone",
+          color: "grey",
+          slug: "lavender-sandstone",
+        },
+        {
+          name: "Canary Rundle Sandstone",
+          image:
+            "image/stone/NST Sandstone/Canary Rundle/Canary Rundle.jpg",
+          type: "sandstone",
+          color: "canary",
+          slug: "canary-rundle-sandstone",
+        },
+        {
+          name: "Dusky Rundle Sandstone",
+          image:
+            "image/stone/NST Sandstone/Dusky Rundle/VideoCapture_20231206-172409.jpg",
+          type: "sandstone",
+          color: "dusky",
+          slug: "dusky-rundle-sandstone",
+        },
+
+        // Limestone
+        {
+          name: "Silver Valley Limestone",
+          image:
+            "image/stone/NST Limestone/Silver Valley Dazzle/WhatsApp Image 2024-12-11 at 2.21.21 PM.jpeg",
+          type: "limestone",
+          color: "silver",
+          slug: "silver-valley-limestone",
+        },
+        {
+          name: "Kota Black Limestone",
+          image:
+            "image/stone/NST Limestone/Kota Black/WhatsApp Image 2024-12-11 at 2.38.39 PM.jpeg",
+          type: "limestone",
+          color: "black",
+          slug: "kota-black-limestone",
+        },
+        {
+          name: "Antique Black Limestone",
+          image:
+            "image/stone/NST Limestone/Antique Black/WhatsApp Image 2024-12-11 at 2.46.32 PM.jpeg",
+          type: "limestone",
+          color: "black",
+          slug: "antique-black-limestone",
+        },
+
+        // Granite
+        {
+          name: "Galaxy Black Granite",
+          image: "image/stone/granite/blackgalaxy/20240621_130221.jpg",
+          type: "granite",
+          color: "black",
+          slug: "galaxy-black-granite",
+        },
+        {
+          name: "Dark Ebony Granite",
+          image: "image/stone/granite/darkebony/dark ebony 15.jpg",
+          type: "granite",
+          color: "black",
+          slug: "dark-ebony-granite",
+        },
+        {
+          name: "Raven Black Granite",
+          image: "image/stone/granite/raven/DSC_0009.jpg",
+          type: "granite",
+          color: "black",
+          slug: "raven-black-granite",
+        },
+        {
+          name: "Basalt Granite",
+          image: "image/stone/granite/basalt.jpg",
+          type: "granite",
+          color: "basalt",
+          slug: "basalt-granite",
+        },
+
+        // Marble
+        {
+          name: "Urban Grey Marble",
+          image: "image/stone/marble/urban grey/DSC_0139-min.JPG",
+          type: "marble",
+          color: "grey",
+          slug: "urban-grey-marble",
+        },
+      ];
+      // Target the div with the id 'areas-we-serve'
+      const areasContainer = document.getElementById("areas-we-serve");
+
+      // Check if the container exists
+      if (areasContainer) {
+        // Iterate over the areas and create a span for each
+        areasWeServe.forEach((area) => {
+          const span = document.createElement("span");
+          span.className = "areas-serve"; // Add the desired class
+          span.textContent = area; // Set the text content
+          areasContainer.appendChild(span); // Append the span to the container
+        });
+      } else {
+        console.error("Div with id 'areas-we-serve' not found.");
+      }
+
+      // Populate filter options dynamically
+      function populateFilters() {
+        const typeFilter = document.getElementById("typeFilter");
+        const colorFilter = document.getElementById("colorFilter");
+
+        // Get unique types and colors
+        const types = [...new Set(contentData.map((item) => item.type))];
+        const colors = [...new Set(contentData.map((item) => item.color))];
+
+        // Populate type filter
+        types.forEach((type) => {
+          const option = document.createElement("option");
+          option.value = type;
+          option.textContent = type.charAt(0).toUpperCase() + type.slice(1);
+          typeFilter.appendChild(option);
+        });
+
+        // Populate color filter
+        // colors.forEach((color) => {
+        //   const option = document.createElement("option");
+        //   option.value = color;
+        //   option.textContent = color.charAt(0).toUpperCase() + color.slice(1);
+        //   colorFilter.appendChild(option);
+        // });
+        updateColorFilter("");
+      }
+
+      function updateColorFilter(selectedType) {
+        const colorFilter = document.getElementById("colorFilter");
+
+        // Clear existing options
+        colorFilter.innerHTML = '<option value="">Select Color</option>';
+
+        // Get colors based on the selected type
+        const colors = [
+          ...new Set(
+            contentData
+              .filter(
+                (item) => selectedType === "" || item.type === selectedType
+              )
+              .map((item) => item.color)
+          ),
+        ];
+
+        // Populate color filter with filtered colors
+        colors.forEach((color) => {
+          const option = document.createElement("option");
+          option.value = color;
+          option.textContent = color.charAt(0).toUpperCase() + color.slice(1);
+          colorFilter.appendChild(option);
+        });
+      }
+
+      // Display stones based on filters
+      function displayStones(filteredData) {
+        const container = document.querySelector(".prodimg-container");
+        container.innerHTML = ""; // Clear existing content
+
+        filteredData.forEach((stone) => {
+          const card = document.createElement("a");
+          card.href = `/singlestone.html?section=${stone.slug}`;
+          card.className = "stone-card";
+          card.innerHTML = `
+              <img src="${stone.image}" alt="${stone.name}" />
+              <h3>${stone.name}</h3>
+              <p>Type: ${
+                stone.type.charAt(0).toUpperCase() + stone.type.slice(1)
+              }</p>
+              <p>Color: ${
+                stone.color.charAt(0).toUpperCase() + stone.color.slice(1)
+              }</p>
+            `;
+          container.appendChild(card);
+        });
+      }
+
+      // Filter stones based on selected filters
+      function filterStones() {
+        const typeFilter = document.getElementById("typeFilter").value;
+        const colorFilter = document.getElementById("colorFilter").value;
+
+        const filteredData = contentData.filter((stone) => {
+          return (
+            (typeFilter === "" || stone.type === typeFilter) &&
+            (colorFilter === "" || stone.color === colorFilter)
+          );
+        });
+
+        displayStones(filteredData);
+      }
+
+      // Initialize page content
+      function initialize() {
+        populateFilters();
+
+        // Set default type from URL parameter
+        const urlParams = new URLSearchParams(window.location.search);
+        const defaultType = urlParams.get("type");
+        if (defaultType) {
+          document.getElementById("typeFilter").value = defaultType;
+          updateColorFilter(defaultType);
+        }
+
+        // Display initial stones
+        filterStones();
+
+        // Add event listeners for filter changes
+        document
+          .getElementById("typeFilter")
+          .addEventListener("change", function(){
+            updateColorFilter(this.value);
+            filterStones();
+          });
+
+        document
+          .getElementById("colorFilter")
+          .addEventListener("change", filterStones);
+      }
+
+      initialize();
+    </script>
+
+    <script src="../js/libs.min.js"></script>
+    <script src="../js/app.js"></script>
+  </body>
+</html>

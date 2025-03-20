@@ -1,0 +1,949 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Pavers</title>
+    <link rel="icon" href="../image/newlogo.png" sizes="any" />
+
+    <link rel="stylesheet" type="text/css" href="../css/plugins.css" />
+    <link rel="stylesheet" type="text/css" href="../css/main.css" />
+  </head>
+  <style>
+     /* Contact Section Styling */
+     .contact-data-wrapper {
+    display: flex;
+    flex-direction: row; /* Aligns sections horizontally */
+    justify-content: space-between; /* Spaces them evenly */
+    flex-wrap: wrap; /* Ensures responsiveness */
+    gap: 30px; /* Adds spacing between sections */
+  }
+
+  .contact-data__item {
+    flex: 1; /* Distributes space evenly */
+    min-width: 200px; /* Prevents items from shrinking */
+  }
+
+  .contact-data__item .contact-data__text {
+    line-height: 1.2; /* Reduce default line spacing */
+    margin-bottom: 5px; /* Reduce gap between lines */
+}
+
+
+  @media (max-width: 768px) {
+    .contact-data-wrapper {
+      flex-direction: column; /* Stack items on mobile */
+      align-items: center;
+    }
+  }
+  /* Table Styling */
+  .table-section {
+    margin: 20px 0;
+  }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+    background-color: #333;
+    color: #fff;
+  }
+
+  table th, table td {
+    padding: 8px;
+    text-align: left;
+    border: 1px solid #ddd;
+  }
+
+  table th {
+    background-color: #444;
+    color: #fff;
+  }
+
+  table tr:nth-child(even) {
+    background-color: #555;
+  }
+
+  table tr:hover {
+    background-color: #666;
+  }
+</style>
+  <body>
+    <div id="mobileMenu" class="mobile-menu">
+      <button
+        id="mobileMenuClose"
+        onclick="closeMobileMenu()"
+        class="mobile-menu__close-btn"
+      >
+        <i class="ph ph-x-circle"></i>
+      </button>
+      <nav>
+        <ul class="mobile-menu__list">
+          <li class="mobile-menu__item">
+            <a class="mobile-menu__link btn" href="/index.html#home">
+              <i class="ph ph-house-simple"></i>
+              <span class="mobile-menu__caption">Home</span>
+            </a>
+          </li>
+          <li class="mobile-menu__item">
+            <a class="mobile-menu__link btn" href="/gallery.html">
+              <i class="ph ph-squares-four"></i>
+              <span class="mobile-menu__caption">Gallery</span>
+            </a>
+          </li>
+          <li class="mobile-menu__item">
+            <a class="mobile-menu__link btn" href="/products.html">
+              <i class="ph ph-sticker"></i>
+              <span class="mobile-menu__caption">Products</span>
+            </a>
+          </li>
+          <!-- <li class="mobile-menu__item">
+            <a class="mobile-menu__link btn" href="/workflow.html">
+              <i class="ph ph-article"></i>
+              <span class="mobile-menu__caption">Workflow</span>
+            </a>
+          </li> -->
+          <li class="mobile-menu__item">
+            <a class="mobile-menu__link btn" href="/categories.html">
+              <i class="ph ph-user"></i>
+              <span class="mobile-menu__caption">Categories</span>
+            </a>
+          </li>
+          <li class="mobile-menu__item">
+            <a class="mobile-menu__link btn" href="/about.html">
+              <i class="ph ph-envelope"></i>
+              <span class="mobile-menu__caption">About</span>
+            </a>
+          </li>
+          <li class="mobile-menu__item">
+            <a class="mobile-menu__link btn" href="/index.html#contact">
+              <i class="ph ph-envelope"></i>
+              <span class="mobile-menu__caption">Contact</span>
+            </a>
+          </li>
+        </ul>
+      </nav>
+    </div>
+
+    <!-- Mobile Menu Toggle Button -->
+    <button
+      id="mobileMenuToggle"
+      onclick="openMobileMenu()"
+      class="mobile-menu-toggle-btn d-md-none"
+    >
+      <i class="ph ph-text-indent"></i>
+    </button>
+    <button id="back-button" class="back-button" onclick="goBack()">
+      <i class="ph ph-arrow-u-up-left"></i>
+    </button>
+    <!-- Header Start -->
+    <header
+      style="z-index: 1000"
+      id="header"
+      class="header d-flex justify-content-center loading__fade"
+    >
+      <!-- Navigation Menu Start -->
+      <div class="header__navigation d-flex justify-content-start">
+        <nav id="menu" class="menu">
+          <ul class="menu__list d-flex justify-content-start">
+            <li class="menu__item">
+              <a class="menu__link btn" href="/index.html#home">
+                <span class="menu__caption">Home</span>
+                <i class="ph ph-house-simple"></i>
+              </a>
+            </li>
+            <li class="menu__item">
+              <a class="menu__link btn" href="/gallery.html">
+                <span class="menu__caption">Gallery</span>
+                <i class="ph ph-squares-four"></i>
+              </a>
+            </li>
+            <li class="menu__item">
+              <a class="menu__link btn" href="/products.html">
+                <span class="menu__caption">Products</span>
+                <i class="ph ph-sticker"></i>
+              </a>
+            </li>
+
+            <li class="menu__item">
+              <a class="menu__link btn" href="categories.html">
+                <span class="menu__caption">Categories</span>
+                <i class="ph ph-user"></i>
+              </a>
+            </li>
+            <li class="menu__item">
+              <a class="menu__link btn" href="/about.html">
+                <span class="menu__caption">About</span>
+                <i class="ph ph-envelope"></i>
+              </a>
+            </li>
+            <li class="menu__item">
+              <a class="menu__link btn" href="index.html#contact">
+                <span class="menu__caption">Contact</span>
+                <i class="ph ph-envelope"></i>
+              </a>
+            </li>
+          </ul>
+        </nav>
+      </div>
+      <!-- Navigation Menu End -->
+    </header>
+    <!-- Header End -->
+
+    <!-- Fixed Logo Start -->
+    <div class="logo loading__fade">
+      <a href="/index.html#home" class="logo__link">
+        <!-- logo icon -->
+        <img class="logo-img" src="../image/newlogo.png" alt="" />
+        <!-- logo text -->
+        <!-- <span class="logo-text">NsT*</span> -->
+      </a>
+    </div>
+    <!-- Fixed Logo End -->
+
+    <!-- Fixed Color Switch Start -->
+    <div class="color loading__fade">
+      <button
+        id="color-switcher"
+        class="color-switcher"
+        type="button"
+        onclick=" SwitchColor()"
+        role="switch"
+        aria-label="light/dark mode"
+        aria-checked="true"
+      ></button>
+    </div>
+
+    <!-- <div style="overflow-x: hidden;" class="intro__background intro-bg-01">
+      <div class="intro-bg-01__01" data-speed="0.6">
+        <img class="hero-img" src="img/backgrounds/stonehaha.webp" alt="Background Objects">
+        <div class="intro-bg__shadow"></div>
+      </div>
+      <div class="intro-bg-01__02" data-speed="0.8">
+        <img class="hero-img" src="img/backgrounds/1200x1200_bg02.webp" alt="Background Objects">
+        <div class="intro-bg__shadow"></div>
+      </div>
+    </div> -->
+
+    <section
+      style="z-index: 10"
+      id="services"
+      class="inner inner-stack-bottom services"
+    >
+      <div class="inner__wrapper">
+        <div class="container-fluid p-0">
+          <div class="row g-0">
+            <!-- Inner Section Name Start -->
+            <div class="col-12 col-xl-2">
+              <div class="inner__name">
+                <!-- Content Block - Section Name Start -->
+                <div class="content__block name-block">
+                  <span class="section-name icon-right animate-in-up">
+                    <span class="section-name-caption"> Product</span>
+                    <i class="ph-light ph-sketch-logo"></i>
+                  </span>
+                </div>
+                <!-- Content Block - Section Name Start -->
+              </div>
+            </div>
+            <!-- Inner Section Name End -->
+
+            <!-- Inner Section Content Start -->
+            <div class="col-12 col-xl-8">
+              <div style="z-index: 1" class="inner__content">
+                <!-- Content Block - H2 Section Title Start -->
+                <div class="content__block pre-stack-text-block">
+                  <div style="z-index: 10" class="block__descr">
+                    <h2
+                      style="z-index: 1"
+                      class="reveal-type animate-in-up"
+                    ></h2>
+                    <a id="weburl" style="text-decoration: underline;"></a>
+                    <p
+                      style="z-index: 1"
+                      class="h2__text type-basic-160lh animate-in-up"
+                    ></p>
+                    <ul
+                      style="font-size: 20px; margin: 40px 0"
+                      class="features-list"
+                    >
+                    <ul
+                      style="font-size: 20px; margin: 40px 0"
+                      class="features-list"
+                    >
+                    <!-- <div class="table-section"></div> -->
+                      <li>
+                        <i class="ph ph-check-circle"></i>
+                        <strong>Premium Quality Materials:</strong>
+                        Handpicked stones that withstand heavy foot traffic and
+                        harsh weather conditions.
+                      </li>
+                    </ul>
+                  </div>
+                  <div class="table-section"></div>
+                  <div style="margin: 50px 0 30px 0">
+                    <h2
+                      style="
+                        font-size: 30px;
+                        display: inline;
+                        text-align: right;
+                        font-weight: 400;
+                      "
+                      class="cta"
+                    >
+                      Enhance your outdoor spaces with the unmatched beauty of
+                      natural stone pavers.
+                    </h2>
+                  </div>
+                </div>
+                <!-- Content Block - H2 Section Title End -->
+              </div>
+              <div
+                class="prodimg-container"
+                style="
+                  display: flex;
+                  flex-wrap: wrap;
+                  width: 100%;
+                  justify-content: center;
+                "
+              ></div>
+            </div>
+            <!-- Inner Section Content End -->
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- Inner Section - Contact - Start -->
+    <section
+      id="contact"
+      class="inner contact inner-grid-bottom no-padding-bottom"
+      style="z-index: 100; padding-top: 60px"
+    >
+    <div class="inner__wrapper">
+      <div class="container-fluid p-0">
+        <div class="row g-0">
+          <!-- Inner Section Name Start -->
+          <div class="col-12 col-xl-2" style="opacity: 0">
+            <div class="inner__name">
+              <div class="content__block name-block">
+                <span class="section-name icon-right animate-in-up">
+                  <span class="section-name-caption">Contact</span>
+                  <i class="ph ph-arrow-down-right"></i>
+                </span>
+              </div>
+            </div>
+          </div>
+          <!-- Inner Section Name End -->
+    
+          <!-- Inner Section Content Start -->
+          <div class="col-12 col-xl-8">
+            <div class="inner__content">
+              <div class="content__block grid-block">
+                <div class="container-fluid p-0 contact-data">
+                  <div class="row g-0 contact-data-wrapper">
+                    <!-- Location -->
+                    <div class="contact-data__item grid-item">
+                      <p class="contact-data__title tagline-chapter animate-in-up">Location</p>
+                      <p class="contact-data__text small type-basic-160lh">
+                        <a class="link-small-160lh animate-in-up" href="https://maps.app.goo.gl/g28hCHCGMMyEEqMU7" target="_blank">
+                          14004 Woodbine Avenue <br />Stouffville (Gormley),<br />Ontario, L0H 1G0 Canada
+                        </a>
+                      </p>
+                    </div>
+                    <!-- Hours of Operation -->
+                    <div class="contact-data__item grid-item">
+                      <p class="contact-data__title tagline-chapter animate-in-up">Hours of Operation</p>
+                      <p class="contact-data__text small type-basic-160lh">
+                        <span class="animate-in-up">Monday - Friday: 8:00 AM - 4:30 PM</span><br />
+                        <span class="animate-in-up">Saturday: Appointments only</span><br />
+                        <span class="animate-in-up">Sunday: Closed</span>
+                      </p>
+                    </div>
+                    <!-- Phone -->
+                    <div class="contact-data__item grid-item">
+                      <p class="contact-data__title tagline-chapter animate-in-up">Phone</p>
+                      <p class="contact-data__text small type-basic-160lh">
+                        <a class="link-small-160lh animate-in-up" href="tel:+16472877869">+1 (647) 287-7869</a><br />
+                        <a class="link-small-160lh animate-in-up" href="tel:+16475233623">+1 (647)-523-3623</a>
+                      </p>
+                    </div>
+                    <!-- Email -->
+                    <div class="contact-data__item grid-item">
+                      <p class="contact-data__title tagline-chapter animate-in-up">Email</p>
+                      <p class="contact-data__text small type-basic-160lh">
+                        <a class="link-small-160lh animate-in-up" href="mailto:naturalstonetraders@gmail.com">naturalstonetraders@gmail.com</a><br />
+                        <a class="link-small-160lh animate-in-up" href="mailto:sales.nststone@gmail.com">sales.nststone@gmail.com</a>
+                      </p>
+                    </div>
+                    <!-- Areas We Serve -->
+                    <div style="padding-top: 30px;" class="contact-data__item">
+                      <p class="contact-data__title tagline-chapter animate-in-up">
+                        Area we serve
+                      </p>
+                      <div class="contact-data__text small" id="areas-we-serve"></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- Inner Section Content End -->
+          <div class="col-12 col-xl-2"></div>
+        </div>
+      </div>
+    </div>
+    
+
+        <!-- Inner Section Off-canvas Content (Footer Marquee Block) Start -->
+
+        <!-- Inner Section Off-canvas Content (Footer Marquee Block) Start -->
+      </div>
+      <div
+        style="
+          display: flex;
+          width: 100%;
+          text-decoration: none;
+          text-align: center;
+          padding-top: 50px;
+        "
+        class="col-12 col-md-6 col-lg-3 contact-data__item grid-item"
+      >
+        <div
+          style="
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+          "
+          class="contact-data__title tagline-chapter animate-in-up"
+        >
+          <span style="text-decoration: none; word-wrap: break-word"
+            >Copyright © 2024 Natural Stone Traders Inc. | All Rights
+            Reserved.</span
+          >
+          <span style="color: #a17c30; opacity: 0.7; text-decoration: underline"
+            >Powered by Knaptix</span
+          >
+        </div>
+      </div>
+    </section>
+    <div class="bottom__background bottom-bg-01">
+      <div class="bottom-bg-01__02 animate-card-2">
+        <img
+          class="hero-img"
+          src="img/backgrounds/stonehaha.webp"
+          alt="Template background image"
+        />
+      </div>
+      <div class="bottom-bg-01__01 animate-card-2">
+        <img
+          class="hero-img"
+          src="img/backgrounds/stonehaha.webp"
+          alt="Template background image"
+        />
+      </div>
+    </div>
+
+    <!-- Inner Section - Contact - End -->
+    <script>
+     const contentData = [
+  {
+    name: "pavers",
+    pageTitle: "Pavers | Natural Stone Co.",
+    title: "Pavers",
+    description: `Transform outdoor spaces with the timeless charm and resilience of natural stone pavers. Our pavers are expertly crafted to combine durability with aesthetic appeal, making them the perfect choice for patios, driveways, walkways, and garden paths.`,
+    
+    features: [
+      "Handpicked stones that withstand heavy foot traffic and harsh weather conditions.",
+      "Available in various colors, textures, and patterns to complement any architectural style.",
+      "Naturally sourced materials, offering a sustainable paving option.",
+      "Our Natural Pavels are available in different sizes, please see the chart below:",
+    ],
+
+  "table": {
+    "sections": [
+      {
+        "title": "Pavers - Rock Cut",
+        "headers": ["Thickness", "Sizes"],
+        "rows": [
+          ["1", "12X24, 18X24, 24X24, 24X36"],
+          ["1.25\"", ""],
+          ["20", "30X60, 45X60, 60X60 cm, 60X90 cm"],
+          ["30", ""],
+          ["50 mm *", ""],
+          ["1.25\"", "1X2, 2X2, 2X1.5, 2X3 Ft"]
+        ]
+      },
+      {
+        "title": "Pavers - Edge Pavers/Coping",
+        "headers": ["Thickness", "Sizes"],
+        "rows": [
+          ["1\"", "12X36, 12X48\""],
+          ["20 mm *", "30X90, 30X120 cm"],
+          ["1\"", "1X3, 1X4 Ft"]
+        ]
+      },
+      {
+        "title": "Pavers - Patio Pack",
+        "headers": ["Thickness", "Sizes"],
+        "rows": [
+          ["1\"", "12X24, 18X24, 24X24"],
+          ["20 mm *", "30X60, 45X60, 60X60 cm (140 sq ft)"],
+          ["1\"", "1X2, 2X1.5 Ft"]
+        ]
+      }
+    ]
+  },
+ uses: [
+      "Driveways: Strong and stylish stones that withstand heavy traffic.",
+      "Pool Coping: Smooth edges for safety and aesthetics.",
+      "Outdoor Entertaining Areas: Create an inviting space for family and friends.",
+    ],
+    ctaText:
+      "Ready to transform your outdoors? Browse our Pavers collection and start your project today!",
+    ctaLink: "/pavers-coping.html",
+    images: [
+      "image/prod/paving/Autum_brown_steps_and_pavers-22_2048x2048.webp",
+      "image/prod/paving/DOVE_GREY_2-87_2048x2048.webp",
+      "image/prod/paving/LAVENDER_PAVERS-FRONT-13_2048x2048.webp",
+      "image/prod/paving/PAVERS_2-2_2048x2048.jpg",
+    ],
+  },
+        {
+          name: "coping",
+          pageTitle: "Coping | Natural Stone Co.",
+          title: "Coping",
+          description:
+            "Complete your design projects with our premium natural stone coping. Designed for durability and style, our coping is the ideal finishing touch for pools, steps, and walls, blending seamlessly with both modern and traditional aesthetics.",
+          features: [
+            "Meticulously cut and finished for a sleek uniform look.",
+            "Built to withstand moisture, UV rays, and extreme temperatures.",
+            "Tailored to fit various shapes and dimensions.",
+            "Eco-friendly materials that align with sustainable landscaping practices.",
+            "Please see the chart below for available sizes:",
+          ],
+          table: {
+  headers: ["THICKNESS", "SIZES"],
+  rows: [
+    ["25mm (Edge Coping) 50 mm (calibrated)", "48x12 48x14 & 48x16"],
+    ["", "60x12 60x14 & 60x16"],
+    ["", "72x12 72x14 & 72x16"],
+  ],
+},
+
+         
+          uses: [
+            "Driveways: Strong and stylish stones that withstand heavy traffic.",
+            "Pool Coping: Smooth edges for safety and aesthetics.",
+            "Outdoor Entertaining Areas: Create an inviting space for family and friends.",
+          ],
+          ctaText:
+            "Ready to transform your outdoors? Browse Our Paver & Coping Collection and start your project today!",
+          ctaLink: "/pavers-coping.html",
+          images: [
+            "image/prod/coping/DOVE_GREY_-88_2048x2048.webp",
+            "image/prod/coping/PICS_FOR_KOTA_BLACK_3-110_2048x2048.webp",
+            "image/prod/coping/PICS_FOR_KOTA_BLACK_COPINGS_4-111_2048x2048.webp",
+            "image/prod/coping/POOL_COPINGS-8_1728x.webp",
+          ],
+        },
+          {
+  name: "steps-curbs",
+  pageTitle: "Steps & Curbs | Natural Stone Co.",
+  title: "Steps & Curbs",
+  description:
+    "Seamlessly integrate functionality and design with our natural stone steps and curbs. These pieces are more than just practical – they add an architectural statement to any property.",
+  features: [
+    "Natural resistance to wear and tear, perfect for high-traffic areas.",
+    "Elegant, timeless designs that complement all architectural styles.",
+    "Enhanced property value with premium materials.",
+    "Our Steps and Curbs are available in different sizes, please see the chart below:",
+  ],
+  table: {
+    steps: {
+      headers: ["THICKNESS", "SIZES OF STEPS"],
+      rows: [
+        ["6 & 7 INCHES (calibrated)", "48X16"],
+        ["", "60X16"],
+        ["", "72X16"],
+        ["", "96X16"],
+        ["", "48X12 60X12 72X12 & 96X12"],
+      ],
+    },
+    curbs: {
+      headers: ["THICKNESS", "SIZES OF CURBS"],
+      rows: [
+        ["6 & 7 INCHES", "15, 30, & 47"],
+      ],
+    },
+  },
+  uses: [
+    "Residential: Elegant entrances and garden borders.",
+    "Commercial: Sophisticated curbing solutions for parking lots and pathways.",
+    "Public Spaces: Durable and beautiful options for parks and public projects.",
+  ],
+  ctaText:
+    "Enhance your pathways with precision-crafted steps and curbs. Contact Us for personalized recommendations!",
+  ctaLink: "/steps-curbs.html",
+  images: [
+    "image/prod/steps/BROWN_STEPS_2-53_2048x2048.webp",
+    "image/prod/steps/Horvath_design_build_landscapes_-_front_and_nack_landscaping-2010-49_2048x2048.webp",
+    "image/prod/steps/slate_grey_steps_and_pavers_3-16_2048x2048.webp",
+    "image/prod/steps/PICS_FOR_KOTA_BLACK_3-110_2048x2048.webp",
+  ],
+},
+        {
+          name: "walling-veneers",
+          pageTitle: "Walling & Veneers | Natural Stone Co.",
+          title: "Walling & Veneers",
+          description:
+            "Discover the art of creating stunning spaces with our natural stone walling and veneers. Designed to combine style and strength, these stones turn ordinary walls into extraordinary features.",
+          features: [
+            "Lightweight options for easier installation.",
+            "A variety of textures, from rugged to smooth, to match your vision.",
+            "Low-maintenance materials that retain their charm for years.",
+          ],
+         
+          uses: [
+            "Interior Walls: Add rustic or modern charm to living rooms and offices.",
+            "Exterior Cladding: Weather-resistant veneers for lasting beauty.",
+            "Garden Features: Highlight retaining walls and accent elements in landscaping.",
+          ],
+          ctaText:
+            "Let our walling and veneers redefine your spaces. Get in Touch for a tailored quote today!",
+          ctaLink: "/walling-veneers.html",
+          images: [
+            "image/prod/walling/Wallings_Veneers-NaturalStoneTraders_2018_360x.webp",
+            "image/prod/walling/walling2.jpg",
+            "image/prod/walling/waling1.jpg",
+          ],
+        },
+        {
+          name: "jumbo-slabs-pier-caps",
+          pageTitle: "Jumbo Slabs & Pier Caps | Natural Stone Co.",
+          title: "Jumbo Slabs & Pier Caps",
+          description:
+            "For projects that demand grandeur, our jumbo slabs and pier caps are the ultimate solution. These stones not only provide structural stability but also add a touch of luxury to any project.",
+          features: [
+            "Large format options for seamless installations.",
+            "Robust materials that ensure long-lasting performance.",
+            "Natural stone designs that add unique character to every project.",
+            "Our Pier Caps are available in the sizes below: (Slabs sold in 5, 6, 8 feet - Please call if you need a custom size)",
+          ],
+          table: {
+  headers: ["THICKNESS", "SIZES"],
+  rows: [
+    ["2 & 3 INCHES (calibrated)", "24X24"],
+    ["", "30X30"],
+  ],
+},
+          uses: [
+            "Kitchen and Bathroom Slabs: Perfect for countertops with natural elegance.",
+            "Pier Caps: Protect and enhance fence piers and columns.",
+            "Architectural Features: Add dramatic appeal to monuments and public spaces.",
+          ],
+          ctaText:
+            "Create bold designs with our jumbo slabs and pier caps. Request a Quote and take the first step towards excellence!",
+          ctaLink: "/jumbo-slabs-pier-caps.html",
+          images: [
+            "image/prod/steps/PICS_FOR_KOTA_BLACK_3-110_2048x2048.webp",
+            "image/prod/steps/slate_grey_steps_and_pavers_3-16_2048x2048.webp",
+            "image/prod/walling/Wallings_Veneers-NaturalStoneTraders_2018_360x.webp",
+          ],
+        },
+        {
+          name: "porcelain",
+          pageTitle: "Porcelain | Natural Stone Co.",
+          url: "https://nstporcelain.com/",
+          title: "Porcelain",
+          description:
+            "Looking for high-quality porcelain to elevate your space? Discover the perfect combination of durability, style, and functionality with our exclusive porcelain collection. Trusted by homeowners, architects, and designers across the USA and Canada, we bring you premium porcelain that transforms ordinary spaces into extraordinary ones.",
+          features: [
+            "Porcelain is built to last. Resistant to scratches, stains, and extreme temperatures",
+            "With a wide range of designs, textures, and finishes, our porcelain mimics the look of natural stone, wood, or sleek modern surfaces.",
+            "Easy to clean and maintain, porcelain is perfect for both busy households and commercial spaces.",
+          ],
+          uses: [
+            "Kitchen and Bathroom Slabs: Perfect for countertops with natural elegance.",
+            "Pier Caps: Protect and enhance fence piers and columns.",
+            "Architectural Features: Add dramatic appeal to monuments and public spaces.",
+          ],
+          ctaText:
+            "Ready to elevate your project? Explore our porcelain collection now or request a free consultation to get started.",
+          ctaLink: "/jumbo-slabs-pier-caps.html",
+          images: [
+            "image/prod/porclain/grey-delite-porcelain-pavers-natural-stone-traders-inc_large.webp",
+            "image/prod/porclain/Ivory-beach-sand-natural-stone-traders-inc7_large.webp",
+            "image/prod/porclain/Jet-Black-natural-stone-traders-inc-porcelain-pavers_large.webp",
+            "image/prod/porclain/porcelain-natural-stone-design-pavers-27_large.webp",
+            "image/prod/porclain/WhatsApp Image 2024-12-23 at 01.47.04_5cba09d8.jpg",
+            "image/NST_ROCK_BRONZ_480x480.webp"
+          ],
+        },
+      ];
+
+      // The array of areas we serve
+      const areasWeServe = [
+        "Ajax",
+        "Barrie",
+        "Bolton",
+        "Brampton",
+        "Caledon",
+        "Chatham",
+        "Hamilton",
+        "Kingston",
+        "Markham",
+        "Scarborough",
+        "Ottawa",
+        "Pickering",
+        "Oro Medonte",
+        "Sunderland",
+        "Stouffville",
+        "Richmond Hill",
+        "Toronto",
+        "Uxbridge",
+        "Whitby",
+        "Quebec",
+        "Montreal",
+      ];
+     
+      document.addEventListener("DOMContentLoaded", function () {
+  const tableContainer = document.querySelector(".table-section");
+
+  console.log("Checking table container:", tableContainer); // Debugging log
+
+  if (!tableContainer) {
+    console.error("Error: .table-section not found in the document.");
+    return;
+  }
+});
+
+      // Target the div with the id 'areas-we-serve'
+      const areasContainer = document.getElementById("areas-we-serve");
+
+      // Check if the container exists
+      if (areasContainer) {
+        // Iterate over the areas and create a span for each
+        areasWeServe.forEach((area) => {
+          const span = document.createElement("span");
+          span.className = "areas-serve"; // Add the desired class
+          span.textContent = area; // Set the text content
+          areasContainer.appendChild(span); // Append the span to the container
+        });
+      } else {
+        console.error("Div with id 'areas-we-serve' not found.");
+      }
+
+      // Function to update page content dynamically
+      function updateContent(params) {
+        const section = contentData.find((item) => item.name === params.name);
+        if (!section) return;
+
+        // Update page title
+        document.title = section.pageTitle;
+
+        // Update section title and description
+        document.querySelector("#services h2").textContent = section.title;
+        document.querySelector("#services .h2__text").textContent =
+          section.description;
+        document.querySelector(".cta").textContent = section.ctaText;
+
+        // Update features list
+        const featuresList = document.querySelector(".features-list");
+        featuresList.innerHTML = section.features
+          .map(
+            (feature) =>
+              `<li><i style="margin-right:10px" class="ph ph-check-circle"></i>${feature}</li>`
+          )
+          .join("");
+          
+          document.addEventListener("DOMContentLoaded", function () {
+  const tableContainer = document.querySelector(".table-section");
+
+  if (!tableContainer) {
+    console.error("Error: .table-section not found in the document.");
+    return;
+  }
+
+  // Get the current section from the URL query parameter
+  const urlParams = new URLSearchParams(window.location.search);
+  const currentSection = urlParams.get("section"); // e.g., "steps-curbs"
+
+  if (!currentSection) {
+    console.error("Error: No section specified in the URL.");
+    return;
+  }
+
+  // Find the product that matches the current section
+  const product = contentData.find((item) => item.name === currentSection);
+
+  if (!product) {
+    console.error(`Error: No product found for section "${currentSection}".`);
+    return;
+  }
+
+  // Render tables based on format type
+  if (product.table) {
+    if (product.table.sections) {
+      // Case 1: Complex Table Format (like Pavers)
+      renderComplexTable(product.table.sections);
+    } else if (product.table.headers && product.table.rows) {
+      // Case 2: Single Simple Table
+      renderTable(product.table, product.title);
+    } else {
+      // Case 3: Multiple Simple Tables (e.g., steps & curbs)
+      for (const [tableName, tableData] of Object.entries(product.table)) {
+        renderTable(tableData, tableName);
+      }
+    }
+  } else {
+    console.warn(`No table data found for section "${currentSection}".`);
+  }
+
+  // Function to render complex tables with multiple sections (like Pavers)
+  function renderComplexTable(sections) {
+    sections.forEach((section) => {
+      const tableWrapper = document.createElement("div");
+      tableWrapper.classList.add("table-wrapper");
+
+      // Section Title
+      const title = document.createElement("h3");
+      title.textContent = section.title;
+      title.classList.add("table-title");
+      tableWrapper.appendChild(title);
+
+      // Create Table
+      const table = document.createElement("table");
+      table.classList.add("product-table");
+
+      // Create Table Header
+      const thead = document.createElement("thead");
+      const headerRow = document.createElement("tr");
+      section.headers.forEach((header) => {
+        const th = document.createElement("th");
+        th.textContent = header;
+        headerRow.appendChild(th);
+      });
+      thead.appendChild(headerRow);
+      table.appendChild(thead);
+
+      // Create Table Body
+      const tbody = document.createElement("tbody");
+      section.rows.forEach((row) => {
+        const tr = document.createElement("tr");
+
+        row.forEach((cell, index) => {
+          const td = document.createElement("td");
+          td.textContent = cell;
+
+          // If the first cell is empty (to maintain column structure), merge with the above cell
+          if (cell === "" && index === 0) {
+            td.style.borderTop = "none"; // Optional: Adjust styling for empty rows
+          }
+
+          tr.appendChild(td);
+        });
+
+        tbody.appendChild(tr);
+      });
+
+      table.appendChild(tbody);
+      tableWrapper.appendChild(table);
+      tableContainer.appendChild(tableWrapper);
+    });
+  }
+
+  // Function to render a simple table
+  function renderTable(tableData, tableTitle) {
+    const tableWrapper = document.createElement("div");
+    tableWrapper.classList.add("table-wrapper");
+
+    // Table Title
+    const title = document.createElement("h3");
+    title.textContent = tableTitle.toUpperCase();
+    title.classList.add("table-title");
+    tableWrapper.appendChild(title);
+
+    // Create Table
+    const table = document.createElement("table");
+    table.classList.add("product-table");
+
+    // Create Table Header
+    const thead = document.createElement("thead");
+    const headerRow = document.createElement("tr");
+    tableData.headers.forEach((header) => {
+      const th = document.createElement("th");
+      th.textContent = header;
+      headerRow.appendChild(th);
+    });
+    thead.appendChild(headerRow);
+    table.appendChild(thead);
+
+    // Create Table Body
+    const tbody = document.createElement("tbody");
+    tableData.rows.forEach((row) => {
+      const tr = document.createElement("tr");
+      row.forEach((cell) => {
+        const td = document.createElement("td");
+        td.textContent = cell;
+        tr.appendChild(td);
+      });
+      tbody.appendChild(tr);
+    });
+    table.appendChild(tbody);
+
+    tableWrapper.appendChild(table);
+    tableContainer.appendChild(tableWrapper);
+  }
+
+  // Update uses section
+  const usesList = document.querySelector(".uses-list");
+  if (usesList && product.uses) {
+    usesList.innerHTML = product.uses.map((use) => `<li>${use}</li>`).join("");
+  }
+});
+
+        // Update CTA
+
+        // Update images
+        const imageContainer = document.querySelector(".prodimg-container");
+        if (imageContainer) {
+          imageContainer.innerHTML = section.images
+            .map(
+              (img) =>
+                `<img class="prodimg" src="${img}" alt="${section.title} image" />`
+            )
+            .join("");
+        }
+
+        const webUrlDiv = document.getElementById("weburl");
+        console.log(section);
+        if (section.name === "porcelain" && section.url) {
+          console.log("mia khalifa");
+          webUrlDiv.style.display = "block"; // Show the link
+          webUrlDiv.href = section.url; // Update the href with the URL
+          webUrlDiv.textContent = "Visit our Porcelain Website"; // Update the link text
+        } else {
+          webUrlDiv.style.display = "none"; // Hide the link
+        }
+      }
+
+      // Example usage: Replace content based on a query parameter
+      const urlParams = new URLSearchParams(window.location.search);
+      const sectionName = urlParams.get("section"); // URL example: ?section=pavers-coping
+      if (sectionName) {
+        updateContent({ name: sectionName });
+      }
+    </script>
+
+    <script src="../js/libs.min.js"></script>
+    <script src="../js/app.js"></script>
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        console.log("Script is running inside HTML!");
+      });
+    </script>
+    
+  </body>
+</html>

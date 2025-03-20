@@ -1,0 +1,590 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Products | Natural Stone Traders Inc.</title>
+    <link rel="icon" href="/image/newlogo.png" sizes="any" />
+
+    <link rel="stylesheet" type="text/css" href="css/plugins.css" />
+    <link rel="stylesheet" type="text/css" href="css/main.css" />
+  </head>
+  <style>
+    .catt {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: center;
+      gap: 40px;
+    }
+    /* Styles for vertically stacked categories */
+    .category-card {
+      position: relative;
+      box-shadow: 0px 0px 16px rgba(0, 0, 0, 0.7); 
+      width: 40%;
+      min-width: 300px;
+      height: 300px; /* Adjust height as needed */
+      background-size: cover;
+      background-position: center;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 20px; /* Spacing between cards */
+      transition: transform 0.6s ease, box-shadow 0.3s ease; /* Smooth lift animation */
+      overflow: hidden; /* Prevent zoomed image overflow */
+      border-radius: 20px; /* Optional: add rounded corners */
+    }
+
+    /* Hover effect for card */
+    .category-card:hover {
+      transform: translateY(-10px); /* Slight lift */
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3); /* Add shadow */
+    }
+
+    /* Background image zoom effect */
+    .category-card:hover::before {
+      transform: scale(1.1); /* Slight zoom */
+      opacity: 0.9; /* Slightly reduce the overlay opacity */
+    }
+
+    /* Background image overlay */
+    .category-card::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: inherit; /* Use the same background image */
+      z-index: -1; /* Place behind content */
+      transform: scale(1); /* Default scale */
+      transition: transform 0.3s ease, opacity 0.3s ease;
+    }
+
+    /* Category overlay (text section) */
+    .category-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        to bottom,
+        rgba(0, 0, 0, 0.1),
+        rgba(0, 0, 0, 0.7)
+      );
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      /* color: #fff; */
+      text-align: center;
+      padding: 20px;
+      transition: background 0.3s ease;
+    }
+
+    .category-overlay:hover {
+      background: linear-gradient(
+        to bottom,
+        rgba(0, 0, 0, 0.5),
+        rgba(0, 0, 0, 0.7)
+      );
+    }
+
+    /* Title styling */
+    .category-title {
+      font-size: 34px;
+      color: #fff;
+      font-weight: 500;
+      margin-bottom: 10px;
+    }
+
+    /* Description styling */
+    .category-description {
+      color: #fff;
+      font-size: 16px;
+      line-height: 1.5;
+      max-width: 80%; /* Limit description width */
+    }
+    .hover-circle {
+      border-color: #fff !important;
+    }
+    .ph-arrow-right {
+      color: #fff !important;
+    }
+
+    .contact-data-wrapper {
+    display: flex;
+    flex-direction: row; /* Aligns sections horizontally */
+    justify-content: space-between; /* Spaces them evenly */
+    flex-wrap: wrap; /* Ensures responsiveness */
+    gap: 30px; /* Adds spacing between sections */
+  }
+
+  .contact-data__item {
+    flex: 1; /* Distributes space evenly */
+    min-width: 200px; /* Prevents items from shrinking */
+  }
+
+  .contact-data__item .contact-data__text {
+    line-height: 1.2; /* Reduce default line spacing */
+    margin-bottom: 5px; /* Reduce gap between lines */
+}
+
+
+  @media (max-width: 768px) {
+    .contact-data-wrapper {
+      flex-direction: column; /* Stack items on mobile */
+      align-items: center;
+    }
+  }
+  </style>
+  <body>
+    <div id="mobileMenu" class="mobile-menu">
+      <button
+        id="mobileMenuClose"
+        onclick="closeMobileMenu()"
+        class="mobile-menu__close-btn"
+      >
+        <i class="ph ph-x-circle"></i>
+      </button>
+      <nav>
+        <ul class="mobile-menu__list">
+          <li class="mobile-menu__item">
+            <a class="mobile-menu__link btn" href="/index.html#home">
+              <i class="ph ph-house-simple"></i>
+              <span class="mobile-menu__caption">Home</span>
+            </a>
+          </li>
+          <li class="mobile-menu__item">
+            <a class="mobile-menu__link btn" href="/gallery.html">
+              <i class="ph ph-squares-four"></i>
+              <span class="mobile-menu__caption">Gallery</span>
+            </a>
+          </li>
+          <li class="mobile-menu__item">
+            <a class="mobile-menu__link btn" href="/products.html">
+              <i class="ph ph-sticker"></i>
+              <span class="mobile-menu__caption">Products</span>
+            </a>
+          </li>
+          <!-- <li class="mobile-menu__item">
+            <a class="mobile-menu__link btn" href="/workflow.html">
+              <i class="ph ph-article"></i>
+              <span class="mobile-menu__caption">Workflow</span>
+            </a>
+          </li> -->
+          <li class="mobile-menu__item">
+            <a class="mobile-menu__link btn" href="/categories.html">
+              <i class="ph ph-user"></i>
+              <span class="mobile-menu__caption">Categories</span>
+            </a>
+          </li>
+          <li class="mobile-menu__item">
+            <a class="mobile-menu__link btn" href="/about.html">
+              <i class="ph ph-envelope"></i>
+              <span class="mobile-menu__caption">About</span>
+            </a>
+          </li>
+          <li class="mobile-menu__item">
+            <a class="mobile-menu__link btn" href="/index.html#contact">
+              <i class="ph ph-envelope"></i>
+              <span class="mobile-menu__caption">Contact</span>
+            </a>
+          </li>
+        </ul>
+      </nav>
+    </div>
+
+    <!-- Mobile Menu Toggle Button -->
+    <button
+      id="mobileMenuToggle"
+      onclick="openMobileMenu()"
+      class="mobile-menu-toggle-btn d-md-none"
+    >
+      <i class="ph ph-text-indent"></i>
+    </button>
+    <button id="back-button" class="back-button" onclick="goBack()">
+      <i class="ph ph-arrow-u-up-left"></i>
+    </button>
+    <!-- Header Start -->
+    <header
+      style="z-index: 1000"
+      id="header"
+      class="header d-flex justify-content-center loading__fade"
+    >
+      <!-- Navigation Menu Start -->
+      <div class="header__navigation d-flex justify-content-start">
+        <nav id="menu" class="menu">
+          <ul class="menu__list d-flex justify-content-start">
+            <li class="menu__item">
+              <a class="menu__link btn" href="/index.html#home">
+                <span class="menu__caption">Home</span>
+                <i class="ph ph-house-simple"></i>
+              </a>
+            </li>
+            <li class="menu__item">
+              <a class="menu__link btn" href="/gallery.html">
+                <span class="menu__caption">Gallery</span>
+                <i class="ph ph-squares-four"></i>
+              </a>
+            </li>
+            <li class="menu__item">
+              <a class="menu__link btn" href="/products.html">
+                <span class="menu__caption">Products</span>
+                <i class="ph ph-sticker"></i>
+              </a>
+            </li>
+           
+            <li class="menu__item">
+              <a class="menu__link btn" href="categories.html">
+                <span class="menu__caption">Categories</span>
+                <i class="ph ph-user"></i>
+              </a>
+            </li>
+            <li class="menu__item">
+              <a class="menu__link btn" href="/about.html">
+                <span class="menu__caption">About</span>
+                <i class="ph ph-envelope"></i>
+              </a>
+            </li>
+            <li class="menu__item">
+              <a class="menu__link btn" href="index.html#contact">
+                <span class="menu__caption">Contact</span>
+                <i class="ph ph-envelope"></i>
+              </a>
+            </li>
+          </ul>
+        </nav>
+      </div>
+      <!-- Navigation Menu End -->
+    </header>
+    <!-- Header End -->
+    <!-- Header End -->
+
+    <!-- Fixed Logo Start -->
+    <div class="logo loading__fade">
+      <a href="#home" class="logo__link">
+        <!-- logo icon -->
+        <img class="logo-img" src="image/newlogo.png" alt="" />
+        <!-- logo text -->
+        <!-- <span class="logo-text">NsT*</span> -->
+      </a>
+    </div>
+    <!-- Fixed Logo End -->
+
+    <!-- Fixed Color Switch Start -->
+    <div class="color loading__fade">
+      <button
+        id="color-switcher"
+        class="color-switcher"
+        type="button"
+        role="switch"
+        onclick=" SwitchColor()"
+        aria-label="light/dark mode"
+        aria-checked="true"
+      ></button>
+    </div>
+
+    <section
+      style="z-index: 10"
+      id="services"
+      class="inner inner-stack-bottom services"
+    >
+      <div class="inner__wrapper">
+        <div class="container-fluid p-0">
+          <div class="row g-0">
+            <!-- Inner Section Name Start -->
+            <div class="col-12 col-xl-2">
+              <div class="inner__name">
+                <!-- Content Block - Section Name Start -->
+                <div class="content__block name-block">
+                  <span class="section-name icon-right animate-in-up">
+                    <span class="section-name-caption">Products</span>
+                    <i class="ph ph-arrow-down-right"></i>
+                  </span>
+                </div>
+                <!-- Content Block - Section Name Start -->
+              </div>
+            </div>
+            <!-- Inner Section Name End -->
+
+            <!-- Inner Section Content Start -->
+            <div class="col-12 col-xl-8">
+              <div class="inner__content">
+                <!-- Content Block - H2 Section Title Start -->
+                <div class="content__block pre-stack-text-block">
+                  <div class="block__descr">
+                    <h2
+                      style="
+                        font-size: 30px;
+                        font-weight: 400;
+                        text-transform: uppercase;
+                      "
+                      class="reveal-type animate-in-up"
+                    >
+                      Design Your Space with Timeless, Versatile Stones
+                    </h2>
+                  </div>
+                </div>
+                <div>
+                  <div
+                    style="padding-top: 50px"
+                    class="catt"
+                    id="category-container"
+                  >
+                    <!-- Categories will be injected here using JavaScript -->
+                  </div>
+                </div>
+                <!-- Content Block - H2 Section Title End -->
+              </div>
+            </div>
+            <!-- Inner Section Content End -->
+          </div>
+        </div>
+      </div>
+    </section>
+    <section
+      id="contact"
+      class="inner contact inner-grid-bottom no-padding-bottom"
+      style="z-index: 100; padding-top: 20px"
+    >
+    <div class="inner__wrapper">
+      <div class="container-fluid p-0">
+        <div class="row g-0">
+          <!-- Inner Section Name Start -->
+          <div class="col-12 col-xl-2" style="opacity: 0">
+            <div class="inner__name">
+              <div class="content__block name-block">
+                <span class="section-name icon-right animate-in-up">
+                  <span class="section-name-caption">Contact</span>
+                  <i class="ph ph-arrow-down-right"></i>
+                </span>
+              </div>
+            </div>
+          </div>
+          <!-- Inner Section Name End -->
+    
+          <!-- Inner Section Content Start -->
+          <div class="col-12 col-xl-8">
+            <div class="inner__content">
+              <div class="content__block grid-block">
+                <div class="container-fluid p-0 contact-data">
+                  <div class="row g-0 contact-data-wrapper">
+                    <!-- Location -->
+                    <div class="contact-data__item grid-item">
+                      <p class="contact-data__title tagline-chapter animate-in-up">Location</p>
+                      <p class="contact-data__text small type-basic-160lh">
+                        <a class="link-small-160lh animate-in-up" href="https://maps.app.goo.gl/g28hCHCGMMyEEqMU7" target="_blank">
+                          14004 Woodbine Avenue <br />Stouffville (Gormley),<br />Ontario, L0H 1G0 Canada
+                        </a>
+                      </p>
+                    </div>
+                    <!-- Hours of Operation -->
+                    <div class="contact-data__item grid-item">
+                      <p class="contact-data__title tagline-chapter animate-in-up">Hours of Operation</p>
+                      <p class="contact-data__text small type-basic-160lh">
+                        <span class="animate-in-up">Monday - Friday: 8:00 AM - 4:30 PM</span><br />
+                        <span class="animate-in-up">Saturday: Appointments only</span><br />
+                        <span class="animate-in-up">Sunday: Closed</span>
+                      </p>
+                    </div>
+                    <!-- Phone -->
+                    <div class="contact-data__item grid-item">
+                      <p class="contact-data__title tagline-chapter animate-in-up">Phone</p>
+                      <p class="contact-data__text small type-basic-160lh">
+                        <a class="link-small-160lh animate-in-up" href="tel:+16472877869">+1 (647) 287-7869</a><br />
+                        <a class="link-small-160lh animate-in-up" href="tel:+16475233623">+1 (647)-523-3623</a>
+                      </p>
+                    </div>
+                    <!-- Email -->
+                    <div class="contact-data__item grid-item">
+                      <p class="contact-data__title tagline-chapter animate-in-up">Email</p>
+                      <p class="contact-data__text small type-basic-160lh">
+                        <a class="link-small-160lh animate-in-up" href="mailto:naturalstonetraders@gmail.com">naturalstonetraders@gmail.com</a><br />
+                        <a class="link-small-160lh animate-in-up" href="mailto:sales.nststone@gmail.com">sales.nststone@gmail.com</a>
+                      </p>
+                    </div>
+                    <!-- Areas We Serve -->
+                    <!-- Areas We Serve -->
+<div style="padding-top: 30px;" class="contact-data__item">
+  <p class="contact-data__title tagline-chapter animate-in-up">
+    Areas we serve
+  </p>
+  <div class="contact-data__text small" id="areas-we-serve"></div>
+</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- Inner Section Content End -->
+          <div class="col-12 col-xl-2"></div>
+        </div>
+      </div>
+    </div>
+      <div
+        style="
+          display: flex;
+          width: 100%;
+          text-decoration: none;
+          text-align: center;
+          padding-top: 50px;
+        "
+        class="col-12 col-md-6 col-lg-3 contact-data__item grid-item"
+      >
+        <div
+          style="
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+          "
+          class="contact-data__title tagline-chapter animate-in-up"
+        >
+          <span style="text-decoration: none; word-wrap: break-word"
+            >Copyright © 2024 Natural Stone Traders Inc. | All Rights
+            Reserved.</span
+          >
+          <span style="color: #a17c30; opacity: 0.7; text-decoration: underline"
+            >Powered by Knaptix</span
+          >
+        </div>
+      </div>
+    </section>
+    <div class="bottom__background bottom-bg-01">
+      <div class="bottom-bg-01__02 animate-card-2">
+        <img
+          class="hero-img"
+          src="img/backgrounds/stonehaha.webp"
+          alt="Template background image"
+        />
+      </div>
+      <div class="bottom-bg-01__01 animate-card-2">
+        <img
+          class="hero-img"
+          src="img/backgrounds/stonehaha.webp"
+          alt="Template background image"
+        />
+      </div>
+    </div>
+    <script src="js/libs.min.js"></script>
+    <script src="js/app.js"></script>
+    <script>
+      // Array of category data
+      const categories = [
+        {
+          title: "Pavers",
+          description:
+            "Durable and stylish natural stone pavers for outdoor spaces.",
+          imageUrl:
+            "image/prod/paving/Autum_brown_steps_and_pavers-22_2048x2048.webp", // First image from pavers
+          link: "product.html?section=pavers",
+        },
+        {
+          title: "Coping",
+          description:
+            "Premium natural stone coping for pools, steps, and walls.",
+          imageUrl: "image/prod/coping/DOVE_GREY_-88_2048x2048.webp", // First image from coping
+          link: "product.html?section=coping",
+        },
+        {
+          title: "Steps & Curbs",
+          description:
+            "Elegant natural stone steps and curbs for residential and commercial use.",
+          imageUrl: "image/prod/steps/BROWN_STEPS_2-53_2048x2048.webp", // First image from steps
+          link: "product.html?section=steps-curbs",
+        },
+        {
+          title: "Walling & Veneers",
+          description:
+            "Versatile natural stone walling and veneers for both interior and exterior.",
+          imageUrl: "image/prod/walling/walling2.jpg", // First image from walling
+          link: "product.html?section=walling-veneers",
+        },
+        {
+          title: "Jumbo Slabs & Pier Caps",
+          description:
+            "Large format natural stone slabs and pier caps for grand designs.",
+          imageUrl: "image/prod/steps/PICS_FOR_KOTA_BLACK_3-110_2048x2048.webp", // First image from jumbo slabs
+          link: "product.html?section=jumbo-slabs-pier-caps",
+        },
+        {
+          title: "Porcelain",
+          description:
+            "High-quality porcelain for modern and durable surfaces.",
+          imageUrl:
+            "image/prod/porclain/porcelain-natural-stone-design-pavers-27_large.webp", // First image from porcelain
+          link: "product.html?section=porcelain",
+        },
+      ];
+
+            // The array of areas we serve
+// The array of areas we serve
+const areasWeServe = [
+  "Ajax",
+  "Barrie",
+  "Bolton",
+  "Brampton",
+  "Caledon",
+  "Chatham",
+  "Hamilton",
+  "Kingston",
+  "Markham",
+  "Scarborough",
+  "Ottawa",
+  "Pickering",
+  "Oro Medonte",
+  "Sunderland",
+  "Stouffville",
+  "Richmond Hill",
+  "Toronto",
+  "Uxbridge",
+  "Whitby",
+  "Quebec",
+  "Montreal",
+];
+
+// Target the div with the id 'areas-we-serve'
+const areasContainer = document.getElementById("areas-we-serve");
+
+// Check if the container exists
+if (areasContainer) {
+  // Iterate over the areas and create a span for each
+  areasWeServe.forEach((area) => {
+    const span = document.createElement("span");
+    span.className = "area-item"; // Add a class for styling
+    span.textContent = area; // Set the text content
+    areasContainer.appendChild(span); // Append the span to the container
+  });
+} else {
+  console.error("Div with id 'areas-we-serve' not found.");
+}
+
+      // Function to generate category cards dynamically
+      function generateCategoryCards() {
+        const container = document.getElementById("category-container");
+        categories.forEach((category) => {
+          const categoryCard = document.createElement("div");
+          categoryCard.classList.add("category-card");
+          categoryCard.style.backgroundImage = `url('${category.imageUrl}')`;
+
+          categoryCard.innerHTML = `
+                  <div class="category-overlay tinu animate-in-up">
+                      <h3 class="category-title">${category.title}</h3>
+                      <p class="category-description">${category.description}</p>
+                      <div class="animate-in-up" style="padding-top: 20px;">
+                          <a  href="${category.link}" class="btn btn-line-circle-icon">
+                              <span class="circle hover-circle">
+                                  <em></em>
+                                  <i class="ph ph-arrow-right"></i>
+                              </span>
+                          </a>
+                      </div>
+                  </div>
+              `;
+          container.appendChild(categoryCard);
+        });
+      }
+
+      // Call the function to generate the category cards when the page loads
+      window.onload = generateCategoryCards;
+    </script>
+  </body>
+</html>

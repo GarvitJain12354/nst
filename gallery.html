@@ -1,0 +1,745 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Gallery | Natural Stone Traders Inc.</title>
+    <link rel="icon" href="image/newlogo.png" sizes="any" />
+
+    <link rel="stylesheet" type="text/css" href="css/plugins.css" />
+    <link rel="stylesheet" type="text/css" href="css/main.css" />
+  </head>
+  <style>
+    /* Gallery styling remains the same */
+    .gal-div {
+      display: grid;
+      grid-template-columns: repeat(
+        2,
+        1fr
+      ); /* Two images in a row on desktop */
+      gap: 20px; /* Adjust spacing between images */
+      justify-items: center;
+    }
+
+    .gal-img {
+      width: 100%; /* Take up full width of grid cell */
+      height: 300px; /* Fixed height for uniform aspect ratio */
+      border-radius: 10px; /* Rounded corners */
+      object-fit: cover; /* Ensures image fills the container */
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .gal-img:hover {
+      transform: scale(1.05);
+      box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+    }
+
+    @media (max-width: 768px) {
+      .gal-div {
+        grid-template-columns: repeat(
+          auto-fit,
+          minmax(150px, 1fr)
+        ); /* Adjust for smaller screens */
+      }
+      .gal-img {
+        height: 150px; /* Smaller height for mobile devices */
+      }
+    }
+
+    /* Modal styling */
+    .modal {
+      display: none; /* Hidden by default */
+      position: fixed;
+      z-index: 1000;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      overflow: auto; /* Enable scroll if needed */
+      padding-top: 10px;
+      background-color: rgba(0, 0, 0, 0.8); /* Semi-transparent background */
+      /* background-color: #fff; */
+    }
+
+    .modal-content {
+      display: block;
+      margin: auto;
+      max-width: 100%;
+      max-height: 90%;
+      border-radius: 10px;
+      animation: fadeIn 0.3s ease;
+      object-fit: contain;
+    }
+
+    .modal-nav {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 30px;
+  color: white;
+  background-color: rgba(0, 0, 0, 0.5);
+  padding: 10px;
+  cursor: pointer;
+  z-index: 1000;
+}
+
+.modal-nav.next {
+  right: 10px;
+}
+
+.modal-nav.prev {
+  left: 10px;
+}
+
+.modal-nav:hover {
+  background: #FFB302;
+}
+
+
+    .close {
+      position: absolute;
+      top: 20px;
+      right: 30px;
+      color: white;
+      font-size: 30px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    .close:hover {
+      color: #ccc;
+    }
+    
+    .contact-data-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row-reverse; /* Ensures new items are added to the left */
+  justify-content: flex-end; /* Aligns items from left to right */
+  gap:10px; /* Adjusts spacing */
+}
+
+.contact-data__item { 
+  flex: 1;
+  min-width: 220px; /* Reduce width slightly to allow elements to be closer */
+  margin: 5px; /* Reduce margins */
+  padding: 8px; /* Reduce padding inside each box */
+  display: flex; /* Ensure child elements are aligned inside */
+  flex-direction: column; /* Stack child elements vertically */
+  align-items: flex-start; /* Align child elements (like the inner div) to the left */
+}
+
+.contact-data__text {
+  margin-left: 0;  /* Ensure no left margin */
+  padding-left: 0;  /* Ensure no left padding */
+  width: 100%; /* Make it take up full width */
+}
+
+.thumbnails {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 0px;
+  overflow-x: auto;
+  padding: 5px;
+}
+
+.thumbnail {
+  width: 100px;
+  height: 100px;
+  object-fit: cover;
+  cursor: pointer;
+  border: 2px solid transparent;
+  transition: transform 0.2s ease, border-color 0.3s ease;
+}
+
+.thumbnail:hover {
+  transform: scale(1.1);
+}
+
+.active-thumbnail {
+  border-color: red;
+}
+
+
+
+
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+      }
+      to {
+        opacity: 1;
+      }
+    }
+  </style>
+  <body>
+    <div id="mobileMenu" class="mobile-menu">
+      <button
+        id="mobileMenuClose"
+        onclick="closeMobileMenu()"
+        class="mobile-menu__close-btn"
+      >
+        <i class="ph ph-x-circle"></i>
+      </button>
+      <nav>
+        <ul class="mobile-menu__list">
+          <li class="mobile-menu__item">
+            <a class="mobile-menu__link btn" href="/index.html#home">
+              <i class="ph ph-house-simple"></i>
+              <span class="mobile-menu__caption">Home</span>
+            </a>
+          </li>
+          <li class="mobile-menu__item">
+            <a class="mobile-menu__link btn" href="/gallery.html">
+              <i class="ph ph-squares-four"></i>
+              <span class="mobile-menu__caption">Gallery</span>
+            </a>
+          </li>
+          <li class="mobile-menu__item">
+            <a class="mobile-menu__link btn" href="/products.html">
+              <i class="ph ph-sticker"></i>
+              <span class="mobile-menu__caption">Products</span>
+            </a>
+          </li>
+          <!-- <li class="mobile-menu__item">
+            <a class="mobile-menu__link btn" href="/workflow.html">
+              <i class="ph ph-article"></i>
+              <span class="mobile-menu__caption">Workflow</span>
+            </a>
+          </li> -->
+          <li class="mobile-menu__item">
+            <a class="mobile-menu__link btn" href="/categories.html">
+              <i class="ph ph-user"></i>
+              <span class="mobile-menu__caption">Categories</span>
+            </a>
+          </li>
+          <li class="mobile-menu__item">
+            <a class="mobile-menu__link btn" href="/about.html">
+              <i class="ph ph-envelope"></i>
+              <span class="mobile-menu__caption">About</span>
+            </a>
+          </li>
+          <li class="mobile-menu__item">
+            <a class="mobile-menu__link btn" href="/index.html#contact">
+              <i class="ph ph-envelope"></i>
+              <span class="mobile-menu__caption">Contact</span>
+            </a>
+          </li>
+        </ul>
+      </nav>
+    </div>
+
+    <!-- Mobile Menu Toggle Button -->
+    <button
+      id="mobileMenuToggle"
+      onclick="openMobileMenu()"
+      class="mobile-menu-toggle-btn d-md-none"
+    >
+      <i class="ph ph-text-indent"></i>
+    </button>
+    <button id="back-button" class="back-button" onclick="goBack()">
+      <i class="ph ph-arrow-u-up-left"></i>
+    </button>
+
+    <!-- Header Start -->
+    <header
+      style="z-index: 1000"
+      id="header"
+      class="header d-flex justify-content-center loading__fade"
+    >
+      <!-- Navigation Menu Start -->
+      <div class="header__navigation d-flex justify-content-start">
+        <nav id="menu" class="menu">
+          <ul class="menu__list d-flex justify-content-start">
+            <li class="menu__item">
+              <a class="menu__link btn" href="/index.html#home">
+                <span class="menu__caption">Home</span>
+                <i class="ph ph-house-simple"></i>
+              </a>
+            </li>
+            <li class="menu__item">
+              <a class="menu__link btn" href="/gallary.html">
+                <span class="menu__caption">Gallery</span>
+                <i class="ph ph-squares-four"></i>
+              </a>
+            </li>
+            <li class="menu__item">
+              <a class="menu__link btn" href="/products.html">
+                <span class="menu__caption">Products</span>
+                <i class="ph ph-sticker"></i>
+              </a>
+            </li>
+
+            <li class="menu__item">
+              <a class="menu__link btn" href="categories.html">
+                <span class="menu__caption">Categories</span>
+                <i class="ph ph-user"></i>
+              </a>
+            </li>
+            <li class="menu__item">
+              <a class="menu__link btn" href="/about.html">
+                <span class="menu__caption">About</span>
+                <i class="ph ph-envelope"></i>
+              </a>
+            </li>
+            <li class="menu__item">
+              <a class="menu__link btn" href="index.html#contact">
+                <span class="menu__caption">Contact</span>
+                <i class="ph ph-envelope"></i>
+              </a>
+            </li>
+          </ul>
+        </nav>
+      </div>
+      <!-- Navigation Menu End -->
+    </header>
+    <!-- Header End -->
+
+    <!-- Fixed Logo Start -->
+    <div class="logo loading__fade">
+      <a href="#home" class="logo__link">
+        <!-- logo icon -->
+        <img class="logo-img" src="image/newlogo.png" alt="" />
+        <!-- logo text -->
+        <!-- <span class="logo-text">NsT*</span> -->
+      </a>
+    </div>
+    <!-- Fixed Logo End -->
+
+    <!-- Fixed Color Switch Start -->
+    <div class="color loading__fade">
+      <button
+        id="color-switcher"
+        onclick=" SwitchColor()"
+        class="color-switcher"
+        type="button"
+        role="switch"
+        aria-label="light/dark mode"
+        aria-checked="true"
+      ></button>
+    </div>
+
+    <section
+      style="padding-bottom: 100px; z-index: 10"
+      id="services"
+      class="inner inner-stack-bottom services"
+    >
+      <div class="inner__wrapper">
+        <div class="container-fluid p-0">
+          <div class="row g-0">
+            <!-- Inner Section Name Start -->
+            <div class="col-12 col-xl-2">
+              <div class="inner__name">
+                <!-- Content Block - Section Name Start -->
+                <div class="content__block name-block">
+                  <span class="section-name icon-right animate-in-up">
+                    <span class="section-name-caption">Gallery</span>
+                    <i class="ph ph-image"></i>
+                  </span>
+                </div>
+                <!-- Content Block - Section Name Start -->
+              </div>
+            </div>
+            <!-- Inner Section Name End -->
+
+            <!-- Inner Section Content Start -->
+            <div class="col-12 col-xl-8">
+              <div class="inner__content">
+                <!-- Content Block - H2 Section Title Start -->
+                <div
+                  style="padding: 0 20px"
+                  class="content__bloc pre-stack-text-block"
+                >
+                  <div class="block__descr">
+                    <h2
+                      style="font-size: 26px; margin-bottom: 30px"
+                      class="reveal-type animate-in-up"
+                    >
+                      Crafting Perfection in Stone <br />
+                      A Visual Showcase
+                    </h2>
+                    <div class="gal-div"></div>
+                  </div>
+                </div>
+                <!-- Content Block - H2 Section Title End -->
+              </div>
+            </div>
+            <!-- Inner Section Content End -->
+          </div>
+        </div>
+      </div>
+    </section>
+    <div class="modal" id="imageModal">
+      <span class="close" id="closeModal">&times;</span>
+      <img class="modal-content" id="modalImage" alt="Large View" />
+    
+      <!-- Thumbnails section -->
+      <div class="thumbnails" id="thumbnailContainer"></div>
+    </div>
+    
+    
+    
+    <section
+      id="contact"
+      class="inner contact inner-grid-bottom no-padding-bottom"
+      style="z-index: 100; padding-top: 20px"
+    >
+      <div class="inner__wrapper">
+        <div class="container-fluid p-0">
+          <div class="row g-0">
+            <!-- Inner Section Name Start -->
+            <div style="opacity: 0" class="col-12 col-xl-2">
+              <div class="inner__name">
+                <!-- Content Block - Section Name Start -->
+                <div class="content__block name-block">
+                  <span class="section-name icon-right animate-in-up">
+                    <span class="section-name-caption">Contact</span>
+                    <i class="ph ph-arrow-down-right"></i>
+                  </span>
+                </div>
+                <!-- Content Block - Section Name Start -->
+              </div>
+            </div>
+            <!-- Inner Section Name End -->
+
+            <!-- Inner Section Content Start -->
+            <div class="col-12 col-xl-8">
+              <div class="inner__content">
+                <div class="content__block grid-block">
+                  <div class="container-fluid p-0 contact-data">
+                    <div class="row g-0 contact-data-wrapper">
+                      
+                      <!-- Fourth Column (Email) -->
+                      <div class="contact-data__item grid-item">
+                        <p class="contact-data__title tagline-chapter animate-in-up">
+                          Email
+                        </p>
+                        <p class="contact-data__text small type-basic-160lh">
+                          <a class="link-small-160lh animate-in-up"
+                            href="mailto:naturalstonetraders@gmail.com">
+                            naturalstonetraders@gmail.com
+                          </a><br />
+                          <a class="link-small-160lh animate-in-up"
+                            href="mailto:sales.nststone@gmail.com">
+                            sales.nststone@gmail.com
+                          </a>
+                        </p>
+                      </div>
+            
+                      <!-- Third Column (Phone) -->
+                      <div class="contact-data__item grid-item">
+                        <p class="contact-data__title tagline-chapter animate-in-up">
+                          Phone
+                        </p>
+                        <p class="contact-data__text small type-basic-160lh">
+                          <a class="link-small-160lh animate-in-up"
+                            href="tel:+16472877869">
+                            +1 (647) 287-7869
+                          </a><br />
+                          <a class="link-small-160lh animate-in-up"
+                            href="tel:+16475233623">
+                            +1 (647)-523-3623
+                          </a>
+                        </p>
+                      </div>
+            
+                      <!-- Second Column (Hours of Operation) -->
+                      <div class="contact-data__item grid-item">
+                        <p class="contact-data__title tagline-chapter animate-in-up">
+                          Hours of Operation
+                        </p>
+                        <p class="contact-data__text small type-basic-160lh">
+                          <span class="animate-in-up">Monday - Friday: 8:00 AM - 4:30 PM</span><br />
+                          <span class="animate-in-up">Saturday: Appointments only</span><br />
+                          <span class="animate-in-up">Sunday: Closed</span>
+                        </p>
+                      </div>
+            
+                      <!-- First Column (Location) -->
+                      <div class="contact-data__item grid-item">
+                        <p class="contact-data__title tagline-chapter animate-in-up">
+                          Location
+                        </p>
+                        <p class="contact-data__text small type-basic-160lh">
+                          <a class="link-small-160lh animate-in-up"
+                            href="https://maps.app.goo.gl/g28hCHCGMMyEEqMU7"
+                            target="_blank">
+                            14004 Woodbine Avenue <br />
+                            Stouffville (Gormley),<br />
+                            Ontario, L0H 1G0 Canada
+                          </a>
+                        </p>
+                      </div>
+            
+                      <!-- Areas We Serve -->
+                      <div style="padding-top: 30px;" class="contact-data__item">
+                        <p class="contact-data__title tagline-chapter animate-in-up">
+                          Area we serve
+                        </p>
+                        <div class="contact-data__text small" id="areas-we-serve"></div>
+                      </div>
+                      
+            
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            
+            <!-- Inner Section Content End -->
+
+            <!-- Inner Section Aside Start -->
+            <div class="col-12 col-xl-2"></div>
+            <!-- Inner Section Aside End -->
+          </div>
+        </div>
+
+        <!-- Inner Section Off-canvas Content (Footer Marquee Block) Start -->
+
+        <!-- Inner Section Off-canvas Content (Footer Marquee Block) Start -->
+      </div>
+      <div
+        style="
+          display: flex;
+          width: 100%;
+          text-decoration: none;
+          text-align: center;
+          padding-top: 50px;
+        "
+        class="col-12 col-md-6 col-lg-3 contact-data__item grid-item"
+      >
+        <div
+          style="
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+          "
+          class="contact-data__title tagline-chapter animate-in-up"
+        >
+          <span style="text-decoration: none; word-wrap: break-word"
+            >Copyright © 2024 Natural Stone Traders Inc. | All Rights
+            Reserved.</span
+          >
+          <span style="color: #a17c30; opacity: 0.7; text-decoration: underline"
+            >Powered by Knaptix</span
+          >
+        </div>
+      </div>
+    </section>
+    <div class="bottom__background bottom-bg-01">
+      <div class="bottom-bg-01__02 animate-card-2">
+        <img
+          class="hero-img"
+          src="img/backgrounds/stonehaha.webp"
+          alt="Template background image"
+        />
+      </div>
+      <div class="bottom-bg-01__01 animate-card-2">
+        <img
+          class="hero-img"
+          src="img/backgrounds/stonehaha.webp"
+          alt="Template background image"
+        />
+      </div>
+    </div>
+    <div class="bottom__background bottom-bg-01">
+      <div class="bottom-bg-01__02 animate-card-2">
+        <img
+          class="hero-img"
+          src="img/backgrounds/stonehaha.webp"
+          alt="Template background image"
+        />
+      </div>
+      <div class="bottom-bg-01__01 animate-card-2">
+        <img
+          class="hero-img"
+          src="img/backgrounds/stonehaha.webp"
+          alt="Template background image"
+        />
+      </div>
+    </div>
+    <script src="js/libs.min.js"></script>
+    <script src="js/gallery-init.js"></script>
+    <script src="js/app.js"></script>
+
+    <script>
+      // The array of areas we serve
+      const areasWeServe = [
+        "Ajax",
+        "Barrie",
+        "Bolton",
+        "Brampton",
+        "Caledon",
+        "Chatham",
+        "Hamilton",
+        "Kingston",
+        "Markham",
+        "Scarborough",
+        "Ottawa",
+        "Pickering",
+        "Oro Medonte",
+        "Sunderland",
+        "Stouffville",
+        "Richmond Hill",
+        "Toronto",
+        "Uxbridge",
+        "Whitby",
+        "Quebec",
+        "Montreal",
+      ];
+
+      // Target the div with the id 'areas-we-serve'
+      const areasContainer = document.getElementById("areas-we-serve");
+
+      // Check if the container exists
+      if (areasContainer) {
+        // Iterate over the areas and create a span for each
+        areasWeServe.forEach((area) => {
+          const span = document.createElement("span");
+          span.className = "areas-serve"; // Add the desired class
+          span.textContent = area; // Set the text content
+          areasContainer.appendChild(span); // Append the span to the container
+        });
+      } else {
+        console.error("Div with id 'areas-we-serve' not found.");
+      }
+  // The array of image paths (same as before)x
+  const imagePaths = [
+    "image/stone/NST Sandstone/dovegray/dove grey 6-min.jpg",
+    "image/stone/NST Sandstone/dovegray/DSC_0261.jpg",
+    "image/stone/NST Sandstone/dovegray/DSC_0257.jpg",
+    "image/stone/NST Sandstone/bronte/autumn-Brown-sandstone-005[1].jpg",
+    "image/stone/NST Sandstone/bronte/IMG_30361.jpg",
+    "image/stone/marble/urban grey/DSC_0138.jpg",
+    "image/stone/NST Limestone/Kota Black/Photo from NST.jpg",
+    "image/stone/NST Limestone/Kota Black/DSC_0078.jpg",
+    "image/stone/NST Limestone/Silver Valley Dazzle/Screenshot_20230610_171015_Instagram.jpg",
+    "image/stone/NST Limestone/Silver Valley Dazzle/brandon work 4.jpg",
+    "image/stone/NST Limestone/Antique Black/DSC_0346.jpg",
+    "image/stone/NST Limestone/Antique Black/DSC_0361.jpg",
+    "image/stone/granite/blackgalaxy/20240621_124803.jpg",
+    "image/stone/granite/blackgalaxy/DSC_0198 - Copy.jpg",
+    "image/stone/granite/darkebony/Picsart_22-11-14_19-05-39-232.jpg",
+    "image/stone/granite/raven/DSC_0009.jpg",
+    "image/stone/granite/raven/Screenshot_20220926_175132.jpg",
+    "image/stone/marble/urban grey/20230815_104215.jpg",
+  ];
+
+  const galleryDiv = document.querySelector(".gal-div");
+
+// Create and append images to gallery
+imagePaths.forEach((imagePath) => {
+  const imgElement = document.createElement("img");
+  imgElement.src = imagePath;
+  imgElement.alt = "Gallery Image";
+  imgElement.classList.add("gal-img");
+  galleryDiv.appendChild(imgElement);
+});
+
+// Modal elements
+const modal = document.getElementById("imageModal");
+const modalImage = document.getElementById("modalImage");
+const closeModal = document.getElementById("closeModal");
+const nextButton = document.createElement("button");
+const prevButton = document.createElement("button");
+const thumbnailContainer = document.createElement("div"); // Thumbnails container
+
+// Add navigation buttons (buttons instead of spans)
+nextButton.classList.add("modal-nav", "next");
+nextButton.innerText = "→";
+prevButton.classList.add("modal-nav", "prev");
+prevButton.innerText = "←";
+
+// Add thumbnails container
+thumbnailContainer.classList.add("thumbnails");
+modal.appendChild(thumbnailContainer);
+
+// Append navigation buttons to modal
+modal.appendChild(nextButton);
+modal.appendChild(prevButton);
+
+let currentImageIndex = -1; // Stores the current image index
+const maxThumbnails = 5; // Maximum number of thumbnails displayed
+
+galleryDiv.addEventListener("click", (event) => {
+  if (event.target.tagName === "IMG") {
+    // Find the clicked image in imagePaths
+    const clickedImageSrc = event.target.getAttribute("src"); // Ensure getting correct src
+    currentImageIndex = imagePaths.findIndex((path) => path.includes(clickedImageSrc));
+
+    if (currentImageIndex !== -1) {
+      updateModalImage(currentImageIndex);
+      modal.style.display = "block";
+    } else {
+      console.error("Image not found in imagePaths:", clickedImageSrc);
+    }
+  }
+});
+
+
+
+// Function to update the modal image based on index
+function updateModalImage(index) {
+  if (index >= 0 && index < imagePaths.length) {
+    modalImage.src = imagePaths[index];
+    currentImageIndex = index;
+    updateThumbnails(); // Update thumbnails dynamically
+  }
+}
+
+
+// Close modal on clicking the close button
+closeModal.addEventListener("click", () => {
+  modal.style.display = "none";
+});
+
+// Close modal on clicking outside the image
+modal.addEventListener("click", (event) => {
+  if (event.target === modal) {
+    modal.style.display = "none";
+  }
+});
+
+// Show next image
+nextButton.addEventListener("click", () => {
+  let nextIndex = currentImageIndex + 1;
+  if (nextIndex >= imagePaths.length) nextIndex = 0; // Loop back to first image
+  updateModalImage(nextIndex);
+});
+
+// Show previous image
+prevButton.addEventListener("click", () => {
+  let prevIndex = currentImageIndex - 1;
+  if (prevIndex < 0) prevIndex = imagePaths.length - 1; // Loop back to last image
+  updateModalImage(prevIndex);
+});
+
+// Function to update thumbnails dynamically
+function updateThumbnails() {
+  thumbnailContainer.innerHTML = ""; // Clear previous thumbnails
+
+  let startIdx = Math.max(0, currentImageIndex - Math.floor(maxThumbnails / 2));
+  let endIdx = Math.min(imagePaths.length, startIdx + maxThumbnails);
+
+  for (let i = startIdx; i < endIdx; i++) {
+    let thumb = document.createElement("img");
+    thumb.src = imagePaths[i];
+    thumb.classList.add("thumbnail");
+    if (i === currentImageIndex) thumb.classList.add("active-thumbnail");
+
+    thumb.addEventListener("click", () => {
+      updateModalImage(i);
+    });
+
+    thumbnailContainer.appendChild(thumb);
+  }
+}
+
+
+</script>
+    <script src="js/app.js"></script>
+  </body>
+</html>

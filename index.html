@@ -1,0 +1,2752 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <meta http-equiv="content-type" content="text/html;charset=utf-8" />
+  <head>
+    <meta charset="UTF-8" />
+
+    <!-- Page Title -->
+    <title>Natural Stone Traders Inc.</title>
+
+    <!-- Meta Tags -->
+
+    <!-- Viewport Meta-->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, maximum-scale=1"
+    />
+
+    <!-- Template Favicon & Icons Start -->
+    <link rel="icon" href="image/newlogo.png" sizes="any" />
+    <!-- Template Favicon & Icons End -->
+    <!-- Template Favicon & Icons Start -->
+
+    <!-- Facebook Metadata Start -->
+    <!-- Facebook Metadata End -->
+    <!-- Template Styles Start -->
+    <link rel="stylesheet" type="text/css" href="css/loaders/loader.css" />
+    <link rel="stylesheet" type="text/css" href="css/plugins.css" />
+    <link rel="stylesheet" type="text/css" href="css/main.css" />
+    <!-- Template Styles End -->
+
+    <!-- Custom Browser Color Start -->
+    <!-- Light Theme Color -->
+    <meta
+      name="theme-color"
+      media="(prefers-color-scheme: light)"
+      content="#ffffff"
+      <!--
+      White
+      background
+      for
+      light
+      theme
+      --
+    />
+
+    <!-- Dark Theme Color -->
+    <meta
+      name="theme-color"
+      media="(prefers-color-scheme: dark)"
+      content="#141414"
+      <!--
+      Dark
+      background
+      for
+      dark
+      theme
+      --
+    />
+
+    <!-- Microsoft Edge and Windows Phone -->
+    <meta name="msapplication-navbutton-color" content="#141414" />
+    <!-- Dark theme color for Edge -->
+
+    <!-- Apple Mobile Web App -->
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta
+      name="apple-mobile-web-app-status-bar-style"
+      content="black-translucent"
+      <!--
+      Translucent
+      black
+      status
+      bar
+      for
+      Apple
+      devices
+      --
+    />
+
+    <!-- Custom Browser Color End -->
+    <style>
+           .image-slider-wrapper {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          height: 100vh; /* Full viewport height */
+          width: 100%;
+          position: relative;
+          z-index: 10; /* Ensure it's above other elements */
+        }
+
+        .image-slider {
+          max-width: 1400px;
+          width: 100%;
+        }
+
+        .swiper {
+          width: 100%;
+          /* height: 400px; Increased height */
+        }
+
+        .swiper-slide img {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+          border-radius: 10px;
+        }
+
+        .swiper-button-next,
+        .swiper-button-prev {
+          color: #fff;
+        }
+        .swiper-pagination-bullet-active {
+          background-color: #ec4755;
+        }
+          .popup-overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(255, 255, 255, 0.177); /* Semi-transparent black overlay */
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        z-index: 999;
+        animation: fadeIn 0.3s ease-in-out; /* Smooth fade-in animation */
+      }
+
+      .popup-content {
+        background: white;
+        padding: 30px; /* Increased padding for better spacing */
+        border-radius: 12px; /* More rounded corners */
+        text-align: center;
+        position: relative;
+        max-width: 400px; /* Limit width for better readability */
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2); /* Subtle shadow for depth */
+        animation: slideIn 0.3s ease-in-out; /* Slide-in animation */
+      }
+
+      .popup-title {
+        font-size: 24px;
+        font-weight: 600;
+        color: #222; /* Darker shade for the title */
+        margin-bottom: 10px;
+      }
+
+      .popup-description {
+        font-size: 16px;
+        color: #666; /* Medium gray text color */
+        margin-bottom: 20px;
+      }
+
+
+
+      .content__block.grid-block {
+        background-color: rgba(0, 0, 0, 0.286) !important; /* Full black background */
+        width: 100%;
+        border-radius: 20px;
+        /* min-height: 100vh; Ensure it covers the full viewport height */
+        margin-top: 20px;
+        padding: 50px 0; /* Add some spacing around content */
+      }
+
+      .menu {
+        background-color: rgba(0, 0, 0, 0.507) !important;
+        border-radius: 10px;
+      }
+
+      /* .mobile-menu {
+        background-color: rgba(0, 0, 0, 0.497) !important;
+      } */
+
+
+      .btn-line-circle-icon {
+        display: inline-flex;
+        align-items: center;
+        background: linear-gradient(45deg, #a17c30, #8a6a2b); /* Gradient background */
+        color: white;
+        padding: 12px 24px; /* Slightly larger padding */
+        border-radius: 50px; /* Fully rounded button */
+        text-decoration: none;
+        font-size: 16px; /* Larger font size */
+        font-weight: 500; /* Slightly bold text */
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+        transition: all 0.3s ease; /* Smooth transitions */
+        position: relative;
+        overflow: hidden; /* For the hover effect */
+      }
+
+      .btn-line-circle-icon:hover {
+        background: linear-gradient(45deg, #8a6a2b, #a17c30); /* Reverse gradient on hover */
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2); /* Larger shadow on hover */
+        transform: translateY(-2px); /* Slight lift on hover */
+      }
+
+      .btn-line-circle-icon .circle {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-left: 10px; /* Space between text and icon */
+        width: 24px;
+        height: 24px;
+        background: rgba(255, 255, 255, 0.2); /* Semi-transparent circle */
+        border-radius: 50%; /* Fully rounded circle */
+        transition: all 0.3s ease; /* Smooth transitions */
+      }
+
+      .btn-line-circle-icon:hover .circle {
+        background: rgba(255, 255, 255, 0.3); /* Brighter circle on hover */
+        transform: rotate(90deg); /* Rotate the circle on hover */
+      }
+
+      .btn-line-circle-icon .circle i {
+        font-size: 14px; /* Icon size */
+        color: white;
+        transition: all 0.3s ease; /* Smooth transitions */
+      }
+
+      .btn-line-circle-icon:hover .circle i {
+        transform: translateX(2px); /* Move icon slightly on hover */
+      }
+
+      /* Animations */
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+        }
+        to {
+          opacity: 1;
+        }
+      }
+
+      @keyframes slideIn {
+        from {
+          transform: translateY(-20px);
+          opacity: 0;
+        }
+        to {
+          transform: translateY(0);
+          opacity: 1;
+        }
+      }
+      /* Logo Container */
+      /* .logo {
+        display: inline-block;
+        width: auto;
+        height: auto;
+        position: fixed;
+        top: 20px;
+        left: 20px;
+        z-index: 1000;
+      }
+
+      /* Logo Link */
+      .logo__link {
+        display: inline-block;
+        width: auto;
+        height: auto;
+      }
+
+      /* Logo Image */
+      .logo-img {
+        width: 105%; /* Increase width by 5% */
+        height: 105%; /* Increase height by 5% */
+        max-width: 105%; /* Ensure the image does not exceed its container */
+        display: block;
+      } */
+    </style>
+  </head>
+  <!--Start of Tawk.to Script-->
+  <script type="text/javascript">
+    var Tawk_API = Tawk_API || {},
+      Tawk_LoadStart = new Date();
+    (function () {
+      var s1 = document.createElement("script"),
+        s0 = document.getElementsByTagName("script")[0];
+      s1.async = true;
+      s1.src = "https://embed.tawk.to/673b91b22480f5b4f59fff7c/1id0b28p6";
+      s1.charset = "UTF-8";
+      s1.setAttribute("crossorigin", "*");
+      s0.parentNode.insertBefore(s1, s0);
+    })();
+  </script>
+  <!--End of Tawk.to Script-->
+  <body>
+    <div id="mobileMenu" class="mobile-menu">
+      <button
+        id="mobileMenuClose"
+        onclick="closeMobileMenu()"
+        class="mobile-menu__close-btn"
+      >
+        <i class="ph ph-x-circle"></i>
+      </button>
+      <nav>
+        <ul class="mobile-menu__list">
+          <li class="mobile-menu__item">
+            <a class="mobile-menu__link btn" href="/index.html#home">
+              <i class="ph ph-house-simple"></i>
+              <span class="mobile-menu__caption">Home</span>
+            </a>
+          </li>
+          <li class="mobile-menu__item">
+            <a class="mobile-menu__link btn" href="/gallery.html">
+              <i class="ph ph-squares-four"></i>
+              <span class="mobile-menu__caption">Gallery</span>
+            </a>
+          </li>
+          <li class="mobile-menu__item">
+            <a class="mobile-menu__link btn" href="/products.html">
+              <i class="ph ph-sticker"></i>
+              <span class="mobile-menu__caption">Products</span>
+            </a>
+          </li>
+          <li class="mobile-menu__item">
+            <a class="mobile-menu__link btn" href="/blog.html">
+              <i class="ph ph-article"></i>
+              <span class="mobile-menu__caption">Blog</span>
+            </a>
+          </li>
+
+          <li class="mobile-menu__item">
+            <a class="mobile-menu__link btn" href="/categories.html">
+              <i class="ph ph-user"></i>
+              <span class="mobile-menu__caption">Categories</span>
+            </a>
+          </li>
+          <li class="mobile-menu__item">
+            <a class="mobile-menu__link btn" href="/about.html">
+              <i class="ph ph-envelope"></i>
+              <span class="mobile-menu__caption">About</span>
+            </a>
+          </li>
+          <li class="mobile-menu__item">
+            <a class="mobile-menu__link btn" href="/index.html#contact">
+              <i class="ph ph-envelope"></i>
+              <span class="mobile-menu__caption">Contact</span>
+            </a>
+          </li>
+        </ul>
+      </nav>
+    </div>
+    <!-- Mobile Menu Toggle Button -->
+    <button id="mobileMenuToggle" class="mobile-menu-toggle-btn d-md-none">
+      <i class="ph ph-text-indent"></i>
+    </button>
+
+    <!-- Loader Start -->
+    <div style="opacity: 0" id="loader" class="loader">
+      <div class="loader__wrapper">
+        <div class="loader__content">
+          <div class="loader__count">
+            <span class="count__text">0</span>
+            <span class="count__percent">%</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Loader End -->
+
+    <!-- PopUp Starts -->
+    <div id="cataloguePopup" class="popup-overlay">
+      <div class="popup-content">
+        <button class="close-btn" onclick="closePopup()">✖</button>
+        <h2 class="popup-title">Explore Our Catalogue</h2>
+        <p class="popup-description">
+          Discover our premium collection of natural stones and products.
+        </p>
+        <a
+          target="_blank"
+          href="https://publuu.com/flip-book/73791/1180500"
+          class="btn btn-line-circle-icon popup-btn"
+        >
+          <span class="btn-caption">View Catalogue</span>
+          <span class="circle hover-circle">
+            <em></em>
+            <i class="ph ph-arrow-right"></i>
+          </span>
+        </a>
+      </div>
+    </div>
+
+    <!-- Header Start -->
+    <header
+      id="header"
+      class="header d-flex justify-content-center loading__fade"
+    >
+      <!-- Navigation Menu Start -->
+      <div class="header__navigation d-flex justify-content-start">
+        <nav id="menu" class="menu">
+          <ul class="menu__list d-flex justify-content-start">
+            <li class="menu__item">
+              <a class="menu__link btn" href="/index.html#home">
+                <span class="menu__caption">Home</span>
+                <i class="ph ph-house-simple"></i>
+              </a>
+            </li>
+            <li class="menu__item">
+              <a class="menu__link btn" href="/gallery.html">
+                <span class="menu__caption">Gallery</span>
+                <i class="ph ph-squares-four"></i>
+              </a>
+            </li>
+            <li class="menu__item">
+              <a class="menu__link btn" href="/products.html">
+                <span class="menu__caption">Products</span>
+                <i class="ph ph-sticker"></i>
+              </a>
+            </li>
+            <li class="menu__item">
+              <a class="menu__link btn" href="/blog.html">
+                <span class="menu__caption">Blog</span>
+                <i class="ph ph-article"></i>
+              </a>
+            </li>
+            <li class="menu__item">
+              <a class="menu__link btn" href="categories.html">
+                <span class="menu__caption">Categories</span>
+                <i class="ph ph-user"></i>
+              </a>
+            </li>
+            <li class="menu__item">
+              <a class="menu__link btn" href="/about.html">
+                <span class="menu__caption">About</span>
+                <i class="ph ph-envelope"></i>
+              </a>
+            </li>
+            <li class="menu__item">
+              <a class="menu__link btn" href="index.html#contact">
+                <span class="menu__caption">Contact</span>
+                <i class="ph ph-envelope"></i>
+              </a>
+            </li>
+          </ul>
+        </nav>
+      </div>
+      <!-- Navigation Menu End -->
+    </header>
+
+    <!-- Header End -->
+
+    <!-- Fixed Logo Start -->
+    <div
+      class="logo loading__fade"
+      style="display: inline-block; width: auto; height: auto"
+    >
+      <a
+        href="#home"
+        class="logo__link"
+        style="display: inline-block; width: auto; height: auto"
+      >
+        <img
+          class="logo-img"
+          src="image/newlogo.png"
+          alt=""
+          style="width: 300px; height: auto; display: block"
+        />
+      </a>
+    </div>
+    <!-- Fixed Logo End -->
+
+    <!-- Fixed Color Switch Start -->
+    <div class="color loading__fade">
+      <button
+        id="color-switcher"
+        class="color-switcher"
+        type="button"
+        role="switch"
+        aria-label="light/dark mode"
+        aria-checked="true"
+      ></button>
+    </div>
+    <!-- Fixed Color Switch End -->
+
+    <!-- Page Content Start -->
+    <main id="page-content" class="page-content">
+      <!-- Main Section Start -->
+      <section id="home" class="main home">
+        <!-- Main Section Intro Start -->
+        <div class="main__intro">
+          <!-- Intro Background Start -->
+          <div class="intro__background intro-bg-01">
+            <div class="intro-bg-01__01" data-speed="0.6">
+              <img
+                class="hero-img"
+                src="img/backgrounds/stonehaha.webp"
+                alt="Background Objects"
+              />
+              <div class="intro-bg__shadow"></div>
+            </div>
+            <div class="intro-bg-01__02" data-speed="0.8">
+              <img
+                class="hero-img"
+                src="img/backgrounds/stonehaha.webp"
+                alt="Background Objects"
+              />
+              <div class="intro-bg__shadow"></div>
+            </div>
+          </div>
+          <!-- Intro Background End -->
+
+          <div class="container-fluid p-0 fullheight-desktop">
+            <div class="row g-0 fullheight-desktop align-items-xl-stretch">
+              <!-- Intro Data Line #1 (if needed) Start -->
+              <div class="col-12 col-xl-2"></div>
+              <!-- Intro Data Line #1 (if needed) End -->
+
+              <!-- Intro Content Start -->
+              <div class="col-12 col-xl-8 fullheight-desktop">
+                <!-- Headline Start -->
+                <div
+                  id="headline"
+                  class="headline d-flex align-items-start flex-column loading-wrap"
+                >
+                  <h1
+                    id="riri"
+                    style="font-weight: 500"
+                    class="headline__title wshad loading__item"
+                  >
+                    Natural Stone Traders Inc
+                  </h1>
+                  <p
+                    style="margin-top: 20px"
+                    class="headline__subtitle space-bottom loading__item"
+                  >
+                    Creating stone wonders
+                  </p>
+                  <div class="headline__btn loading__item">
+                    <a
+                      class="btn btn-line-small icon-right slide-right-down"
+                      href="#portfolio"
+                    >
+                      <!-- <span class="btn-caption">Scroll for more</span> -->
+                      <!-- <i class="ph ph-arrow-down-right"></i> -->
+                    </a>
+                  </div>
+                </div>
+                <!-- Headline End -->
+              </div>
+              <!-- Intro Content End -->
+
+              <!-- Intro Data Line #2 (if needed) Start -->
+              <div class="col-12 col-xl-2"></div>
+              <!-- Intro Data Line #2 (if needed) End -->
+            </div>
+          </div>
+        </div>
+        <!-- Main Section Intro End -->
+
+        <!-- Main Section Media Start -->
+        <div class="main__media media-grid-bottom">
+          <div class="container-fluid p-0">
+            <div class="row g-0">
+              <!-- Media Data Line #1 (if needed) Start -->
+              <div class="col-12 col-xl-2"></div>
+              <!-- Media Data Line #1 (if needed) End -->
+
+              <!-- Media Content Start -->
+              <div class="col-12 col-xl-8">
+                <!-- Content Block - Image Divider Start -->
+                <div class="content__block">
+                  <div class="container-fluid p-0">
+                    <div class="row g-0">
+                      <div class="col-12">
+                        <!-- change the background image in the main.css file - .main-image-1 -->
+                        <!-- Image Slider Section Start -->
+                        <div class="image-slider-wrapper">
+                          <section class="image-slider">
+                            <div class="swiper mySwiper">
+                              <div class="swiper-wrapper">
+                                <div class="swiper-slide">
+                                  <img
+                                    src="image/Antique Black copings.jpg"
+                                    alt="Slide 1"
+                                  />
+                                </div>
+                                <div class="swiper-slide">
+                                  <img
+                                    src="image/Antique Black pavers sealed.jpg"
+                                    alt="Slide 2"
+                                  />
+                                </div>
+                                <div class="swiper-slide">
+                                  <img
+                                    src="image/Antique Black rebated L shaped coping on a filler.jpg"
+                                    alt="Slide 3"
+                                  />
+                                </div>
+                                <div class="swiper-slide">
+                                  <img
+                                    src="image/Antique Black steps and coping.webp"
+                                    alt="Slide 4"
+                                  />
+                                </div>
+                                <div class="swiper-slide">
+                                  <img
+                                    src="image/Antique Black.png"
+                                    alt="Slide 5"
+                                  />
+                                </div>
+                                <div class="swiper-slide">
+                                  <img
+                                    src="image/Autumn Brown_Bronte pavers & curbs.jpg"
+                                    alt="Slide 6"
+                                  />
+                                </div>
+                                <div class="swiper-slide">
+                                  <img
+                                    src="image/Black big pebbles.jpg"
+                                    alt="Slide 7"
+                                  />
+                                </div>
+                                <div class="swiper-slide">
+                                  <img
+                                    src="image/Black chittor walling.jpg"
+                                    alt="Slide 8"
+                                  />
+                                </div>
+                                <div class="swiper-slide">
+                                  <img
+                                    src="image/Black Pebbles, Westcoast Veneers, Antique Black Rebated Coping as Sill.jpg"
+                                    alt="Slide 9"
+                                  />
+                                </div>
+                                <div class="swiper-slide">
+                                  <img
+                                    src="image/Black sills.jpg"
+                                    alt="Slide 10"
+                                  />
+                                </div>
+                                <div class="swiper-slide">
+                                  <img
+                                    src="image/Bronte_Autumn Brown pavers.jpg"
+                                    alt="Slide 11"
+                                  />
+                                </div>
+                                <div class="swiper-slide">
+                                  <img
+                                    src="image/Bronte_Autumn Brown steps and pavers.jpg"
+                                    alt="Slide 12"
+                                  />
+                                </div>
+                                <div class="swiper-slide">
+                                  <img
+                                    src="image/Canary Rundle Pavers, Slate grey step, lavender pier caps.jpg"
+                                    alt="Slide 13"
+                                  />
+                                </div>
+                                <div class="swiper-slide">
+                                  <img
+                                    src="image/Cobbles Dark Ebony eco friendly_.jpg"
+                                    alt="Slide 14"
+                                  />
+                                </div>
+                                <div class="swiper-slide">
+                                  <img src="image/cobbles.png" alt="Slide 15" />
+                                </div>
+                                <div class="swiper-slide">
+                                  <img
+                                    src="image/Copy of Slate Grey Curbs Slate & Dove pavers.jpg"
+                                    alt="Slide 16"
+                                  />
+                                </div>
+                                <div class="swiper-slide">
+                                  <img
+                                    src="image/Crystal Bianco risers and Pristine White coping.jpg"
+                                    alt="Slide 17"
+                                  />
+                                </div>
+                                <div class="swiper-slide">
+                                  <img
+                                    src="image/Dark Ebony coping & pavers.jpg"
+                                    alt="Slide 18"
+                                  />
+                                </div>
+                                <div class="swiper-slide">
+                                  <img
+                                    src="image/Dark Ebony copings sealed.jpg"
+                                    alt="Slide 19"
+                                  />
+                                </div>
+                                <div class="swiper-slide">
+                                  <img
+                                    src="image/Dove grey BBQ Slab.jpg"
+                                    alt="Slide 20"
+                                  />
+                                </div>
+                              </div>
+                              <!-- Pagination & Navigation -->
+                              <div class="swiper-pagination"></div>
+                              <div class="swiper-button-next"></div>
+                              <div class="swiper-button-prev"></div>
+                            </div>
+                          </section>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <!-- Content Block - Image Divider End -->
+
+                <!-- Content Block - Blockquote Start -->
+                <div class="content__block large-text-block">
+                  <div class="container-fluid p-0">
+                    <div class="row g-0">
+                      <div class="col-12">
+                        <blockquote class="reveal-type animate-in-up">
+                          Your journey to extraordinary spaces begins here.
+                          Discover nature's finest materials, expertly curated
+                          for your perfect project.
+                        </blockquote>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <!-- Content Block - Blockquote End -->
+              </div>
+              <!-- Media Content End -->
+
+              <!-- Media Data Line #2 (if needed) Start -->
+              <div class="col-12 col-xl-2"></div>
+              <!-- Media Data Line #2 (if needed) End -->
+
+              <!-- Media Fullwidth Divider Start -->
+              <div class="media__fullwidth">
+                <!-- Marquee V1 Divider Start -->
+                <div class="items items--gsap">
+                  <div class="items__container">
+                    <!-- single item -->
+
+                    <!-- single item -->
+                    <div class="item image image-1">
+                      <!-- <img src="img/marquee/01.webp" alt="Image"> -->
+                      <!-- <img src="img/marquee/01.webp" alt="Image"> -->
+                    </div>
+
+                    <!-- single item -->
+
+                    <!-- single item -->
+                    <div class="item image image-2"></div>
+
+                    <!-- single item -->
+                    <div class="item image image-3">
+                      <img
+                        style="opacity: 0"
+                        src="img/marquee/03.webp"
+                        alt="Image"
+                      />
+                    </div>
+                  </div>
+                </div>
+                <!-- Marquee V1 Divider End -->
+              </div>
+              <!-- Media Fullwidth Divider End -->
+            </div>
+          </div>
+        </div>
+        <!-- Main Section Media End -->
+      </section>
+      <!-- Main Section End -->
+
+      <!-- Inner Section - Portfolio - Start -->
+      <section id="gallery" class="inner inner-grid-bottom portfolio">
+        <div class="inner__wrapper">
+          <div class="container-fluid p-0">
+            <div class="row g-0">
+              <!-- Inner Section Name Start -->
+              <div class="col-12 col-xl-2">
+                <div class="inner__name">
+                  <!-- Content Block - Section Name Start -->
+                  <div class="content__block name-block">
+                    <span class="section-name icon-right animate-in-up">
+                      <span class="section-name-caption"
+                        >The Art of Natural Stone</span
+                      >
+                    </span>
+                  </div>
+                  <!-- Content Block - Section Name Start -->
+                </div>
+              </div>
+              <!-- Inner Section Name End -->
+
+              <!-- Inner Section Content Start -->
+              <div class="col-12 col-xl-8">
+                <div class="inner__content">
+                  <!-- Content Block - H2 Section Title Start -->
+                  <div class="content__block section-grid-text-title">
+                    <div class="block__descr">
+                      <h2 class="reveal-type animate-in-up">
+                        Discover Premium Materials That Tell Your Story
+                      </h2>
+                      <p class="h2__text type-basic-160lh animate-in-up">
+                        Designing a stunning porch or fabulous pool or
+                        impressive commercial outdoor space for sitting area,
+                        find the perfect stone that suits your needs.
+                      </p>
+                    </div>
+                  </div>
+                  <!-- Content Block - H2 Section Title End -->
+
+                  <!-- Content Block - Portfolio Gallery Masonry Grid Start -->
+                  <div class="content__block grid-block">
+                    <div class="container-fluid px-0 inner__gallery">
+                      <!-- Portfolio Gallery Start -->
+                      <div
+                        class="row gx-0 my-gallery"
+                        itemscope
+                        itemtype="http://schema.org/ImageGallery"
+                        data-masonry='{"percentPosition": true }'
+                      >
+                        <!-- portfolio gallery single item -->
+                        <figure
+                          class="col-12 col-md-6 gallery__item grid-item animate-card-2"
+                          itemprop="associatedMedia"
+                          itemscope
+                          itemtype="http://schema.org/ImageObject"
+                        >
+                          <a
+                            href="image/FRONT_-_PAVERS_STEPS-55_2048x2048.webp"
+                            data-image="image/FRONT_-_PAVERS_STEPS-55_2048x2048.webp"
+                            class="gallery__link"
+                            itemprop="contentUrl"
+                            data-size="1400x1050"
+                          >
+                            <img
+                              src="image/FRONT_-_PAVERS_STEPS-55_2048x2048.webp"
+                              loading="lazy"
+                              class="gallery__image"
+                              itemprop="thumbnail"
+                              alt="Image description"
+                            />
+                          </a>
+                          <!-- <figcaption class="gallery__descr" itemprop="caption description">
+                            <h5>Designer Portfolio
+                              <small>UI/UX design</small>
+                            </h5>
+                            <p class="small">Mauris porttitor lobortis ligula, quis molestie lorem scelerisque eu. Morbi aliquam enim odio,
+                              a mollis ipsum tristique eu.
+                            </p>
+                          </figcaption> -->
+                        </figure>
+                        <!-- portfolio gallery single item -->
+                        <figure
+                          class="col-12 col-md-6 gallery__item grid-item animate-card-2"
+                          itemprop="associatedMedia"
+                          itemscope
+                          itemtype="http://schema.org/ImageObject"
+                        >
+                          <a
+                            href="image/Front_entrance_2-24_grande.webp"
+                            data-image="image/Front_entrance_2-24_grande.webp"
+                            class="gallery__link"
+                            itemprop="contentUrl"
+                            data-size="1100x1400"
+                          >
+                            <img
+                              src="image/Front_entrance_2-24_grande.webp"
+                              class="gallery__image"
+                              itemprop="thumbnail"
+                              alt="Image description"
+                            />
+                          </a>
+                          <!-- <figcaption class="gallery__descr opposite" itemprop="caption description">
+                            <h5 class="opposite">Idea Character
+                              <small>AI Illustration</small>
+                            </h5>
+                            <p class="small">Mauris porttitor lobortis ligula, quis molestie lorem scelerisque eu. Morbi aliquam enim odio,
+                              a mollis ipsum tristique eu.
+                            </p>
+                          </figcaption> -->
+                        </figure>
+                        <!-- portfolio gallery single item -->
+                        <figure
+                          class="col-12 col-md-6 gallery__item grid-item animate-card-2"
+                          itemprop="associatedMedia"
+                          itemscope
+                          itemtype="http://schema.org/ImageObject"
+                        >
+                          <a
+                            href="image/Urban Grey 1 (1).webp"
+                            data-image="image/Urban Grey 1 (1).webp"
+                            class="gallery__link"
+                            itemprop="contentUrl"
+                            data-size="1400x1400"
+                          >
+                            <img
+                              src="image/Urban Grey 1 (1).webp"
+                              class="gallery__image"
+                              itemprop="thumbnail"
+                              alt="Urban Grey 1"
+                            />
+                          </a>
+                        </figure>
+
+                        <!-- portfolio gallery single item -->
+                        <figure
+                          class="col-12 col-md-6 gallery__item grid-item animate-card-2"
+                          itemprop="associatedMedia"
+                          itemscope
+                          itemtype="http://schema.org/ImageObject"
+                        >
+                          <a
+                            href="image/BACK_YARD_WITH_FIRE_PIT-97_2048x2048.webp"
+                            data-image="image/BACK_YARD_WITH_FIRE_PIT-97_2048x2048.webp"
+                            class="gallery__link"
+                            itemprop="contentUrl"
+                            data-size="1400x1050"
+                          >
+                            <img
+                              src="image/BACK_YARD_WITH_FIRE_PIT-97_2048x2048.webp"
+                              class="gallery__image"
+                              itemprop="thumbnail"
+                              alt="Image description"
+                            />
+                          </a>
+                          <!-- <figcaption class="gallery__descr " itemprop="caption description">
+                            <h5>Infinity
+                              <small>3D Illustration</small>
+                            </h5>
+                            <p class="small">Mauris porttitor lobortis ligula, quis molestie lorem scelerisque eu. Morbi aliquam enim odio,
+                              a mollis ipsum tristique eu.
+                            </p>
+                          </figcaption> -->
+                        </figure>
+                        <!-- portfolio gallery single item -->
+                        <figure
+                          class="col-12 col-md-6 gallery__item grid-item animate-card-2"
+                          itemprop="associatedMedia"
+                          itemscope
+                          itemtype="http://schema.org/ImageObject"
+                        >
+                          <a
+                            href="image/front-_Slate_Grey-45_2048x2048.webp"
+                            data-image="image/front-_Slate_Grey-45_2048x2048.webp"
+                            class="gallery__link"
+                            itemprop="contentUrl"
+                            data-size="1400x1050"
+                          >
+                            <img
+                              src="image/front-_Slate_Grey-45_2048x2048.webp"
+                              class="gallery__image"
+                              itemprop="thumbnail"
+                              alt="Image description"
+                            />
+                          </a>
+                          <!-- <figcaption class="gallery__descr" itemprop="caption description">
+                            <h5>Designer Portfolio
+                              <small>UI/UX design</small>
+                            </h5>
+                            <p class="small">Mauris porttitor lobortis ligula, quis molestie lorem scelerisque eu. Morbi aliquam enim odio,
+                              a mollis ipsum tristique eu.
+                            </p>
+                          </figcaption> -->
+                        </figure>
+                      </div>
+                      <!-- Portfolio Gallery End -->
+
+                      <!-- External Portfolio Link Start -->
+                      <div
+                        style="padding-top: 10px"
+                        class="gallery__btn animate-in-up"
+                      >
+                        <a
+                          href="https://publuu.com/flip-book/73791/1180500"
+                          class="btn btn-line-circle-icon"
+                        >
+                          <span class="btn-caption">Catalogue</span>
+                          <span class="circle hover-circle">
+                            <em></em>
+                            <i class="ph ph-arrow-right"></i>
+                          </span>
+                        </a>
+                      </div>
+                      <!-- External Portfolio Link End -->
+                    </div>
+                  </div>
+                  <!-- Content Block - Portfolio Gallery Masonry Grid End -->
+                </div>
+              </div>
+              <!-- Inner Section Content End -->
+
+              <!-- Inner Section Aside Start -->
+              <div class="col-12 col-xl-2"></div>
+              <!-- Inner Section Aside End -->
+            </div>
+          </div>
+        </div>
+      </section>
+      <!-- Inner Section - Portfolio - End -->
+
+      <!-- Inner Section - About - Start -->
+
+      <!-- Inner Section - About - End -->
+
+      <!-- Inner Section - Services - Start -->
+      <section id="services" class="inner inner-stack-bottom services">
+        <div class="inner__wrapper">
+          <div class="container-fluid p-0">
+            <div class="row g-0">
+              <!-- Inner Section Name Start -->
+              <div class="col-12 col-xl-2">
+                <div class="inner__name">
+                  <!-- Content Block - Section Name Start -->
+                  <div class="content__block name-block">
+                    <span class="section-name icon-right animate-in-up">
+                      <span class="section-name-caption">Products</span>
+                      <i class="ph ph-package"></i>
+                    </span>
+                  </div>
+                  <!-- Content Block - Section Name Start -->
+                </div>
+              </div>
+              <!-- Inner Section Name End -->
+
+              <!-- Inner Section Content Start -->
+              <div class="col-12 col-xl-8">
+                <div class="inner__content">
+                  <!-- Content Block - H2 Section Title Start -->
+                  <div class="content__block pre-stack-text-block">
+                    <div class="block__descr">
+                      <h2 class="reveal-type animate-in-up">
+                        Elevate Your Spaces
+                      </h2>
+                      <p class="h2__text type-basic-160lh animate-in-up">
+                        We bring you a curated selection of exquisite stone
+                        products designed to transform your spaces into timeless
+                        masterpieces. From elegant pavers and versatile walling
+                        stones to sophisticated porcelain finishes and durable
+                        copings, our range blends durability with unmatched
+                        beauty.
+                      </p>
+                    </div>
+                  </div>
+                  <!-- Content Block - H2 Section Title End -->
+
+                  <!-- Content Block - Services/Features Stacking Cards Block Start -->
+                  <div class="content__block">
+                    <div class="stack-wrapper">
+                      <div class="stack-offset"></div>
+                      <div class="services-stack">
+                        <!-- services stack single item -->
+                        <!-- <div class="stack-item">
+                          <div class="services-stack__inner">
+                            <div class="services-stack__title">
+                              <h3>Pavers</h3>
+                            </div>
+                            <div class="services-stack__descr">
+                              <p class="services-stack__text type-basic-160lh">
+                                <span
+                                  onclick="window.location.href='/product.html?section=pavers'"
+                                  style="cursor: pointer"
+                                  class="servicespan"
+                                >
+                                  Click to view details
+                                </span>
+                                <br />
+                                Transform outdoor spaces with the timeless charm
+                                and resilience of natural stone pavers. Our
+                                pavers are expertly crafted to combine
+                                durability with aesthetic appeal, making them
+                                the perfect choice for patios, driveways,
+                                walkways, and garden paths.
+                              </p>
+                            </div>
+                            <a
+                              href="/product.html?section=pavers"
+                              class="services-stack__image"
+                            >
+                              <img
+                                class="service-img service-img-s"
+                                src="image/cat/paver1200.jpg"
+                                alt="Service/Feature Image"
+                              />
+                              <img
+                                class="service-img service-img-m"
+                                src="image/cat/Pave800.jpg"
+                                alt="Service/Feature Image"
+                              />
+                            </a>
+                          </div>
+                        </div> -->
+
+                        <!-- services stack single item -->
+                        <div class="stack-item">
+                          <div class="services-stack__inner">
+                            <div class="services-stack__title">
+                              <h3>Coping</h3>
+                            </div>
+                            <div class="services-stack__descr">
+                              <!-- <i class="ph-thin ph-bezier-curve"></i> -->
+                              <p class="services-stack__text type-basic-160lh">
+                                <span
+                                  onclick="window.location.href='/product.html?section=coping'"
+                                  style="cursor: pointer"
+                                  class="servicespan"
+                                >
+                                  Click to view details
+                                </span>
+                                <br />Complete your design projects with our
+                                premium natural stone coping. Designed for
+                                durability and style, our coping is the ideal
+                                finishing touch for pools, steps, and walls,
+                                blending seamlessly with both modern and
+                                traditional aesthetics.
+                              </p>
+                            </div>
+                            <a
+                              href="/product.html?section=coping"
+                              class="services-stack__image"
+                            >
+                              <img
+                                class="service-img service-img-s"
+                                src="image/cat/coping1200.jpg"
+                                alt="Service/Feature Image"
+                              />
+                              <img
+                                class="service-img service-img-m"
+                                src="image/cat/coping800.jpg"
+                                alt="Service/Feature Image"
+                              />
+                            </a>
+                          </div>
+                        </div>
+                        <!-- services stack single item -->
+                        <div class="stack-item">
+                          <div class="services-stack__inner">
+                            <div class="services-stack__title">
+                              <h3>Steps, Curbs & Risers</h3>
+                            </div>
+                            <div class="services-stack__descr">
+                              <p class="services-stack__text type-basic-160lh">
+                                <span
+                                  onclick="window.location.href='/product.html?section=steps-curbs'"
+                                  style="cursor: pointer"
+                                  class="servicespan"
+                                >
+                                  Click to view details</span
+                                >
+                                <br />Seamlessly integrate functionality and
+                                design with our natural stone steps and curbs.
+                                These pieces are more than just practical – they
+                                add an architectural statement to any property.
+                              </p>
+                            </div>
+                            <a
+                              href="/product.html?section=steps-curbs"
+                              class="services-stack__image"
+                            >
+                              <!-- <img class="service-img service-img-s" src="img/services/1200x1000_s02.webp" alt="Service/Feature Image">
+                              <img class="service-img service-img-s" src="img/services/1200x1000_s02.webp" alt="Service/Feature Image"> -->
+                              <img
+                                class="service-img service-img-s"
+                                src="image/cat/steps1200.jpg"
+                                alt="Service/Feature Image"
+                              />
+                              <img
+                                class="service-img service-img-m"
+                                src="image/cat//steps800.jpg"
+                                alt="Service/Feature Image"
+                              />
+                            </a>
+                          </div>
+                        </div>
+                        <!-- services stack single item -->
+                        <div class="stack-item">
+                          <div class="services-stack__inner">
+                            <div class="services-stack__title">
+                              <h3>
+                                Walling & <br />
+                                Veneers
+                              </h3>
+                            </div>
+                            <div class="services-stack__descr">
+                              <p class="services-stack__text type-basic-160lh">
+                                <span
+                                  onclick="window.location.href='/product.html?section=walling-veneers'"
+                                  style="cursor: pointer"
+                                  class="servicespan"
+                                >
+                                  Click to view details</span
+                                >
+                                <br />Discover the art of creating stunning
+                                spaces with our natural stone walling and
+                                veneers. Designed to combine style and strength,
+                                these stones turn ordinary walls into
+                                extraordinary features.
+                              </p>
+                            </div>
+                            <a
+                              href="/product.html?section=walling-veneers"
+                              class="services-stack__image"
+                            >
+                              <img
+                                class="service-img service-img-s"
+                                src="image/cat/walling12.jpg"
+                                alt="Service/Feature Image"
+                              />
+                              <img
+                                class="service-img service-img-m"
+                                src="image/cat/walling8.jpg"
+                                alt="Service/Feature Image"
+                              />
+                            </a>
+                          </div>
+                        </div>
+                        <!-- services stack single item -->
+                        <div class="stack-item">
+                          <div class="services-stack__inner">
+                            <div class="services-stack__title">
+                              <h3>Jumbo Slabs & Pier Caps</h3>
+                            </div>
+                            <div class="services-stack__descr">
+                              <p class="services-stack__text type-basic-160lh">
+                                <span
+                                  onclick="window.location.href='/product.html?section=jumbo-slabs-pier-caps'"
+                                  style="cursor: pointer"
+                                  class="servicespan"
+                                >
+                                  Click to view details</span
+                                >
+                                <br />For projects that demand grandeur, our
+                                jumbo slabs and pier caps are the ultimate
+                                solution. These stones not only provide
+                                structural stability but also add a touch of
+                                luxury to any project.
+                              </p>
+                            </div>
+                            <a
+                              href="/product.html?section=jumbo-slabs-pier-caps"
+                              class="services-stack__image"
+                            >
+                              <img
+                                class="service-img service-img-s"
+                                src="image/cat/jumbo12.jpg"
+                                alt="Service/Feature Image"
+                              />
+                              <img
+                                class="service-img service-img-m"
+                                src="image/cat/jumbo8.jpg"
+                                alt="Service/Feature Image"
+                              />
+                            </a>
+                          </div>
+                        </div>
+                        <!-- services stack single item -->
+                        <div class="stack-item">
+                          <div class="services-stack__inner">
+                            <div class="services-stack__title">
+                              <h3>Premium Porcelain</h3>
+                            </div>
+                            <div class="services-stack__descr">
+                              <p class="services-stack__text type-basic-160lh">
+                                <span
+                                  onclick="window.location.href='/product.html?section=porcelain'"
+                                  style="cursor: pointer"
+                                  class="servicespan"
+                                >
+                                  Click to view details</span
+                                >
+                                <br />For projects that demand both strength and
+                                elegance, our premium Porcelain Stone products
+                                offer the ideal solution.
+                              </p>
+                            </div>
+                            <a
+                              href="/product.html?section=porcelain"
+                              class="services-stack__image"
+                            >
+                              <img
+                                class="service-img service-img-s"
+                                src="image/cat/porc1200.jpg"
+                                alt="Porcelain Feature Image"
+                              />
+                              <img
+                                class="service-img service-img-m"
+                                src="image/cat/porlien800.jpg"
+                                alt="Porcelain Feature Image"
+                              />
+                            </a>
+                          </div>
+                        </div>
+                        <!-- <div class="stack-item">
+                          <div class="services-stack__inner">
+                            <div class="services-stack__title">
+                              <h3>
+                                Premium 
+                                Porcelain
+                              </h3>
+                            </div>
+                            <div class="services-stack__descr">
+                              <p class="services-stack__text type-basic-160lh">
+                                <span
+                                  onclick="window.location.href='/product.html?section=porcelain'"
+                                  style="cursor: pointer"
+                                  class="servicespan"
+                                  >Click to view details</span
+                                >
+                                <br />For projects that demand both strength and elegance, our premium Porcelain Stone products offer the ideal solution. With exceptional durability and a refined aesthetic, these materials enhance any design, providing both structural integrity and a luxurious finish. 
+                              </p>
+                            </div>
+                            <a
+                              href="/product.html?section=porcelain"
+                              class="services-stack__image"
+                            >
+                              <img
+                                class="service-img service-img-s"
+                                src="image/cat/porc1200.jpg"
+                                alt="Porcelain Feature Image"
+                              />
+                              <img
+                                class="service-img service-img-m"
+                                src="image/cat/porlien800.jpg"
+                                alt="Porcelain Feature Image"
+                              />
+                            </a>
+                          </div>
+                        </div> -->
+                      </div>
+                    </div>
+                  </div>
+                  <!-- Content Block - Services/Features Stacking Cards Block End -->
+                </div>
+              </div>
+              <!-- Inner Section Content End -->
+
+              <!-- Inner Section Aside Start -->
+              <div class="col-12 col-xl-2"></div>
+              <!-- Inner Section Aside End -->
+            </div>
+          </div>
+        </div>
+      </section>
+      <!-- Inner Section - Services - End -->
+
+      <!-- Inner Section - Resume - Start -->
+      <section id="resume" class="inner inner-grid-bottom resume">
+        <div class="inner__wrapper">
+          <div class="container-fluid p-0">
+            <div class="row g-0">
+              <!-- Inner Section Name Start -->
+              <div class="col-12 col-xl-1">
+                <div class="inner__name">
+                  <!-- Content Block - Section Name Start -->
+                  <div class="content__block name-block">
+                    <span class="section-name icon-right animate-in-up">
+                      <span class="section-name-caption">Testimonials</span>
+                      <i class="ph ph-user"></i>
+                    </span>
+                  </div>
+                  <!-- Content Block - Section Name Start -->
+                </div>
+              </div>
+              <!-- Inner Section Name End -->
+
+              <!-- Inner Section Content Start -->
+              <div class="col-12 col-xl-10">
+                <div class="inner__content">
+                  <!-- Content Block - Tools Cards End -->
+
+                  <!-- Content Block - Testimonials Start -->
+                  <div class="content__block pre-offcanvas-text-block">
+                    <!-- Section Subtitle Start -->
+                    <div class="block__subtitle">
+                      <!-- <p class="tagline-chapter animate-in-up">Our client's stories</p> -->
+                    </div>
+                    <!-- Section Subtitle End -->
+
+                    <!-- Testimonials Slider Start -->
+                    <div class="testimonials-slider">
+                      <!-- slider main container -->
+                      <div class="swiper-testimonials">
+                        <!-- additional required wrapper -->
+                        <div class="swiper-wrapper">
+                          <!-- single slide -->
+                          <div class="swiper-slide">
+                            <div class="testimonials-card animate-in-up">
+                              <div class="container-fluid p-0 fullheight-l">
+                                <div
+                                  class="row g-0 d-flex align-items-stretch fullheight-l"
+                                >
+                                  <div
+                                    class="col-12 col-lg-6 testimonials-card__tdata"
+                                  >
+                                    <div
+                                      class="testimonials-card__tauthor d-flex"
+                                    >
+                                      <div
+                                        class="tauthor__avatar animate-in-up"
+                                      >
+                                        <img
+                                          src="image/test/cd8f51_bc916e5f09bd454e8a91d0b8effc9f7b~mv2.jpg"
+                                          alt="Review Author"
+                                        />
+                                      </div>
+                                      <div
+                                        class="tauthor__info d-flex flex-column justify-content-center"
+                                      >
+                                        <h4 class="tauthor__name animate-in-up">
+                                          Sophia Lima
+                                        </h4>
+                                        <p
+                                          class="tauthor__position small animate-in-up"
+                                        >
+                                          Inside Sales <br />
+                                          <a
+                                            class="link-small-underline"
+                                            href="https://www.simcoesolutions.com/simcoe-masonry-centre"
+                                            >Simcoe Masonry Center</a
+                                          >
+                                        </p>
+                                        <div
+                                          class="tauthor__rating d-flex animate-in-up"
+                                        >
+                                          <i class="ph-fill ph-star"></i>
+                                          <i class="ph-fill ph-star"></i>
+                                          <i class="ph-fill ph-star"></i>
+                                          <i class="ph-fill ph-star"></i>
+                                          <i class="ph-fill ph-star"></i>
+                                        </div>
+                                      </div>
+                                    </div>
+                                    <div
+                                      class="testimonials-card__descr animate-in-up"
+                                    >
+                                      <p class="type-basic-160lh">
+                                        As a Sales Representative at Simcoe
+                                        Block Masonry Center, I’ve had the
+                                        pleasure of partnering with Natural
+                                        Stone Traders Inc. for several years.
+                                        Their product quality and attention to
+                                        detail have always been exceptional,
+                                        making them a trusted supplier for our
+                                        projects.
+                                        <!-- What stands out most is their reliability and commitment to sourcing natural stone responsibly, which reflects their dedication to sustainability. The team at NST is always professional, knowledgeable, and a joy to work with. I would highly recommend Natural Stone Traders Inc. to anyone in need of top-tier natural stone solutions.  -->
+                                      </p>
+                                    </div>
+                                  </div>
+                                  <div
+                                    class="col-12 col-lg-6 testimonials-card__timage fullheight-l"
+                                  >
+                                    <div
+                                      class="timage__inner fullheight-l animate-in-up"
+                                    >
+                                      <img
+                                        src="image/PIER_CAPS_2-59_900x.jpg"
+                                        alt="Testimonials Image"
+                                      />
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                          <!-- single slide -->
+                          <div class="swiper-slide">
+                            <div class="testimonials-card animate-in-up">
+                              <div class="container-fluid p-0 fullheight-l">
+                                <div
+                                  class="row g-0 d-flex align-items-stretch fullheight-l"
+                                >
+                                  <div
+                                    class="col-12 col-lg-6 testimonials-card__tdata"
+                                  >
+                                    <div
+                                      class="testimonials-card__tauthor d-flex"
+                                    >
+                                      <div
+                                        class="tauthor__avatar animate-in-up"
+                                      >
+                                        <img
+                                          src="image/test/Screenshot 2024-12-13 125320.png"
+                                          alt="Review Author"
+                                        />
+                                      </div>
+                                      <div
+                                        class="tauthor__info d-flex flex-column justify-content-center"
+                                      >
+                                        <h4 class="tauthor__name animate-in-up">
+                                          Adam Flach
+                                        </h4>
+                                        <p
+                                          class="tauthor__position small animate-in-up"
+                                        >
+                                          Founder/ Senior Designer <br />
+                                          <a
+                                            class="link-small-underline"
+                                            href="https://creoconcepts.ca/"
+                                            >Creo Concepts Inc.</a
+                                          >
+                                        </p>
+                                        <div
+                                          class="tauthor__rating d-flex animate-in-up"
+                                        >
+                                          <i class="ph-fill ph-star"></i>
+                                          <i class="ph-fill ph-star"></i>
+                                          <i class="ph-fill ph-star"></i>
+                                          <i class="ph-fill ph-star"></i>
+                                          <i class="ph-fill ph-star"></i>
+                                        </div>
+                                      </div>
+                                    </div>
+                                    <div
+                                      class="testimonials-card__descr animate-in-up"
+                                    >
+                                      <p class="type-basic-160lh">
+                                        I had the pleasure of working with NST
+                                        flagstone on a fairly large job. Our
+                                        team used the Bronte /Brown colour and
+                                        it turned out amazing! The stone is well
+                                        calibrated and easy to work with. When
+                                        we had questions, Brian Fleming the
+                                        Sales Rep was always quick to respond
+                                        and provide guidance. I would definitely
+                                        recommend NST natural stone products!
+                                      </p>
+                                    </div>
+                                  </div>
+                                  <div
+                                    class="col-12 col-lg-6 testimonials-card__timage fullheight-l"
+                                  >
+                                    <div
+                                      class="timage__inner fullheight-l animate-in-up"
+                                    >
+                                      <img
+                                        src="image/slate_grey_steps_and_pavers_3-16_900x.jpg"
+                                        alt="Testimonials Image"
+                                      />
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <!-- navigation buttons -->
+                        <div
+                          class="swiper-button-prev mxd-slider-btn mxd-slider-btn-square-prev animate-in-up"
+                        >
+                          <a
+                            class="btn btn-line icon-left slide-left"
+                            href="#0"
+                          >
+                            <i class="ph ph-arrow-left"></i>
+                            <span class="btn-caption">Prev</span>
+                          </a>
+                        </div>
+                        <div
+                          class="swiper-button-next mxd-slider-btn mxd-slider-btn-square-next animate-in-up"
+                        >
+                          <a
+                            class="btn btn-line icon-right slide-right"
+                            href="#0"
+                          >
+                            <span class="btn-caption">Next</span>
+                            <i class="ph ph-arrow-right"></i>
+                          </a>
+                        </div>
+                        <!-- pagination -->
+                        <div
+                          class="swiper-pagination mxd-swiper-pagination-fraction"
+                        ></div>
+                      </div>
+                    </div>
+                    <!-- Testimonials Slider End -->
+                  </div>
+                  <!-- Content Block - Testimonials End -->
+                </div>
+              </div>
+              <!-- Inner Section Content End -->
+
+              <!-- Inner Section Aside Start -->
+              <div class="col-12 col-xl-1"></div>
+              <!-- Inner Section Aside End -->
+            </div>
+          </div>
+
+          <!-- Inner Section Off-canvas Content (Fullwidth Social Media Marquee & Lines) Start -->
+          <div class="container-fluid p-0">
+            <div class="row g-0">
+              <div class="col-12">
+                <!-- Content Block - Follow Me Marquee with SVG Objects Start -->
+                <div class="content__block no-padding section-tagline-title">
+                  <div class="items items--gsap">
+                    <div class="items__container">
+                      <!-- single item -->
+                      <div class="item item-regular text">
+                        <p class="item__text">Get in touch</p>
+                        <div class="item__image">
+                          <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            viewBox="0 0 92.3 93.1"
+                            fill="currentColor"
+                          >
+                            <g>
+                              <rect
+                                x="45.7"
+                                class="st0"
+                                width="1"
+                                height="93.1"
+                              />
+                              <rect
+                                x="45.7"
+                                y="0"
+                                transform="matrix(0.8412 -0.5407 0.5407 0.8412 -17.8476 32.3497)"
+                                class="st0"
+                                width="1"
+                                height="93.1"
+                              />
+                              <rect
+                                x="45.7"
+                                y="0"
+                                transform="matrix(0.4155 -0.9096 0.9096 0.4155 -15.3764 69.2119)"
+                                class="st0"
+                                width="1"
+                                height="93.1"
+                              />
+                              <rect
+                                x="-0.4"
+                                y="46.1"
+                                transform="matrix(0.9898 -0.1425 0.1425 0.9898 -6.1646 7.0506)"
+                                class="st0"
+                                width="93.1"
+                                height="1"
+                              />
+                              <rect
+                                x="-0.4"
+                                y="46.1"
+                                transform="matrix(0.7556 -0.655 0.655 0.7556 -19.2157 41.618)"
+                                class="st0"
+                                width="93.1"
+                                height="1"
+                              />
+                              <rect
+                                x="-0.4"
+                                y="46.1"
+                                transform="matrix(0.2812 -0.9597 0.9597 0.2812 -11.5032 77.7858)"
+                                class="st0"
+                                width="93.1"
+                                height="1"
+                              />
+                              <rect
+                                x="45.7"
+                                y="0"
+                                transform="matrix(0.9595 -0.2817 0.2817 0.9595 -11.2479 14.8866)"
+                                class="st0"
+                                width="1"
+                                height="93.1"
+                              />
+                              <rect
+                                x="45.7"
+                                y="0"
+                                transform="matrix(0.6549 -0.7557 0.7557 0.6549 -19.2631 50.9572)"
+                                class="st0"
+                                width="1"
+                                height="93.1"
+                              />
+                              <rect
+                                x="45.7"
+                                y="0"
+                                transform="matrix(0.1423 -0.9898 0.9898 0.1423 -6.4999 85.629)"
+                                class="st0"
+                                width="1"
+                                height="93.1"
+                              />
+                              <rect
+                                x="-0.4"
+                                y="46.1"
+                                transform="matrix(0.9097 -0.4153 0.4153 0.9097 -15.1716 23.381)"
+                                class="st0"
+                                width="93.1"
+                                height="1"
+                              />
+                              <rect
+                                x="-0.4"
+                                y="46.1"
+                                transform="matrix(0.5411 -0.8409 0.8409 0.5411 -17.9774 60.1901)"
+                                class="st0"
+                                width="93.1"
+                                height="1"
+                              />
+                            </g>
+                          </svg>
+                        </div>
+                      </div>
+                      <!-- single item -->
+                      <div class="item item-regular text">
+                        <p class="item__text">Get in touch</p>
+                        <div class="item__image">
+                          <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            viewBox="0 0 92.3 93.1"
+                            fill="currentColor"
+                          >
+                            <g>
+                              <rect
+                                x="45.7"
+                                class="st0"
+                                width="1"
+                                height="93.1"
+                              />
+                              <rect
+                                x="45.7"
+                                y="0"
+                                transform="matrix(0.8412 -0.5407 0.5407 0.8412 -17.8476 32.3497)"
+                                class="st0"
+                                width="1"
+                                height="93.1"
+                              />
+                              <rect
+                                x="45.7"
+                                y="0"
+                                transform="matrix(0.4155 -0.9096 0.9096 0.4155 -15.3764 69.2119)"
+                                class="st0"
+                                width="1"
+                                height="93.1"
+                              />
+                              <rect
+                                x="-0.4"
+                                y="46.1"
+                                transform="matrix(0.9898 -0.1425 0.1425 0.9898 -6.1646 7.0506)"
+                                class="st0"
+                                width="93.1"
+                                height="1"
+                              />
+                              <rect
+                                x="-0.4"
+                                y="46.1"
+                                transform="matrix(0.7556 -0.655 0.655 0.7556 -19.2157 41.618)"
+                                class="st0"
+                                width="93.1"
+                                height="1"
+                              />
+                              <rect
+                                x="-0.4"
+                                y="46.1"
+                                transform="matrix(0.2812 -0.9597 0.9597 0.2812 -11.5032 77.7858)"
+                                class="st0"
+                                width="93.1"
+                                height="1"
+                              />
+                              <rect
+                                x="45.7"
+                                y="0"
+                                transform="matrix(0.9595 -0.2817 0.2817 0.9595 -11.2479 14.8866)"
+                                class="st0"
+                                width="1"
+                                height="93.1"
+                              />
+                              <rect
+                                x="45.7"
+                                y="0"
+                                transform="matrix(0.6549 -0.7557 0.7557 0.6549 -19.2631 50.9572)"
+                                class="st0"
+                                width="1"
+                                height="93.1"
+                              />
+                              <rect
+                                x="45.7"
+                                y="0"
+                                transform="matrix(0.1423 -0.9898 0.9898 0.1423 -6.4999 85.629)"
+                                class="st0"
+                                width="1"
+                                height="93.1"
+                              />
+                              <rect
+                                x="-0.4"
+                                y="46.1"
+                                transform="matrix(0.9097 -0.4153 0.4153 0.9097 -15.1716 23.381)"
+                                class="st0"
+                                width="93.1"
+                                height="1"
+                              />
+                              <rect
+                                x="-0.4"
+                                y="46.1"
+                                transform="matrix(0.5411 -0.8409 0.8409 0.5411 -17.9774 60.1901)"
+                                class="st0"
+                                width="93.1"
+                                height="1"
+                              />
+                            </g>
+                          </svg>
+                        </div>
+                      </div>
+                      <!-- single item -->
+                      <div class="item item-regular text">
+                        <p class="item__text">Get in touch</p>
+                        <div class="item__image">
+                          <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            viewBox="0 0 92.3 93.1"
+                            fill="currentColor"
+                          >
+                            <g>
+                              <rect
+                                x="45.7"
+                                class="st0"
+                                width="1"
+                                height="93.1"
+                              />
+                              <rect
+                                x="45.7"
+                                y="0"
+                                transform="matrix(0.8412 -0.5407 0.5407 0.8412 -17.8476 32.3497)"
+                                class="st0"
+                                width="1"
+                                height="93.1"
+                              />
+                              <rect
+                                x="45.7"
+                                y="0"
+                                transform="matrix(0.4155 -0.9096 0.9096 0.4155 -15.3764 69.2119)"
+                                class="st0"
+                                width="1"
+                                height="93.1"
+                              />
+                              <rect
+                                x="-0.4"
+                                y="46.1"
+                                transform="matrix(0.9898 -0.1425 0.1425 0.9898 -6.1646 7.0506)"
+                                class="st0"
+                                width="93.1"
+                                height="1"
+                              />
+                              <rect
+                                x="-0.4"
+                                y="46.1"
+                                transform="matrix(0.7556 -0.655 0.655 0.7556 -19.2157 41.618)"
+                                class="st0"
+                                width="93.1"
+                                height="1"
+                              />
+                              <rect
+                                x="-0.4"
+                                y="46.1"
+                                transform="matrix(0.2812 -0.9597 0.9597 0.2812 -11.5032 77.7858)"
+                                class="st0"
+                                width="93.1"
+                                height="1"
+                              />
+                              <rect
+                                x="45.7"
+                                y="0"
+                                transform="matrix(0.9595 -0.2817 0.2817 0.9595 -11.2479 14.8866)"
+                                class="st0"
+                                width="1"
+                                height="93.1"
+                              />
+                              <rect
+                                x="45.7"
+                                y="0"
+                                transform="matrix(0.6549 -0.7557 0.7557 0.6549 -19.2631 50.9572)"
+                                class="st0"
+                                width="1"
+                                height="93.1"
+                              />
+                              <rect
+                                x="45.7"
+                                y="0"
+                                transform="matrix(0.1423 -0.9898 0.9898 0.1423 -6.4999 85.629)"
+                                class="st0"
+                                width="1"
+                                height="93.1"
+                              />
+                              <rect
+                                x="-0.4"
+                                y="46.1"
+                                transform="matrix(0.9097 -0.4153 0.4153 0.9097 -15.1716 23.381)"
+                                class="st0"
+                                width="93.1"
+                                height="1"
+                              />
+                              <rect
+                                x="-0.4"
+                                y="46.1"
+                                transform="matrix(0.5411 -0.8409 0.8409 0.5411 -17.9774 60.1901)"
+                                class="st0"
+                                width="93.1"
+                                height="1"
+                              />
+                            </g>
+                          </svg>
+                        </div>
+                      </div>
+                      <!-- single item -->
+                      <div class="item item-regular text">
+                        <p class="item__text">Get in touch</p>
+                        <div class="item__image">
+                          <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            viewBox="0 0 92.3 93.1"
+                            fill="currentColor"
+                          >
+                            <g>
+                              <rect
+                                x="45.7"
+                                class="st0"
+                                width="1"
+                                height="93.1"
+                              />
+                              <rect
+                                x="45.7"
+                                y="0"
+                                transform="matrix(0.8412 -0.5407 0.5407 0.8412 -17.8476 32.3497)"
+                                class="st0"
+                                width="1"
+                                height="93.1"
+                              />
+                              <rect
+                                x="45.7"
+                                y="0"
+                                transform="matrix(0.4155 -0.9096 0.9096 0.4155 -15.3764 69.2119)"
+                                class="st0"
+                                width="1"
+                                height="93.1"
+                              />
+                              <rect
+                                x="-0.4"
+                                y="46.1"
+                                transform="matrix(0.9898 -0.1425 0.1425 0.9898 -6.1646 7.0506)"
+                                class="st0"
+                                width="93.1"
+                                height="1"
+                              />
+                              <rect
+                                x="-0.4"
+                                y="46.1"
+                                transform="matrix(0.7556 -0.655 0.655 0.7556 -19.2157 41.618)"
+                                class="st0"
+                                width="93.1"
+                                height="1"
+                              />
+                              <rect
+                                x="-0.4"
+                                y="46.1"
+                                transform="matrix(0.2812 -0.9597 0.9597 0.2812 -11.5032 77.7858)"
+                                class="st0"
+                                width="93.1"
+                                height="1"
+                              />
+                              <rect
+                                x="45.7"
+                                y="0"
+                                transform="matrix(0.9595 -0.2817 0.2817 0.9595 -11.2479 14.8866)"
+                                class="st0"
+                                width="1"
+                                height="93.1"
+                              />
+                              <rect
+                                x="45.7"
+                                y="0"
+                                transform="matrix(0.6549 -0.7557 0.7557 0.6549 -19.2631 50.9572)"
+                                class="st0"
+                                width="1"
+                                height="93.1"
+                              />
+                              <rect
+                                x="45.7"
+                                y="0"
+                                transform="matrix(0.1423 -0.9898 0.9898 0.1423 -6.4999 85.629)"
+                                class="st0"
+                                width="1"
+                                height="93.1"
+                              />
+                              <rect
+                                x="-0.4"
+                                y="46.1"
+                                transform="matrix(0.9097 -0.4153 0.4153 0.9097 -15.1716 23.381)"
+                                class="st0"
+                                width="93.1"
+                                height="1"
+                              />
+                              <rect
+                                x="-0.4"
+                                y="46.1"
+                                transform="matrix(0.5411 -0.8409 0.8409 0.5411 -17.9774 60.1901)"
+                                class="st0"
+                                width="93.1"
+                                height="1"
+                              />
+                            </g>
+                          </svg>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <!-- Content Block - Follow Me Marquee with SVG Objects End -->
+              </div>
+            </div>
+            <div class="row g-0 justify-content-center">
+              <div class="col-12 col-xl-8">
+                <!-- Content Block - Socials Start -->
+                <div class="content__block">
+                  <!-- Section Subtitle End -->
+
+                  <!-- Socials Lines Start -->
+                  <ul class="socials-lines d-flex flex-column">
+                    <!-- socials lines single item -->
+
+                    <!-- socials lines single item -->
+                    <li class="socials-lines__item">
+                      <a
+                        class="socials-lines__link d-flex align-items-center justify-content-between"
+                        href="https://www.instagram.com/nststone/"
+                        target="_blank"
+                      >
+                        <h4 class="animate-in-up">Instagram</h4>
+                        <div class="socials-lines__icon d-flex animate-in-up">
+                          <i class="ph ph-arrow-up-right"></i>
+                        </div>
+                      </a>
+                      <div class="socials-lines__divider animate-in-up"></div>
+                    </li>
+                    <!-- socials lines single item -->
+
+                    <!-- socials lines single item -->
+                    <li class="socials-lines__item">
+                      <a
+                        class="socials-lines__link d-flex align-items-center justify-content-between"
+                        href="https://www.facebook.com/Natural-STONE-Traders-INC-1665445147029489/"
+                        target="_blank"
+                      >
+                        <h4 class="animate-in-up">Facebook</h4>
+                        <div class="socials-lines__icon d-flex animate-in-up">
+                          <i class="ph ph-arrow-up-right"></i>
+                        </div>
+                      </a>
+                      <div class="socials-lines__divider animate-in-up"></div>
+                    </li>
+                    <!-- socials lines single item -->
+                    <li class="socials-lines__item">
+                      <a
+                        class="socials-lines__link d-flex align-items-center justify-content-between"
+                        href="https://www.youtube.com/"
+                        target="_blank"
+                      >
+                        <h4 class="animate-in-up">Youtube</h4>
+                        <div class="socials-lines__icon d-flex animate-in-up">
+                          <i class="ph ph-arrow-up-right"></i>
+                        </div>
+                      </a>
+                      <div class="socials-lines__divider animate-in-up"></div>
+                    </li>
+                  </ul>
+                  <!-- Socials Lines End -->
+                </div>
+                <!-- Content Block - Socials End -->
+              </div>
+            </div>
+          </div>
+          <!-- Inner Section Off-canvas Content (Fullwidth Social Media Marquee & Lines) Start -->
+        </div>
+      </section>
+      <!-- Inner Section - Resume - End -->
+      <div
+        style="
+          width: 100%;
+          display: flex;
+          justify-content: center;
+          height: 50vh;
+        "
+      >
+        <div
+          style="width: 100%; max-width: 500px; aspect-ratio: 1 / 1"
+          id="shreyasharma"
+        >
+          <script src="models/hologram-globe.loader.js"></script>
+        </div>
+      </div>
+
+      <!-- Inner Section - Contact - Start -->
+      <section
+        id="contact"
+        class="inner contact inner-grid-bottom no-padding-bottom"
+      >
+        <div class="inner__wrapper">
+          <div class="container-fluid p-0">
+            <div class="row g-0">
+              <!-- Inner Section Name Start -->
+              <div class="col-12 col-xl-2">
+                <div class="inner__name">
+                  <!-- Content Block - Section Name Start -->
+                  <div class="content__block name-block">
+                    <span class="section-name icon-right animate-in-up">
+                      <span class="section-name-caption">Contact</span>
+                      <i class="ph ph-arrow-down-right"></i>
+                    </span>
+                  </div>
+                  <!-- Content Block - Section Name Start -->
+                </div>
+              </div>
+              <!-- Inner Section Name End -->
+
+              <!-- Content Block - Contact Data Start -->
+              <div class="content__block grid-block">
+                <div class="container-fluid p-0 contact-data">
+                  <!-- Footer Background Box -->
+                  <div class="footer-bg-box">
+                    <div
+                      class="row g-0 d-flex justify-content-between text-center"
+                    >
+                      <!-- Location -->
+                      <div class="col-md-3 col-12 contact-data__item grid-item">
+                        <p class="contact-data__title tagline-chapter">
+                          Location
+                        </p>
+                        <p class="contact-data__text type-basic-160lh">
+                          <a
+                            class="link-small-160lh"
+                            href="https://maps.app.goo.gl/g28hCHCGMMyEEqMU7"
+                            target="_blank"
+                          >
+                            14004 Woodbine Avenue <br />
+                            Stouffville(Gormley),<br />
+                            Ontario, L0H 1G0 Canada
+                          </a>
+                        </p>
+                      </div>
+
+                      <!-- Hours of Operation -->
+                      <div class="col-md-3 col-12 contact-data__item grid-item">
+                        <p class="contact-data__title tagline-chapter">
+                          Hours of Operation
+                        </p>
+                        <p class="contact-data__text type-basic-160lh">
+                          <span>Monday - Friday: 8:00 AM - 4:30 PM</span><br />
+                          <span>Saturday: Appointments only</span><br />
+                          <span>Sunday: Closed</span>
+                        </p>
+                      </div>
+
+                      <!-- Phone -->
+                      <div class="col-md-3 col-12 contact-data__item grid-item">
+                        <p class="contact-data__title tagline-chapter">Phone</p>
+                        <p class="contact-data__text type-basic-160lh">
+                          <a class="link-small-160lh" href="tel:+16472877869"
+                            >+1 (647) 287-7869</a
+                          ><br />
+                          <a class="link-small-160lh" href="tel:+16475233623"
+                            >+1 (647)-523-3623</a
+                          >
+                        </p>
+                      </div>
+
+                      <!-- Email -->
+                      <div class="col-md-3 col-12 contact-data__item grid-item">
+                        <p class="contact-data__title tagline-chapter">Email</p>
+                        <p class="contact-data__text type-basic-160lh">
+                          <a
+                            class="link-small-160lh"
+                            href="mailto:naturalstonetraders@gmail.com"
+                            >naturalstonetraders@gmail.com</a
+                          ><br />
+                          <a
+                            class="link-small-160lh"
+                            href="mailto:sales.nststone@gmail.com"
+                            >sales.nststone@gmail.com</a
+                          >
+                        </p>
+                      </div>
+                    </div>
+
+                    <!-- Areas We Serve -->
+                    <div
+                      class="contact-data__item text-center"
+                      style="padding-top: 30px"
+                    >
+                      <p class="contact-data__title tagline-chapter">
+                        Areas we serve
+                      </p>
+                      <div
+                        class="contact-data__text small"
+                        id="areas-we-serve"
+                      ></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <!-- Content Block - Contact Data End -->
+
+              <!-- CSS for Auto Dark/Light Theme -->
+              <style>
+                /* Default Light Theme */
+                :root {
+                  --bg-color: #f9f9f9;
+                  --text-color: #f7f6f6; /* Dark gray instead of black */
+                  --secondary-text-color: #f8f7f7;
+                  --link-color: #0056b3;
+                  --link-hover-color: #ff9800;
+                  --box-shadow: rgba(0, 0, 0, 0.1);
+                }
+                /* Dark Theme */
+                @media (prefers-color-scheme: dark) {
+                  :root {
+                    --bg-color: #121212;
+                    --text-color: #ffffff;
+                    --secondary-text-color: #bbb;
+                    --link-color: #4da6ff;
+                    --link-hover-color: #ffcc00;
+                    --box-shadow: rgba(255, 255, 255, 0.1);
+                    --area-we-serve-text: #fff; /* Keeping white text in dark theme */
+                  }
+                }
+
+                .footer-bg-box {
+                  width: 100%;
+                  max-width: 90%;
+                  margin: 0 auto;
+                  background-color: var(--bg-color);
+                  color: var(--text-color);
+                  padding: 30px;
+                  border-radius: 15px;
+                  display: flex;
+                  flex-direction: column;
+                  align-items: center;
+                  box-shadow: 0px 4px 10px var(--box-shadow);
+                }
+
+                .contact-data__item {
+                  padding: 20px;
+                }
+
+                .contact-data__title {
+                  color: var(--text-color);
+                  font-size: 1.8rem;
+                  font-weight: bold;
+                }
+
+                .contact-data__text {
+                  font-size: 1.5rem;
+                  color: var(--secondary-text-color);
+                }
+
+                .link-small-160lh {
+                  color: var(--link-color);
+                  text-decoration: none;
+                }
+
+                .link-small-160lh:hover {
+                  color: var(--link-hover-color);
+                }
+
+                @media (max-width: 768px) {
+                  .footer-bg-box {
+                    max-width: 100%;
+                    padding: 20px;
+                  }
+                }
+                /* Force 'Area we serve' text to white in light mode
+#areas-we-serve {
+  color: #fff !important;
+}
+
+/* Ensure it remains white in dark mode */
+                /* @media (prefers-color-scheme: dark) {
+  #areas-we-serve {
+    color: #fff !important;
+  }
+} */
+              </style>
+              <!-- Content Block - Contact Data End -->
+
+              <!-- Inner Section Aside Start -->
+              <div class="col-12 col-xl-2"></div>
+              <!-- Inner Section Aside End -->
+            </div>
+          </div>
+
+          <!-- Inner Section Off-canvas Content (Footer Marquee Block) Start -->
+          <div style="padding: 70px" class="footer footer-marquee">
+            <div class="container-fluid p-0">
+              <div class="row g-0">
+                <div class="col-12">
+                  <!-- Content Block - Footer Marquee Start -->
+                  <div class="content__block no-padding">
+                    <div class="items items--gsap">
+                      <div class="items__container">
+                        <!-- single item -->
+                        <div class="item item-regular text">
+                          <a
+                            class="item__text"
+                            href="mailto:sales.nststone@gmail.com"
+                            >Natural Stone Traders Inc</a
+                          >
+                          <div class="item__image">
+                            <svg
+                              xmlns="http://www.w3.org/2000/svg"
+                              viewBox="0 0 92.3 93.1"
+                              fill="currentColor"
+                            >
+                              <g>
+                                <rect
+                                  x="45.7"
+                                  class="st0"
+                                  width="1"
+                                  height="93.1"
+                                />
+                                <rect
+                                  x="45.7"
+                                  y="0"
+                                  transform="matrix(0.8412 -0.5407 0.5407 0.8412 -17.8476 32.3497)"
+                                  class="st0"
+                                  width="1"
+                                  height="93.1"
+                                />
+                                <rect
+                                  x="45.7"
+                                  y="0"
+                                  transform="matrix(0.4155 -0.9096 0.9096 0.4155 -15.3764 69.2119)"
+                                  class="st0"
+                                  width="1"
+                                  height="93.1"
+                                />
+                                <rect
+                                  x="-0.4"
+                                  y="46.1"
+                                  transform="matrix(0.9898 -0.1425 0.1425 0.9898 -6.1646 7.0506)"
+                                  class="st0"
+                                  width="93.1"
+                                  height="1"
+                                />
+                                <rect
+                                  x="-0.4"
+                                  y="46.1"
+                                  transform="matrix(0.7556 -0.655 0.655 0.7556 -19.2157 41.618)"
+                                  class="st0"
+                                  width="93.1"
+                                  height="1"
+                                />
+                                <rect
+                                  x="-0.4"
+                                  y="46.1"
+                                  transform="matrix(0.2812 -0.9597 0.9597 0.2812 -11.5032 77.7858)"
+                                  class="st0"
+                                  width="93.1"
+                                  height="1"
+                                />
+                                <rect
+                                  x="45.7"
+                                  y="0"
+                                  transform="matrix(0.9595 -0.2817 0.2817 0.9595 -11.2479 14.8866)"
+                                  class="st0"
+                                  width="1"
+                                  height="93.1"
+                                />
+                                <rect
+                                  x="45.7"
+                                  y="0"
+                                  transform="matrix(0.6549 -0.7557 0.7557 0.6549 -19.2631 50.9572)"
+                                  class="st0"
+                                  width="1"
+                                  height="93.1"
+                                />
+                                <rect
+                                  x="45.7"
+                                  y="0"
+                                  transform="matrix(0.1423 -0.9898 0.9898 0.1423 -6.4999 85.629)"
+                                  class="st0"
+                                  width="1"
+                                  height="93.1"
+                                />
+                                <rect
+                                  x="-0.4"
+                                  y="46.1"
+                                  transform="matrix(0.9097 -0.4153 0.4153 0.9097 -15.1716 23.381)"
+                                  class="st0"
+                                  width="93.1"
+                                  height="1"
+                                />
+                                <rect
+                                  x="-0.4"
+                                  y="46.1"
+                                  transform="matrix(0.5411 -0.8409 0.8409 0.5411 -17.9774 60.1901)"
+                                  class="st0"
+                                  width="93.1"
+                                  height="1"
+                                />
+                              </g>
+                            </svg>
+                          </div>
+                        </div>
+                        <!-- single item -->
+                        <div class="item item-regular text">
+                          <a
+                            class="item__text"
+                            href="mailto:sales.nststone@gmail.com"
+                            >Contact us</a
+                          >
+                          <div class="item__image">
+                            <svg
+                              xmlns="http://www.w3.org/2000/svg"
+                              viewBox="0 0 92.3 93.1"
+                              fill="currentColor"
+                            >
+                              <g>
+                                <rect
+                                  x="45.7"
+                                  class="st0"
+                                  width="1"
+                                  height="93.1"
+                                />
+                                <rect
+                                  x="45.7"
+                                  y="0"
+                                  transform="matrix(0.8412 -0.5407 0.5407 0.8412 -17.8476 32.3497)"
+                                  class="st0"
+                                  width="1"
+                                  height="93.1"
+                                />
+                                <rect
+                                  x="45.7"
+                                  y="0"
+                                  transform="matrix(0.4155 -0.9096 0.9096 0.4155 -15.3764 69.2119)"
+                                  class="st0"
+                                  width="1"
+                                  height="93.1"
+                                />
+                                <rect
+                                  x="-0.4"
+                                  y="46.1"
+                                  transform="matrix(0.9898 -0.1425 0.1425 0.9898 -6.1646 7.0506)"
+                                  class="st0"
+                                  width="93.1"
+                                  height="1"
+                                />
+                                <rect
+                                  x="-0.4"
+                                  y="46.1"
+                                  transform="matrix(0.7556 -0.655 0.655 0.7556 -19.2157 41.618)"
+                                  class="st0"
+                                  width="93.1"
+                                  height="1"
+                                />
+                                <rect
+                                  x="-0.4"
+                                  y="46.1"
+                                  transform="matrix(0.2812 -0.9597 0.9597 0.2812 -11.5032 77.7858)"
+                                  class="st0"
+                                  width="93.1"
+                                  height="1"
+                                />
+                                <rect
+                                  x="45.7"
+                                  y="0"
+                                  transform="matrix(0.9595 -0.2817 0.2817 0.9595 -11.2479 14.8866)"
+                                  class="st0"
+                                  width="1"
+                                  height="93.1"
+                                />
+                                <rect
+                                  x="45.7"
+                                  y="0"
+                                  transform="matrix(0.6549 -0.7557 0.7557 0.6549 -19.2631 50.9572)"
+                                  class="st0"
+                                  width="1"
+                                  height="93.1"
+                                />
+                                <rect
+                                  x="45.7"
+                                  y="0"
+                                  transform="matrix(0.1423 -0.9898 0.9898 0.1423 -6.4999 85.629)"
+                                  class="st0"
+                                  width="1"
+                                  height="93.1"
+                                />
+                                <rect
+                                  x="-0.4"
+                                  y="46.1"
+                                  transform="matrix(0.9097 -0.4153 0.4153 0.9097 -15.1716 23.381)"
+                                  class="st0"
+                                  width="93.1"
+                                  height="1"
+                                />
+                                <rect
+                                  x="-0.4"
+                                  y="46.1"
+                                  transform="matrix(0.5411 -0.8409 0.8409 0.5411 -17.9774 60.1901)"
+                                  class="st0"
+                                  width="93.1"
+                                  height="1"
+                                />
+                              </g>
+                            </svg>
+                          </div>
+                        </div>
+                        <!-- single item -->
+                      </div>
+                    </div>
+                  </div>
+                  <!-- Content Block - Footer Marquee End -->
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- Inner Section Off-canvas Content (Footer Marquee Block) Start -->
+        </div>
+      </section>
+      <!-- Inner Section - Contact - End -->
+    </main>
+    <!-- Page Content End -->
+
+    <!-- Bottom Background Images Start -->
+    <div class="bottom__background bottom-bg-01">
+      <div class="bottom-bg-01__02 animate-card-2">
+        <img
+          class="hero-img"
+          src="img/backgrounds/stonehaha.webp"
+          alt="Template background image"
+        />
+      </div>
+      <div class="bottom-bg-01__01 animate-card-2">
+        <img
+          class="hero-img"
+          src="img/backgrounds/stonehaha.webp"
+          alt="Template background image"
+        />
+      </div>
+    </div>
+    <!-- Bottom Background Images End -->
+
+    <div
+      style="
+        display: flex;
+        width: 100%;
+        text-decoration: none;
+        text-align: center;
+      "
+      class="col-12 col-md-6 col-lg-3 contact-data__item grid-item"
+    >
+      <div
+        style="
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          justify-content: center;
+          width: 100%;
+        "
+        class="contact-data__title tagline-chapter animate-in-up"
+      >
+        <span
+          style="color: #5d93ac; text-decoration: none; word-wrap: break-word"
+          >Copyright © 2024 Natural Stone Traders Inc. | All Rights
+          Reserved.</span
+        >
+        <span style="color: #a17c30; opacity: 0.7; text-decoration: underline"
+          >Powered by Knaptix</span
+        >
+      </div>
+    </div>
+    <!-- Mobile Menu Bottom Placeholder Start -->
+    <div class="header-offset"></div>
+    <!-- Mobile Menu Bottom Placeholder End -->
+
+    <!-- To Top Button Start -->
+    <a href="#0" id="to-top" class="btn btn-to-top slide-up">
+      <i class="ph ph-arrow-up"></i>
+    </a>
+    <!-- To Top Button End -->
+
+    <!-- Root element of PhotoSwipe. Must have class pswp. -->
+    <div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+      <!-- Background of PhotoSwipe.
+      It's a separate element, as animating opacity is faster than rgba(). -->
+      <div class="pswp__bg"></div>
+
+      <!-- Slides wrapper with overflow:hidden. -->
+      <div class="pswp__scroll-wrap">
+        <!-- Container that holds slides. PhotoSwipe keeps only 3 slides in DOM to save memory. -->
+        <!-- don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+          <div class="pswp__item"></div>
+          <div class="pswp__item"></div>
+          <div class="pswp__item"></div>
+        </div>
+
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+          <div class="pswp__top-bar">
+            <!--  Controls are self-explanatory. Order can be changed. -->
+
+            <div class="pswp__counter"></div>
+
+            <button
+              class="pswp__button pswp__button--close link-s"
+              title="Close (Esc)"
+            ></button>
+
+            <button
+              class="pswp__button pswp__button--share link-s"
+              title="Share"
+            ></button>
+
+            <button
+              class="pswp__button pswp__button--fs link-s"
+              title="Toggle fullscreen"
+            ></button>
+
+            <button
+              class="pswp__button pswp__button--zoom link-s"
+              title="Zoom in/out"
+            ></button>
+
+            <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+            <!-- element will get class pswp__preloader-active when preloader is running -->
+            <div class="pswp__preloader">
+              <div class="pswp__preloader__icn">
+                <div class="pswp__preloader__cut">
+                  <div class="pswp__preloader__donut"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div
+            class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap"
+          >
+            <div class="pswp__share-tooltip"></div>
+          </div>
+
+          <button
+            class="pswp__button pswp__button--arrow--left link-s"
+            title="Previous (arrow left)"
+          ></button>
+
+          <button
+            class="pswp__button pswp__button--arrow--right link-s"
+            title="Next (arrow right)"
+          ></button>
+
+          <div class="pswp__caption">
+            <div class="pswp__caption__center"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Load Scripts Start -->
+    <script src="js/libs.min.js"></script>
+    <script src="js/gallery-init.js"></script>
+    <script src="js/app.js"></script>
+    <script src="js/script.js"></script>
+    <script>
+      // The array of areas we serve
+      const areasWeServe = [
+        "Ajax",
+        "Barrie",
+        "Bolton",
+        "Brampton",
+        "Caledon",
+        "Chatham",
+        "Hamilton",
+        "Kingston",
+        "Markham",
+        "Scarborough",
+        "Ottawa",
+        "Pickering",
+        "Oro Medonte",
+        "Sunderland",
+        "Stouffville",
+        "Richmond Hill",
+        "Toronto",
+        "Uxbridge",
+        "Whitby",
+        "Quebec",
+        "Montreal",
+      ];
+
+      // Target the div with the id 'areas-we-serve'
+      const areasContainer = document.getElementById("areas-we-serve");
+
+      document.addEventListener("DOMContentLoaded", function () {
+        // Show the popup after 3-4 seconds (3500ms)
+        setTimeout(function () {
+          document.getElementById("cataloguePopup").style.display = "flex";
+        }, 3500);
+      });
+
+      function closePopup() {
+        document.getElementById("cataloguePopup").style.display = "none";
+      }
+      // Check if the container exists
+      if (areasContainer) {
+        // Iterate over the areas and create a span for each
+        areasWeServe.forEach((area) => {
+          const span = document.createElement("span");
+          span.className = "areas-serve"; // Add the desired class
+          span.textContent = area; // Set the text content
+          areasContainer.appendChild(span); // Append the span to the container
+        });
+      } else {
+        console.error("Div with id 'areas-we-serve' not found.");
+      }
+      // document.addEventListener("DOMContentLoaded", function () {
+      // const slider = document.querySelector(".slider");
+      // const images = document.querySelectorAll(".slider img");
+      // const prevBtn = document.querySelector(".prev");
+      // const nextBtn = document.querySelector(".next");
+
+      // let index = 0;
+      // const totalImages = images.length;
+
+      // function updateSlider() {
+      //   slider.style.transform = `translateX(-${index * 100}%)`;
+      // }
+
+      // nextBtn.addEventListener("click", function () {
+      //   index = (index + 1) % totalImages;
+      //   updateSlider();
+      // });
+
+      // prevBtn.addEventListener("click", function () {
+      //   index = (index - 1 + totalImages) % totalImages;
+      //   updateSlider();
+      // });
+
+      // // Auto-Slide every 5 seconds
+      // setInterval(() => {
+      //   index = (index + 1) % totalImages;
+      //   updateSlider();
+      // }, 5000);
+      var swiper = new Swiper(".mySwiper", {
+        spaceBetween: 10,
+        centeredSlides: true,
+        autoplay: {
+          delay: 3000,
+          disableOnInteraction: false,
+        },
+        loop: true,
+        pagination: {
+          el: ".swiper-pagination",
+          clickable: true,
+        },
+        navigation: {
+          nextEl: ".swiper-button-next",
+          prevEl: ".swiper-button-prev",
+        },
+      });
+      //});
+    </script>
+
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script> -->
+    <!-- <script src="https://cdn.jsdelivr.net/gh/mrdoob/three.js@r128/examples/js/loaders/GLTFLoader.js"></script> -->
+    <!-- <script src="three.js"></script> -->
+
+    <!-- <script src="js/script.js"></script> -->
+    <!-- Load Scripts End -->
+  </body>
+
+  <!-- Mirrored from mixdesign.club/themeforest/blayden/index-demo-1.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 08 Nov 2024 10:04:49 GMT -->
+</html>

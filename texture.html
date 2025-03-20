@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Textures Gallery</title>
+    <link rel="stylesheet" type="text/css" href="css/plugins.css" />
+    <link rel="stylesheet" type="text/css" href="css/main.css" />
+    <style>
+      /* Dark Mode Styles */
+      body {
+        font-family: 'Arial', sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #1e1e1e;
+        color: #fff;
+      }
+
+      .search-bar {
+        padding: 20px ;
+        margin-top: 100px;
+        display: flex;
+        justify-content: center;
+        background-image: url("image/BG/photo-1726987235665-db66e64b6422.jpg");
+        /* background: linear-gradient(90deg, #242424, #665f5f); Gradient from purple to blue */
+        
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+      }
+
+      .search-bar input {
+        width: 80%;
+        max-width: 500px;
+        padding: 12px 20px;
+        font-size: 16px;
+        border: 1px solid #444;
+        border-radius: 30px;
+        outline: none;
+        background-color: #333;
+        color: #fff;
+      }
+
+      .search-bar input:focus {
+        border-color: #007bff;
+      }
+
+      .texture-container {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 20px;
+        padding: 40px;
+        margin-top: 20px;
+      }
+
+      .texture-item {
+        text-align: center;
+        padding: 10px;
+        background: #2c2c2c;
+        border: 1px solid #444;
+        border-radius: 10px;
+        overflow: hidden;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+        transition: transform 0.3s ease;
+        width: 250px;  /* Fixed width */
+        margin: 0 auto; /* Center it when there's a single item */
+      }
+
+      .texture-item:hover {
+        transform: translateY(-5px);
+      }
+
+      .texture-item img {
+        width: 100%;
+        height: 200px;
+        object-fit: cover;
+        border-bottom: 1px solid #444;
+      }
+
+      .texture-item h3 {
+        font-size: 18px;
+        margin: 15px 0;
+        color: #fff;
+      }
+
+      .buttons {
+        display: flex;
+        justify-content: space-between;
+        padding: 15px;
+      }
+
+      /* Premium Button Styles with Gradient */
+      .buttons button {
+        flex: 1;
+        padding: 12px;
+        /* font-weight: bold; */
+        cursor: pointer;
+        border-radius: 5px;
+        margin: 0 5px;
+        border: none;
+        transition: transform 0.3s ease, opacity 0.3s ease;
+      }
+
+      .buttons button:hover {
+        opacity: 0.9;
+        transform: scale(1.05);
+      }
+
+      .buttons button:first-child {
+        background: linear-gradient(112.1deg, rgb(32, 38, 57), rgb(0, 0, 0));
+        /* background: linear-gradient(135deg, #ff7e5f, #feb47b);  */
+        color: #fff;
+      }
+
+      .buttons button:last-child {
+        background: linear-gradient(135deg, #6a11cb, #2575fc); /* Gradient from purple to blue */
+        color: #fff;
+      }
+
+      @media (max-width: 768px) {
+        .buttons {
+          flex-direction: column;
+        }
+
+        .buttons button {
+          margin-bottom: 10px;
+        }
+      }
+
+      
+    </style>
+  </head>
+  <body>
+    <div id="mobileMenu" class="mobile-menu">
+      <button id="mobileMenuClose" onclick="closeMobileMenu()" class="mobile-menu__close-btn">
+        <i class="ph ph-x-circle"></i>
+      </button>
+      <nav>
+        <ul class="mobile-menu__list">
+          <li class="mobile-menu__item">
+            <a class="mobile-menu__link btn" href="/index.html#home">
+              <i class="ph ph-house-simple"></i>
+              <span class="mobile-menu__caption">Home</span>
+            </a>
+          </li>
+          <li class="mobile-menu__item">
+            <a class="mobile-menu__link btn" href="/gallery.html">
+              <i class="ph ph-squares-four"></i>
+              <span class="mobile-menu__caption">Gallery</span>
+            </a>
+          </li>
+          <li class="mobile-menu__item">
+            <a class="mobile-menu__link btn" href="/products.html">
+              <i class="ph ph-sticker"></i>
+              <span class="mobile-menu__caption">Products</span>
+            </a>
+          </li>
+          <!-- <li class="mobile-menu__item">
+            <a class="mobile-menu__link btn" href="/workflow.html">
+              <i class="ph ph-article"></i>
+              <span class="mobile-menu__caption">Workflow</span>
+            </a>
+          </li> -->
+          <li class="mobile-menu__item">
+            <a class="mobile-menu__link btn" href="/categories.html">
+              <i class="ph ph-user"></i>
+              <span class="mobile-menu__caption">Categories</span>
+            </a>
+          </li>
+          <li class="mobile-menu__item">
+            <a class="mobile-menu__link btn" href="/about.html">
+              <i class="ph ph-envelope"></i>
+              <span class="mobile-menu__caption">About</span>
+            </a>
+          </li>
+          <li class="mobile-menu__item">
+            <a class="mobile-menu__link btn" href="/index.html#contact">
+              <i class="ph ph-envelope"></i>
+              <span class="mobile-menu__caption">Contact</span>
+            </a>
+          </li>
+        </ul>
+      </nav>
+    </div>
+    
+    
+    <!-- Mobile Menu Toggle Button -->
+    <button id="mobileMenuToggle" onclick="openMobileMenu()" class="mobile-menu-toggle-btn d-md-none"><i class="ph ph-text-indent"></i></button>
+    <button id="back-button" class="back-button" onclick="goBack()">
+      <i class="ph ph-arrow-u-up-left"></i>
+    </button>
+   <!-- Header Start -->
+   <header style="z-index: 1000;" id="header" class="header d-flex justify-content-center loading__fade">
+    <!-- Navigation Menu Start -->
+    <div class="header__navigation d-flex justify-content-start">
+      <nav id="menu" class="menu">
+        <ul class="menu__list d-flex justify-content-start">
+          <li class="menu__item">
+            <a class="menu__link btn" href="/index.html#home">
+              <span class="menu__caption">Home</span>
+              <i class="ph ph-house-simple"></i>
+            </a>
+          </li>
+          <li class="menu__item">
+            <a class="menu__link btn" href="/gallery.html">
+              <span class="menu__caption">Gallery</span>
+              <i class="ph ph-squares-four"></i>
+            </a>
+          </li>
+          <li class="menu__item">
+            <a class="menu__link btn" href="/products.html">
+              <span class="menu__caption">Products</span>
+              <i class="ph ph-sticker"></i>
+            </a>
+          </li>
+          
+          <li class="menu__item">
+            <a class="menu__link btn" href="categories.html">
+              <span class="menu__caption">Categories</span>
+              <i class="ph ph-user"></i>
+            </a>
+          </li>
+          <li class="menu__item">
+            <a class="menu__link btn" href="/about.html">
+              <span class="menu__caption">About</span>
+              <i class="ph ph-envelope"></i>
+            </a>
+          </li>
+          <li class="menu__item">
+            <a class="menu__link btn" href="index.html#contact">
+              <span class="menu__caption">Contact</span>
+              <i class="ph ph-envelope"></i>
+            </a>
+          </li>
+        </ul>
+      </nav>
+    </div>
+    <!-- Navigation Menu End -->
+  </header>
+  <!-- Header End -->
+
+    <!-- Fixed Logo Start -->
+    <div class="logo loading__fade">
+      <a href="/index.html" class="logo__link">
+        <img class="logo-img" src="image/newlogo.png" alt="" />
+      </a>
+    </div>
+    <!-- Fixed Logo End -->
+
+    <!-- Search Bar -->
+    <div class="search-bar">
+      <input
+        type="text"
+        id="search-bar"
+        placeholder="Search for textures..."
+        oninput="filterTextures()"
+      />
+    </div>
+
+    <!-- Textures Gallery -->
+    <div class="texture-container" id="texture-container"></div>
+
+    <script>
+      // JSON data with slugs
+     
+
+      // Render textures
+      fetch('js/texture.json')
+        .then(response => response.json())
+        .then(data => {
+          const container = document.getElementById("texture-container");
+
+          // Render textures dynamically
+          data.textures.forEach((texture) => {
+            const textureItem = document.createElement("div");
+            textureItem.className = "texture-item";
+            textureItem.innerHTML = `
+              <img src="${texture.path}" alt="${texture.name}" />
+              <h3>${texture.name}</h3>
+              <div class="buttons">
+                <button onclick="viewInAR('${texture.slug}')">View in AR</button>
+                <button onclick="viewIn3D('${texture.slug}')">View in 3D</button>
+              </div>
+            `;
+            container.appendChild(textureItem);
+          });
+        })
+        .catch(error => {
+          console.error('Error fetching texture data:', error);
+        });
+      // Search functionality
+      function filterTextures() {
+        const query = document.getElementById("search-bar").value.toLowerCase();
+        const items = document.querySelectorAll(".texture-item");
+        items.forEach((item) => {
+          const name = item.querySelector("h3").textContent.toLowerCase();
+          item.style.display = name.includes(query) ? "block" : "none";
+        });
+      }
+
+      // Actions
+      function viewInAR(textureSlug) {
+        window.location.href = `arr.html?texture=${encodeURIComponent(textureSlug)}`;
+      }
+
+      function viewIn3D(textureSlug) {
+        window.location.href = `sim.html?texture=${encodeURIComponent(textureSlug)}`;
+      }
+    </script>
+  </body>
+</html>

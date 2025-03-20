@@ -1,0 +1,22 @@
+{
+  "textures": [
+    { "name": "Dove Grey Sandstone", "path": "texture/stone2.jpg", "slug": "dove-grey-sandstone" },
+    { "name": "Grey Rundle Sandstone", "path": "texture/stone2.jpg", "slug": "grey-rundle-sandstone" },
+    { "name": "Slate Grey Sandstone", "path": "texture/stone2.jpg", "slug": "slate-grey-sandstone" },
+    { "name": "Bronte/Brown Sandstone", "path": "texture/stone2.jpg", "slug": "bronte-brown-sandstone" },
+    { "name": "Imperial Black Sandstone", "path": "texture/stone2.jpg", "slug": "imperial-black-sandstone" },
+    { "name": "Pristine White Sandstone", "path": "texture/stone2.jpg", "slug": "pristine-white-sandstone" },
+    { "name": "Ivory Rundle Sandstone", "path": "texture/stone2.jpg", "slug": "ivory-rundle-sandstone" },
+    { "name": "Lavender Sandstone", "path": "texture/stone2.jpg", "slug": "lavender-sandstone" },
+    { "name": "Canary Rundle Sandstone", "path": "texture/stone2.jpg", "slug": "canary-rundle-sandstone" },
+    { "name": "Dusky Rundle Sandstone", "path": "texture/stone2.jpg", "slug": "dusky-rundle-sandstone" },
+    { "name": "Silver Valley Limestone", "path": "texture/stone2.jpg", "slug": "silver-valley-limestone" },
+    { "name": "Kota Black Limestone", "path": "texture/stone2.jpg", "slug": "kota-black-limestone" },
+    { "name": "Antique Black Limestone", "path": "texture/stone2.jpg", "slug": "antique-black-limestone" },
+    { "name": "Galaxy Black Granite", "path": "texture/stone2.jpg", "slug": "galaxy-black-granite" },
+    { "name": "Dark Ebony Granite", "path": "texture/stone2.jpg", "slug": "dark-ebony-granite" },
+    { "name": "Raven Black Granite", "path": "texture/stone2.jpg", "slug": "raven-black-granite" },
+    { "name": "Basalt Granite", "path": "texture/stone2.jpg", "slug": "basalt-granite" },
+    { "name": "Urban Grey Marble", "path": "texture/stone2.jpg", "slug": "urban-grey-marble" }
+  ]
+}

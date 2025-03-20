@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Simulation | Natural Stone Traders Inc</title>
+    <link rel="stylesheet" href="css/main.css" />
+    <link rel="icon" href="image/newlogo.png" sizes="any" />
+    <link rel="stylesheet" href="css/ar.css" />
+    <style>
+      body {
+        margin: 0;
+        font-family: Arial, sans-serif;
+        background-color: #181818;
+        color: #ffffff;
+        overflow-x: hidden;
+      }
+
+      .dashboard {
+        display: flex;
+      }
+
+      .sidebar {
+        width: 260px;
+        height: 100vh;
+        padding: 20px;
+        background-color: #232323;
+        border-right: 2px solid #333;
+        box-shadow: 3px 0 5px rgba(0, 0, 0, 0.3);
+        display: flex;
+        flex-direction: column;
+        position: fixed;
+        transition: transform 0.3s ease-in-out;
+        z-index: 1000;
+      }
+
+      .sidebar h2 {
+        margin-top: 0;
+        font-size: 1.4em;
+        color: #f5f5f5;
+      }
+
+      main {
+        flex-grow: 1;
+        height: 100vh;
+        position: relative;
+        background-color: #fff;
+        padding-left: 260px;
+        transition: padding-left 0.3s ease-in-out;
+      }
+
+      .control-group {
+        margin-top: 20px;
+      }
+
+      label {
+        display: block;
+        margin-bottom: 5px;
+        color: #d3d3d3;
+      }
+
+      input[type="range"],
+      input[type="color"] {
+        width: 100%;
+        margin-bottom: 15px;
+        outline: none;
+      }
+
+      input[type="color"] {
+        padding: 5px;
+        background-color: #333;
+        border: none;
+        border-radius: 4px;
+        height: 40px;
+      }
+
+      .menu-button {
+        position: fixed;
+        top: 10px;
+        left: 10px;
+        background-color: #333;
+        color: #fff;
+        border: none;
+        padding: 10px 15px;
+        font-size: 16px;
+        cursor: pointer;
+        border-radius: 5px;
+        z-index: 1100;
+        transition: background-color 0.3s ease;
+      }
+
+      .menu-button:hover {
+        background-color: #444;
+      }
+
+      .back {
+        font-size: 16px;
+        color: #fff;
+        padding: 10px;
+        background-color: #333;
+        text-align: center;
+        border-radius: 5px;
+        text-decoration: none;
+        display: inline-block;
+        margin-bottom: 20px;
+        transition: background-color 0.3s ease;
+      }
+
+      .back:hover {
+        background-color: #444;
+      }
+
+      @media (max-width: 768px) {
+        .menu-button {
+          display: block;
+        }
+
+        .sidebar {
+          transform: translateX(-260px); /* Initially hide the sidebar off-screen */
+        }
+
+        .sidebar.open {
+          transform: translateX(0); /* Move the sidebar into view */
+        }
+
+        main {
+          padding-left: 0;
+        }
+      }
+
+      /* Style for the logo */
+      .logooo {
+        width: 100px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="dashboard">
+      <button class="menu-button" id="menuButton">☰</button> <!-- Menu button to toggle sidebar -->
+      <aside class="sidebar" id="sidebar">
+        <div style="display: flex;justify-content: center; padding: 10px;">
+          <img src="image/newlogo.png" alt="Logo" class="logooo" />
+        </div>
+        <a class="back" href="texture.html">Back</a>
+        <h2 id="#texture-name"></h2>
+        <div class="control-group">
+          <h2>Light Controls</h2>
+          <label for="light-intensity">Ambient Light Intensity:</label>
+          <input
+            type="range"
+            id="light-intensity"
+            min="0"
+            max="2"
+            step="0.1"
+            value="0.5"
+          />
+          <label for="light-intensity2">Directional Light Intensity:</label>
+          <input
+            type="range"
+            id="light-intensity2"
+            min="0"
+            max="2"
+            step="0.1"
+            value="0.5"
+          />
+          <label for="bg-color">Background Color:</label>
+          <input type="color" id="bg-color" value="#181818" />
+        </div>
+      </aside>
+      <main id="simulation-area"></main>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/jsm/webxr/ARButton.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+
+    <script>
+      let cuboid; // Declare cuboid globally
+
+      // Toggle sidebar open/close
+      document.getElementById("menuButton").addEventListener("click", function () {
+        document.getElementById("sidebar").classList.toggle("open");
+      });
+
+      function init() {
+        const params = new URLSearchParams(window.location.search);
+        const textureSlug = params.get("texture");
+
+        console.log(textureSlug);
+
+        if (!textureSlug) {
+          alert("No texture provided");
+          return;
+        }
+        let textureName = ''; 
+        // Fetch the texture data from texture.json
+        fetch("js/texture.json")
+          .then(response => response.json())
+          .then(data => {
+            const textureData = data.textures.find(texture => texture.slug === textureSlug);
+
+            // Update texture name in the sidebar
+            if (!textureData) {
+              alert("Texture not found");
+              return;
+            }
+            console.log(textureData.name);  
+            const texturePath = textureData.path;
+            // Now that cuboid is defined, we can load the texture
+            loadTexture(texturePath);
+          })
+          .catch(error => {
+            console.error("Error loading texture data:", error);
+            alert("Error loading texture data");
+          });
+
+        const scene = new THREE.Scene();
+        const camera = new THREE.PerspectiveCamera(
+          75,
+          (window.innerWidth - 260) / window.innerHeight,
+          0.1,
+          1000
+        );
+        camera.position.set(0, 1, 6);
+        const renderer = new THREE.WebGLRenderer({
+          antialias: true,
+          alpha: true,
+        });
+        console.log(textureName)
+        renderer.setSize(window.innerWidth - 260, window.innerHeight);
+        renderer.shadowMap.enabled = true;
+        document
+          .getElementById("simulation-area")
+          .appendChild(renderer.domElement);
+
+        // Ambient light
+        const ambientLight = new THREE.AmbientLight(0xffffff, 0.5); // Default intensity
+        scene.add(ambientLight);
+
+        // Fixed Directional light
+        const directionalLight = new THREE.DirectionalLight(0xffffff, 1);
+        directionalLight.position.set(0, 5, 0);
+        directionalLight.castShadow = true;
+        scene.add(directionalLight);
+
+        // Create a single material cuboid
+        const cuboidMaterial = new THREE.MeshStandardMaterial({
+          roughness: 0.8,
+          metalness: 0.1,
+        });
+       
+        const cuboidGeometry = new THREE.BoxGeometry(4, 1, 4);
+        cuboid = new THREE.Mesh(cuboidGeometry, cuboidMaterial); // Assign cuboid globally
+        cuboid.castShadow = true;
+        cuboid.receiveShadow = true;
+        cuboid.position.set(0, 0.5, 0); // Slightly raised to avoid intersection with the plane
+        cuboid.rotation.x = Math.PI / 6; // Rotate the cuboid
+        cuboid.rotation.y = Math.PI / 4; // Rotate the cuboid
+        scene.add(cuboid);
+
+        // Create a plane to receive shadows
+        const planeGeometry = new THREE.PlaneGeometry(100, 100);
+        const planeMaterial = new THREE.ShadowMaterial({ opacity: 0.3 });
+        const plane = new THREE.Mesh(planeGeometry, planeMaterial);
+        plane.rotation.x = -Math.PI / 2; // Rotate to lie flat
+        plane.position.y = -3; // Place it at the base
+        plane.receiveShadow = true;
+        scene.add(plane);
+
+        // Hovering effect
+        let hoverDirection = 1;
+        let hoverSpeed = 0.002;
+        let hoverAmplitude = 0.2; // The height the cuboid will float up and down
+
+        // Handle touch or mouse controls to rotate the cuboid
+        let isTouching = false;
+        let prevX = 0;
+        let prevY = 0;
+
+        function onTouchStart(event) {
+          isTouching = true;
+          prevX = event.touches ? event.touches[0].clientX : event.clientX;
+          prevY = event.touches ? event.touches[0].clientY : event.clientY;
+        }
+
+        function onTouchMove(event) {
+          if (!isTouching) return;
+
+          const currentX = event.touches
+            ? event.touches[0].clientX
+            : event.clientX;
+          const currentY = event.touches
+            ? event.touches[0].clientY
+            : event.clientY;
+
+          const deltaX = currentX - prevX;
+          const deltaY = currentY - prevY;
+
+          cuboid.rotation.y += deltaX * 0.01;
+          cuboid.rotation.x += deltaY * 0.01;
+
+          prevX = currentX;
+          prevY = currentY;
+        }
+
+        function onTouchEnd() {
+          isTouching = false;
+        }
+
+        // Add event listeners for touch or mouse events
+        document.addEventListener("mousedown", onTouchStart);
+        document.addEventListener("mousemove", onTouchMove);
+        document.addEventListener("mouseup", onTouchEnd);
+
+        document.addEventListener("touchstart", onTouchStart);
+        document.addEventListener("touchmove", onTouchMove);
+        document.addEventListener("touchend", onTouchEnd);
+
+        // Control Ambient Light Intensity
+        document
+          .getElementById("light-intensity")
+          .addEventListener("input", (event) => {
+            ambientLight.intensity = event.target.value;
+          });
+
+        // Control background color
+        document
+          .getElementById("light-intensity2")
+          .addEventListener("input", (event) => {
+            directionalLight.intensity = event.target.value;
+          });
+
+        document
+          .getElementById("bg-color")
+          .addEventListener("input", (event) => {
+            scene.background = new THREE.Color(event.target.value);
+          });
+
+        function adjustSceneForDevice() {
+          const isMobile = window.innerWidth < 768; // Example breakpoint for mobile devices
+          const width = isMobile ? window.innerWidth : window.innerWidth - 260; // Full width for mobile
+          const height = window.innerHeight;
+
+          camera.aspect = width / height;
+          camera.updateProjectionMatrix();
+
+          renderer.setSize(width, height);
+
+          if (isMobile) {
+            cuboid.scale.set(0.7, 0.7, 0.7); // Scale up for better visibility
+            cuboid.position.set(0, 0.5, 0); // Recenter if needed
+          } else {
+            cuboid.scale.set(1, 1, 1);
+            cuboid.position.set(0, 0.5, 0);
+          }
+        }
+
+        window.addEventListener("resize", adjustSceneForDevice);
+
+        adjustSceneForDevice();
+
+        function animate() {
+          requestAnimationFrame(animate);
+          cuboid.position.y += hoverDirection * hoverSpeed;
+
+          if (cuboid.position.y > 0.5 + hoverAmplitude) {
+            hoverDirection = -1;
+          } else if (cuboid.position.y < 0.5 - hoverAmplitude) {
+            hoverDirection = 1;
+          }
+
+          renderer.render(scene, camera);
+        }
+        animate();
+      }
+
+      function loadTexture(texturePath) {
+        const textureLoader = new THREE.TextureLoader();
+        textureLoader.load(texturePath, function (texture) {
+          // Ensure cuboid exists before applying the texture
+          if (cuboid) {
+            const cuboidMaterial = new THREE.MeshStandardMaterial({
+              map: texture,
+              roughness: 0.8,
+              metalness: 0.1,
+            });
+
+            // Update cuboid material with new texture
+            cuboid.material = cuboidMaterial;
+          }
+        });
+      }
+
+      window.onload = init;
+    </script>
+  </body>
+</html>

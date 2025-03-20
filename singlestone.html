@@ -1,0 +1,837 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Pavers</title>
+    <link rel="icon" href="../image/newlogo.png" sizes="any" />
+
+    <link rel="stylesheet" type="text/css" href="../css/plugins.css" />
+    <link rel="stylesheet" type="text/css" href="../css/main.css" />
+  </head>
+  <style>
+    .contact-data-wrapper {
+    display: flex;
+    flex-direction: row; /* Aligns sections horizontally */
+    justify-content: space-between; /* Spaces them evenly */
+    flex-wrap: wrap; /* Ensures responsiveness */
+    gap: 30px; /* Adds spacing between sections */
+  }
+
+  .contact-data__item {
+    flex: 1; /* Distributes space evenly */
+    min-width: 200px; /* Prevents items from shrinking */
+  }
+
+  .contact-data__item .contact-data__text {
+    line-height: 1.2; /* Reduce default line spacing */
+    margin-bottom: 5px; /* Reduce gap between lines */
+}
+
+
+  @media (max-width: 768px) {
+    .contact-data-wrapper {
+      flex-direction: column; /* Stack items on mobile */
+      align-items: center;
+    }
+  }
+  </style>
+  <body style="overflow-x: hidden">
+    <!-- Mobile Navigation -->
+    <div id="mobileMenu" class="mobile-menu">
+      <button
+        id="mobileMenuClose"
+        onclick="closeMobileMenu()"
+        class="mobile-menu__close-btn"
+      >
+        <i class="ph ph-x-circle"></i>
+      </button>
+      <nav>
+        <ul class="mobile-menu__list">
+          <li class="mobile-menu__item">
+            <a class="mobile-menu__link btn" href="/index.html#home">
+              <i class="ph ph-house-simple"></i>
+              <span class="mobile-menu__caption">Home</span>
+            </a>
+          </li>
+          <li class="mobile-menu__item">
+            <a class="mobile-menu__link btn" href="/gallery.html">
+              <i class="ph ph-squares-four"></i>
+              <span class="mobile-menu__caption">Gallery</span>
+            </a>
+          </li>
+          <li class="mobile-menu__item">
+            <a class="mobile-menu__link btn" href="/products.html">
+              <i class="ph ph-sticker"></i>
+              <span class="mobile-menu__caption">Products</span>
+            </a>
+          </li>
+          <!-- <li class="mobile-menu__item">
+            <a class="mobile-menu__link btn" href="/workflow.html">
+              <i class="ph ph-article"></i>
+              <span class="mobile-menu__caption">Workflow</span>
+            </a>
+          </li> -->
+          <li class="mobile-menu__item">
+            <a class="mobile-menu__link btn" href="/categories.html">
+              <i class="ph ph-user"></i>
+              <span class="mobile-menu__caption">Categories</span>
+            </a>
+          </li>
+          <li class="mobile-menu__item">
+            <a class="mobile-menu__link btn" href="/about.html">
+              <i class="ph ph-envelope"></i>
+              <span class="mobile-menu__caption">About</span>
+            </a>
+          </li>
+          <li class="mobile-menu__item">
+            <a class="mobile-menu__link btn" href="/index.html#contact">
+              <i class="ph ph-envelope"></i>
+              <span class="mobile-menu__caption">Contact</span>
+            </a>
+          </li>
+        </ul>
+      </nav>
+    </div>
+
+    <!-- Mobile Menu Toggle Button -->
+    <button
+      id="mobileMenuToggle"
+      onclick="openMobileMenu()"
+      class="mobile-menu-toggle-btn d-md-none"
+    >
+      <i class="ph ph-text-indent"></i>
+    </button>
+    <button id="back-button" class="back-button" onclick="goBack()">
+      <i class="ph ph-arrow-u-up-left"></i>
+    </button>
+
+    <!-- Header Start -->
+    <header
+      style="z-index: 1000"
+      id="header"
+      class="header d-flex justify-content-center loading__fade"
+    >
+      <!-- Navigation Menu Start -->
+      <div class="header__navigation d-flex justify-content-start">
+        <nav id="menu" class="menu">
+          <ul class="menu__list d-flex justify-content-start">
+            <li class="menu__item">
+              <a class="menu__link btn" href="/index.html#home">
+                <span class="menu__caption">Home</span>
+                <i class="ph ph-house-simple"></i>
+              </a>
+            </li>
+            <li class="menu__item">
+              <a class="menu__link btn" href="/gallery.html">
+                <span class="menu__caption">Gallery</span>
+                <i class="ph ph-squares-four"></i>
+              </a>
+            </li>
+            <li class="menu__item">
+              <a class="menu__link btn" href="/products.html">
+                <span class="menu__caption">Products</span>
+                <i class="ph ph-sticker"></i>
+              </a>
+            </li>
+           
+            <li class="menu__item">
+              <a class="menu__link btn" href="categories.html">
+                <span class="menu__caption">Categories</span>
+                <i class="ph ph-user"></i>
+              </a>
+            </li>
+            <li class="menu__item">
+              <a class="menu__link btn" href="/about.html">
+                <span class="menu__caption">About</span>
+                <i class="ph ph-envelope"></i>
+              </a>
+            </li>
+            <li class="menu__item">
+              <a class="menu__link btn" href="index.html#contact">
+                <span class="menu__caption">Contact</span>
+                <i class="ph ph-envelope"></i>
+              </a>
+            </li>
+          </ul>
+        </nav>
+      </div>
+      <!-- Navigation Menu End -->
+    </header>
+    <!-- Header End -->
+
+    <div style="overflow-x: hidden" class="intro__background intro-bg-01">
+      <div class="intro-bg-01__01" data-speed="0.6">
+        <img
+          class="hero-img"
+          src="img/backgrounds/stonehaha.webp"
+          alt="Background Objects"
+        />
+        <div class="intro-bg__shadow"></div>
+      </div>
+      <div class="intro-bg-01__02" data-speed="0.8">
+        <img
+          class="hero-img"
+          src="img/backgrounds/1200x1200_bg02.webp"
+          alt="Background Objects"
+        />
+        <div class="intro-bg__shadow"></div>
+      </div>
+    </div>
+    <!-- Header End -->
+
+    <!-- Fixed Logo Start -->
+    <div class="logo loading__fade">
+      <a href="/index.html#home" class="logo__link">
+        <!-- logo icon -->
+        <img class="logo-img" src="../image/newlogo.png" alt="" />
+        <!-- logo text -->
+        <!-- <span class="logo-text">NsT*</span> -->
+      </a>
+    </div>
+    <!-- Fixed Logo End -->
+
+    <!-- Fixed Color Switch Start -->
+    <div class="color loading__fade">
+      <button
+        id="color-switcher"
+        class="color-switcher"
+        type="button"
+        role="switch"
+        onclick=" SwitchColor()"
+        aria-label="light/dark mode"
+        aria-checked="true"
+      ></button>
+    </div>
+
+    <section
+      style="z-index: 10"
+      id="services"
+      class="inner inner-stack-bottom services"
+    >
+      <div class="inner__wrapper">
+        <div class="container-fluid p-0">
+          <div class="row g-0">
+            <!-- Inner Section Name Start -->
+            <div class="col-12 col-xl-2">
+              <div class="inner__name">
+                <!-- Content Block - Section Name Start -->
+                <div class="content__block name-block">
+                  <span class="section-name icon-right animate-in-up">
+                    <span class="section-name-caption"> Product</span>
+                    <i class="ph-light ph-sketch-logo"></i>
+                  </span>
+                </div>
+                <!-- Content Block - Section Name Start -->
+              </div>
+            </div>
+            <!-- Inner Section Name End -->
+
+            <!-- Inner Section Content Start -->
+            <div class="col-12 col-xl-8">
+              <div style="z-index: 1" class="inner__content">
+                <!-- Content Block - H2 Section Title Start -->
+                <div class="content__block pre-stack-text-block">
+                  <div style="z-index: 10" class="block__descr">
+                    <h2
+                      style="z-index: 1"
+                      class="reveal-type animate-in-up"
+                    ></h2>
+
+                    <p
+                      style="z-index: 1"
+                      class="h2__text type-basic-160lh animate-in-up"
+                    ></p>
+                    <ul
+                      style="font-size: 20px; margin: 40px 0"
+                      class="features-list"
+                    >
+                      <li>
+                        <i class="ph ph-check-circle"></i>
+                        <strong>Premium Quality Materials:</strong>
+                        Handpicked stones that withstand heavy foot traffic and
+                        harsh weather conditions.
+                      </li>
+                    </ul>
+                  </div>
+
+                  <div style="margin: 50px 0 30px 0">
+                    <h2
+                      style="
+                        font-size: 30px;
+                        display: inline;
+                        text-align: right;
+                        font-weight: 400;
+                      "
+                      class="cta"
+                    >
+                      Enhance your outdoor spaces with the unmatched beauty of
+                      natural stone pavers.
+                    </h2>
+                  </div>
+                </div>
+                <!-- Content Block - H2 Section Title End -->
+              </div>
+              <div
+                class="prodimg-container"
+                style="
+                  display: flex;
+                  flex-wrap: wrap;
+                  width: 100%;
+                  justify-content: center;
+                "
+              ></div>
+            </div>
+            <!-- Inner Section Content End -->
+          </div>
+        </div>
+      </div>
+    </section>
+    <div style="height: 400px" id="simulation-area"></div>
+
+    <!-- Inner Section - Contact - Start -->
+    <section
+      id="contact"
+      class="inner contact inner-grid-bottom no-padding-bottom"
+      style="z-index: 100; padding-top: 20px"
+    >
+    <div class="inner__wrapper">
+      <div class="container-fluid p-0">
+        <div class="row g-0">
+          <!-- Inner Section Name Start -->
+          <div class="col-12 col-xl-2" style="opacity: 0">
+            <div class="inner__name">
+              <div class="content__block name-block">
+                <span class="section-name icon-right animate-in-up">
+                  <span class="section-name-caption">Contact</span>
+                  <i class="ph ph-arrow-down-right"></i>
+                </span>
+              </div>
+            </div>
+          </div>
+          <!-- Inner Section Name End -->
+    
+          <!-- Inner Section Content Start -->
+          <div class="col-12 col-xl-8">
+            <div class="inner__content">
+              <div class="content__block grid-block">
+                <div class="container-fluid p-0 contact-data">
+                  <div class="row g-0 contact-data-wrapper">
+                    <!-- Location -->
+                    <div class="contact-data__item grid-item">
+                      <p class="contact-data__title tagline-chapter animate-in-up">Location</p>
+                      <p class="contact-data__text small type-basic-160lh">
+                        <a class="link-small-160lh animate-in-up" href="https://maps.app.goo.gl/g28hCHCGMMyEEqMU7" target="_blank">
+                          14004 Woodbine Avenue <br />Stouffville (Gormley),<br />Ontario, L0H 1G0 Canada
+                        </a>
+                      </p>
+                    </div>
+                    <!-- Hours of Operation -->
+                    <div class="contact-data__item grid-item">
+                      <p class="contact-data__title tagline-chapter animate-in-up">Hours of Operation</p>
+                      <p class="contact-data__text small type-basic-160lh">
+                        <span class="animate-in-up">Monday - Friday: 8:00 AM - 4:30 PM</span><br />
+                        <span class="animate-in-up">Saturday: Appointments only</span><br />
+                        <span class="animate-in-up">Sunday: Closed</span>
+                      </p>
+                    </div>
+                    <!-- Phone -->
+                    <div class="contact-data__item grid-item">
+                      <p class="contact-data__title tagline-chapter animate-in-up">Phone</p>
+                      <p class="contact-data__text small type-basic-160lh">
+                        <a class="link-small-160lh animate-in-up" href="tel:+16472877869">+1 (647) 287-7869</a><br />
+                        <a class="link-small-160lh animate-in-up" href="tel:+16475233623">+1 (647)-523-3623</a>
+                      </p>
+                    </div>
+                    <!-- Email -->
+                    <div class="contact-data__item grid-item">
+                      <p class="contact-data__title tagline-chapter animate-in-up">Email</p>
+                      <p class="contact-data__text small type-basic-160lh">
+                        <a class="link-small-160lh animate-in-up" href="mailto:naturalstonetraders@gmail.com">naturalstonetraders@gmail.com</a><br />
+                        <a class="link-small-160lh animate-in-up" href="mailto:sales.nststone@gmail.com">sales.nststone@gmail.com</a>
+                      </p>
+                    </div>
+                    <!-- Areas We Serve -->
+                    <div style="padding-top: 30px;" class="contact-data__item">
+                      <p class="contact-data__title tagline-chapter animate-in-up">
+                        Area we serve
+                      </p>
+                      <div class="contact-data__text small" id="areas-we-serve"></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- Inner Section Content End -->
+          <div class="col-12 col-xl-2"></div>
+        </div>
+      </div>
+    </div>
+      <div
+        style="
+          display: flex;
+          width: 100%;
+          text-decoration: none;
+          text-align: center;
+          padding-top: 50px;
+        "
+        class="col-12 col-md-6 col-lg-3 contact-data__item grid-item"
+      >
+        <div
+          style="
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+          "
+          class="contact-data__title tagline-chapter animate-in-up"
+        >
+          <span style="text-decoration: none; word-wrap: break-word"
+            >Copyright © 2024 Natural Stone Traders Inc. | All Rights
+            Reserved.</span
+          >
+          <span style="color: #a17c30; opacity: 0.7; text-decoration: underline"
+            >Powered by Knaptix</span
+          >
+        </div>
+      </div>
+    </section>
+    <div style="z-index: 1" class="bottom__background bottom-bg-01">
+      <div class="bottom-bg-01__02 animate-card-2">
+        <!-- <img class="hero-img" src="img/backgrounds/stonehaha.webp" alt="Template background image"> -->
+      </div>
+      <div class="bottom-bg-01__01 animate-card-2">
+        <img
+          class="hero-img"
+          src="img/backgrounds/stonehaha.webp"
+          alt="Template background image"
+        />
+      </div>
+    </div>
+
+    <!-- Inner Section - Contact - End -->
+    <script>
+      const contentData = [
+        // Sandstone
+        {
+          name: "dove-grey-sandstone",
+          pageTitle: "Dove Grey Sandstone | Natural Stone Co.",
+          title: "Dove Grey Sandstone",
+          description:
+            "Dove Grey Sandstone is a stunning natural stone with soft, muted grey tones that bring elegance and durability to any project. Perfect for patios, pathways, and outdoor features.",
+          features: [
+            "Soft grey tones that complement any design.",
+            "Durable and weather-resistant, suitable for outdoor use.",
+            "Natural texture and finish for timeless appeal.",
+          ],
+          ctaText: "Transform your space with Dove Grey Sandstone!",
+          ctaLink: "/dove-grey-sandstone.html",
+          images: [
+            "image/stone/NST Sandstone/dovegray/Screenshot_20220326-213611_Instagram.JPG",
+            "image/stone/NST Sandstone/dovegray/DSC_0261.jpg",
+            "image/stone/NST Sandstone/dovegray/DSC_0257.jpg",
+            "image/stone/NST Sandstone/dovegray/Brandon-work.JPG",
+            "image/stone/NST Sandstone/dovegray/20220715_161412.JPG",
+          ],
+        },
+        {
+          name: "grey-rundle-sandstone",
+          pageTitle: "Grey Rundle Sandstone | Natural Stone Co.",
+          title: "Grey Rundle Sandstone",
+          description:
+            "Grey Rundle Sandstone offers a rich, earthy grey tone with a natural finish, making it an ideal choice for pathways, patios, and landscaping.",
+          features: [
+            "Earthy grey tones for a natural aesthetic.",
+            "Highly durable for long-lasting projects.",
+            "Perfect for both modern and rustic designs.",
+          ],
+          ctaText:
+            "Bring natural charm to your project with Grey Rundle Sandstone. Order now!",
+          ctaLink: "/grey-rundle-sandstone.html",
+          images: [
+            "image/stone/NST Sandstone/grey rundle/Grey Rundle.JPG",
+            "image/stone/NST Sandstone/grey rundle/DSC_0291.JPG",
+            "image/stone/NST Sandstone/grey rundle/DSC_0282.JPG",
+            "image/stone/NST Sandstone/grey rundle/DSC_0279.JPG",
+            "image/stone/NST Sandstone/grey rundle/DSC_0286-min.JPG",
+          ],
+        },
+        {
+          name: "slate-grey-sandstone",
+          pageTitle: "Slate Grey Sandstone | Natural Stone Co.",
+          title: "Slate Grey Sandstone",
+          description:
+            "Slate Grey Sandstone features deep grey tones with a textured finish, perfect for driveways, walkways, and outdoor spaces.",
+          features: [
+            "Deep, striking grey tones for a bold look.",
+            "Highly resistant to weather and wear.",
+            "Textured finish for added grip and style.",
+          ],
+          ctaText: "Upgrade your space with Slate Grey Sandstone. Browse now!",
+          ctaLink: "/slate-grey-sandstone.html",
+          images: [
+            "image/stone/NST Sandstone/slategrey/slate steps 8.JPG",
+            "image/stone/NST Sandstone/slategrey/slate grey curb 1.JPG",
+            "image/stone/NST Sandstone/slategrey/slate grey 3.JPG",
+            "image/stone/NST Sandstone/slategrey/slate 5.JPG",
+            "image/stone/NST Sandstone/slategrey/20221012_110348.JPG",
+            "image/stone/NST Sandstone/slategrey/20221012_122930.jpg",
+            "image/stone/NST Sandstone/slategrey/DSC_0534.jpg"
+          ],
+        },
+        {
+          name: "bronte-brown-sandstone",
+          pageTitle: "Bronte Brown Sandstone | Natural Stone Co.",
+          title: "Bronte Brown Sandstone",
+          description:
+            "Bronte Brown Sandstone features warm brown tones that add a cozy, natural touch to any landscape or architectural project.",
+          features: [
+            "Warm brown hues for inviting spaces.",
+            "Weather-resistant and long-lasting material.",
+            "Versatile for various outdoor and indoor applications.",
+          ],
+          ctaText:
+            "Enhance your project with Bronte Brown Sandstone. Explore now!",
+          ctaLink: "/bronte-brown-sandstone.html",
+          images: [
+            "image/stone/NST Sandstone/bronte/autumn-Brown-sandstone-005[1].jpg",
+            "image/stone/NST Sandstone/bronte/IMG_30361.jpg",
+            "image/stone/NST Sandstone/bronte/Photo from NST.jpg",
+            "image/stone/NST Sandstone/bronte/IMG_30351.jpg",
+            "image/stone/NST Sandstone/bronte/Resized_20150601_105321_7646.jpeg",
+            "image/stone/NST Sandstone/bronte/Screenshot_20230607_155757_WhatsApp.jpg",
+          ],
+        },
+        {
+          name: "imperial-black-sandstone",
+          pageTitle: "Imperial Black Sandstone | Natural Stone Co.",
+          title: "Imperial Black Sandstone",
+          description:
+            "Imperial Black Sandstone boasts rich black tones with a polished or natural finish, ideal for creating bold and sophisticated spaces.",
+          features: [
+            "Rich black tones for a sleek, modern look.",
+            "Durable and low-maintenance material.",
+            "Perfect for high-end outdoor or indoor designs.",
+          ],
+          ctaText:
+            "Create a bold statement with Imperial Black Sandstone. Shop now!",
+          ctaLink: "/imperial-black-sandstone.html",
+          images: [
+            "image/stone/NST Sandstone/impblack/DSC_0187.JPG",
+            "image/stone/NST Sandstone/impblack/DSC_0190.JPG",
+            "image/stone/NST Sandstone/impblack/20230605_145035.JPG",
+            "image/stone/NST Sandstone/impblack/DSC_017.JPG",
+            "image/stone/NST Sandstone/impblack/20230605_144956.JPG",
+          ],
+        },
+        {
+          name: "pristine-white-sandstone",
+          pageTitle: "Pristine White Sandstone | Natural Stone Co.",
+          title: "Pristine White Sandstone",
+          description:
+            "Pristine White Sandstone brings clean, crisp white tones to your projects, perfect for brightening up outdoor and indoor spaces.",
+          features: [
+            "Bright white tones for a clean, modern look.",
+            "Durable and weather-resistant for outdoor use.",
+            "Ideal for pathways, patios, and decorative features.",
+          ],
+          ctaText:
+            "Brighten your spaces with Pristine White Sandstone. Shop now!",
+          ctaLink: "/pristine-white-sandstone.html",
+          images: [
+            "image/stone/NST Sandstone/Pristine White/Resized_20150729_085849_1561.jpg",
+            "image/stone/NST Sandstone/Pristine White/Copy of Copy of DSC_0151.jpg",
+            "image/stone/NST Sandstone/Pristine White/DSC_0241.jpg",
+            "image/stone/NST Sandstone/Pristine White/Photo from_.jpg",
+            "image/stone/NST Sandstone/Pristine White/WhatsApp Image 2024-12-11 at 2.52.22 PM (5).jpeg",
+            "image/stone/NST Sandstone/Pristine White/WhatsApp Image 2024-12-11 at 2.52.22 PM (1).jpeg",
+            "image/stone/NST Sandstone/Pristine White/DSC_0155.jpg",
+            "image/stone/NST Sandstone/Pristine White/WhatsApp Image 2024-12-11 at 2.52.22 PM.jpeg",
+          ],
+        },
+        {
+          name: "lavender-sandstone",
+          pageTitle: "Lavender Sandstone | Natural Stone Co.",
+          title: "Lavender Sandstone",
+          description:
+            "Lavender Sandstone showcases subtle lavender hues that add a unique touch of color to any space.",
+          features: [
+            "Unique lavender tones for a distinctive look.",
+            "Durable and suitable for outdoor use.",
+            "Natural texture for enhanced aesthetic appeal.",
+          ],
+          ctaText: "Add a pop of color with Lavender Sandstone. Shop now!",
+          ctaLink: "/lavender-sandstone.html",
+          images: [
+            "image/stone/NST Sandstone/Lavender/Photo from NST.jpg",
+            "image/stone/NST Sandstone/Lavender/DSC_0590.jpg",
+            "image/stone/NST Sandstone/Lavender/lavender 12.jpg",
+            "image/stone/NST Sandstone/Lavender/lavender and dove grey.jpg",
+            "image/stone/NST Sandstone/Lavender/Photo from NST (1).jpg",
+            "image/stone/NST Sandstone/Lavender/WhatsApp Image 2024-12-11 at 2.59.57 PM (6).jpeg",
+            "image/stone/NST Sandstone/Lavender/WhatsApp Image 2024-12-11 at 2.59.57 PM.jpeg",
+          ],
+        },
+        // Limestone
+        {
+          name: "silver-valley-limestone",
+          pageTitle: "Silver Valley Limestone | Natural Stone Co.",
+          title: "Silver Valley Limestone",
+          description:
+            "Silver Valley Limestone offers a unique silver-grey tone, perfect for modern and sophisticated outdoor spaces.",
+          features: [
+            "Beautiful silver-grey tones for a sleek aesthetic.",
+            "Durable and low-maintenance natural stone.",
+            "Perfect for patios, walkways, and cladding.",
+          ],
+          ctaText:
+            "Elevate your outdoor space with Silver Valley Limestone. Shop now!",
+          ctaLink: "/silver-valley-limestone.html",
+          images: [
+            "image/stone/NST Limestone/Silver Valley Dazzle/Screenshot_20230610_171015_Instagram.jpg",
+            "image/stone/NST Limestone/Silver Valley Dazzle/brandon work 4.jpg",
+            "image/stone/NST Limestone/Silver Valley Dazzle/IMG_0701 (1).jpg",
+            "image/stone/NST Limestone/Silver Valley Dazzle/pic for brochure 28.jpg",
+            "image/stone/NST Limestone/Silver Valley Dazzle/SVD pavers 1.jpg",
+          ],
+        },
+        {
+          name: "kota-black-limestone",
+          pageTitle: "Kota Black Limestone | Natural Stone Co.",
+          title: "Kota Black Limestone",
+          description:
+            "Kota Black Limestone provides rich black tones with a sleek, smooth finish, perfect for pathways, patios, and cladding.",
+          features: [
+            "Elegant black finish for a bold statement.",
+            "Smooth surface with natural durability.",
+            "Suitable for both indoor and outdoor projects.",
+          ],
+          ctaText:
+            "Create a modern look with Kota Black Limestone. Browse now!",
+          ctaLink: "/kota-black-limestone.html",
+          images: [
+            "image/stone/NST Limestone/Kota Black/Photo from NST.jpg",
+            "image/stone/NST Limestone/Kota Black/DSC_0078.jpg",
+            "image/stone/NST Limestone/Kota Black/DSC_0216.jpg",
+            "image/stone/NST Limestone/Kota Black/KOTA BLACK _2.jpg",
+            "image/stone/NST Limestone/Kota Black/b6945aa03.jpg",
+
+          ],
+        },
+        {
+          name: "antique-black-limestone",
+          pageTitle: "Antique Black Limestone | Natural Stone Co.",
+          title: "Antique Black Limestone",
+          description:
+            "Antique Black Limestone features a weathered, rustic finish, perfect for creating timeless spaces with a natural look.",
+          features: [
+            "Rustic black tones for timeless designs.",
+            "Durable and slip-resistant surface.",
+            "Ideal for patios, driveways, and pool areas.",
+          ],
+          ctaText:
+            "Bring classic beauty to your project with Antique Black Limestone. Order today!",
+          ctaLink: "/antique-black-limestone.html",
+          images: [
+            "image/stone/NST Limestone/Antique Black/DSC_0346.jpg",
+            "image/stone/NST Limestone/Antique Black/DSC_0361.jpg",
+            "image/stone/NST Limestone/Antique Black/IMG_8263.jpg",
+            "image/stone/NST Limestone/Antique Black/pic for brochure 24.jpg",
+            "image/stone/NST Limestone/Antique Black/20221012_110311.jpg",
+          ],
+        },
+        // Granite
+        {
+          name: "galaxy-black-granite",
+          pageTitle: "Galaxy Black Granite | Natural Stone Co.",
+          title: "Galaxy Black Granite",
+          description:
+            "Galaxy Black Granite is a luxurious black stone with a stunning galaxy-like speckled finish, ideal for high-end indoor and outdoor applications.",
+          features: [
+            "Striking black tones with a unique speckled design.",
+            "Highly durable and polished for a premium look.",
+            "Perfect for countertops, walls, and flooring.",
+          ],
+          ctaText:
+            "Add luxury to your space with Galaxy Black Granite. Shop now!",
+          ctaLink: "/galaxy-black-granite.html",
+          images: [
+            "image/stone/granite/blackgalaxy/20240621_124803.jpg",
+            "image/stone/granite/blackgalaxy/DSC_0198 - Copy.jpg",
+            "image/stone/granite/blackgalaxy/20240621_130101.jpg",
+            "image/stone/granite/blackgalaxy/20240621_130221.jpg",
+            "image/stone/granite/blackgalaxy/DSC_0167 - Copy (2).jpg",
+            // "image/stone/granite/blackgalaxy/DSC_0206 - Copy-min.JPG",
+          ],
+        },
+        {
+          name: "dark-ebony-granite",
+          pageTitle: "Dark Ebony Granite | Natural Stone Co.",
+          title: "Dark Ebony Granite",
+          description:
+            "Dark Ebony Granite features rich, dark tones with a smooth, polished finish, perfect for creating elegant and modern spaces.",
+          features: [
+            "Dark tones for a sleek, modern look.",
+            "Highly resistant to wear and tear.",
+            "Ideal for countertops, patios, and walls.",
+          ],
+          ctaText: "Upgrade your space with Dark Ebony Granite. Shop now!",
+          ctaLink: "/dark-ebony-granite.html",
+          images: [
+            "image/stone/granite/darkebony/DSC_0952.jpg",
+            "image/stone/granite/darkebony/dark ebony 2.jpg",
+            "image/stone/granite/darkebony/Dark Ebony Granite.jpg",
+            "image/stone/granite/darkebony/dark ebony 15.jpg",
+            "image/stone/granite/darkebony/Picsart_22-11-14_19-05-39-232.jpg",
+          ],
+        },
+        {
+          name: "raven-black-granite",
+          pageTitle: "Raven Black Granite | Natural Stone Co.",
+          title: "Raven Black Granite",
+          description:
+            "Raven Black Granite offers deep black tones with a smooth, natural finish, perfect for sophisticated indoor and outdoor designs.",
+          features: [
+            "Deep black tones for bold aesthetics.",
+            "Highly durable and weather-resistant material.",
+            "Perfect for flooring, walls, and outdoor spaces.",
+          ],
+          ctaText:
+            "Add elegance to your project with Raven Black Granite. Explore now!",
+          ctaLink: "/raven-black-granite.html",
+          images: [
+            "image/stone/granite/raven/DSC_0009.jpg",
+            "image/stone/granite/raven/Screenshot_20220926_175132.jpg",
+            "image/stone/granite/raven/DSC_0986.jpg",
+            "image/stone/granite/raven/DSC_0645.jpg",
+            "image/stone/granite/raven/DSC_0600.jpg",
+          ],
+        },
+        {
+          name: "urban-grey-marble",
+          pageTitle: "Urban Grey Marble | Natural Stone Co.",
+          title: "Urban Grey Marble",
+          description:
+            "Urban Grey Marble offers a sleek and modern appearance with subtle grey veining, making it perfect for contemporary interiors and exteriors.",
+          features: [
+            "Sophisticated grey tones with delicate veining.",
+            "Durable and polished finish, ideal for high-end applications.",
+            "Perfect for countertops, flooring, and wall cladding.",
+          ],
+          ctaText: "Transform your space with Urban Grey Marble. Order today!",
+          ctaLink: "/urban-grey-marble.html",
+          images: [
+            "image/stone/marble/urban grey/DSC_0138.jpg",
+            "image/stone/marble/urban grey/DSC_0141.jpg",
+            "image/stone/marble/urban grey/20230815_104215.jpg",
+            "image/stone/marble/urban grey/20230815_104201.jpg",
+            // "image/stone/marble/urban grey/Picsart_24-01-29_14-36-17-666-min.jpg",
+            "image/stone/marble/urban grey/DSC_0051.jpg",
+            "image/stone/marble/urban grey/Picsart_24-01-29_14-42-59-994-min.jpg",
+          ],
+        },
+      ];
+
+      // The array of areas we serve
+const areasWeServe = [
+        "Ajax",
+        "Barrie",
+        "Bolton",
+        "Brampton",
+        "Caledon",
+        "Chatham",
+        "Hamilton",
+        "Kingston",
+        "Markham",
+        "Scarborough",
+        "Ottawa",
+        "Pickering",
+        "Oro Medonte",
+        "Sunderland",
+        "Stouffville",
+        "Richmond Hill",
+        "Toronto",
+        "Uxbridge",
+        "Whitby",
+        "Quebec",
+        "Montreal",
+      ];
+
+      // Target the div with the id 'areas-we-serve'
+      const areasContainer = document.getElementById("areas-we-serve");
+
+      // Check if the container exists
+      if (areasContainer) {
+        // Iterate over the areas and create a span for each
+        areasWeServe.forEach((area) => {
+          const span = document.createElement("span");
+          span.className = "areas-serve"; // Add the desired class
+          span.textContent = area; // Set the text content
+          areasContainer.appendChild(span); // Append the span to the container
+        });
+      } else {
+        console.error("Div with id 'areas-we-serve' not found.");
+      }
+      // Function to update page content dynamically
+      function updateContent(params) {
+        const section = contentData.find((item) => item.name === params.name);
+        if (!section) return;
+
+        // Update page title
+        document.title = section.pageTitle;
+
+        // Update section title and description
+        document.querySelector("#services h2").textContent = section.title;
+        document.querySelector("#services .h2__text").textContent =
+          section.description;
+        document.querySelector(".cta").textContent = section.ctaText;
+
+        // Update features list
+        const featuresList = document.querySelector(".features-list");
+        featuresList.innerHTML = section.features
+          .map(
+            (feature) =>
+              `<li><i style="margin-right:10px" class="ph ph-check-circle"></i>${feature}</li>`
+          )
+          .join("");
+
+        // Update uses
+        const usesList = document.querySelector(".uses-list");
+        if (usesList) {
+          usesList.innerHTML = section.uses
+            .map((use) => `<li>${use}</li>`)
+            .join("");
+        }
+
+        // Update CTA
+
+        // Update images
+        const imageContainer = document.querySelector(".prodimg-container");
+        if (imageContainer) {
+          imageContainer.innerHTML = section.images
+            .map(
+              (img) =>
+                `<img class="prodimg" src="${img}" alt="${section.title} image" />`
+            )
+            .join("");
+        }
+      }
+
+      // Example usage: Replace content based on a query parameter
+      const urlParams = new URLSearchParams(window.location.search);
+      const sectionName = urlParams.get("section"); // URL example: ?section=pavers-coping
+      if (sectionName) {
+        updateContent({ name: sectionName });
+      }
+    </script>
+
+    <script src="/js/libs.min.js"></script>
+    <script src="/js/app.js"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+
+    <script src="js/sim.js"></script>
+  </body>
+</html>

@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>3D Textured Cuboid in AR</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/webxr-polyfill@latest/build/webxr-polyfill.js"></script>
+    <style>
+        /* Gradient background */
+        body {
+            margin: 0;
+            overflow: hidden;
+            color: white;
+            background: linear-gradient(135deg, #141515, #2a5298); /* Gradient from dark blue to light blue */
+            font-family: Arial, sans-serif;
+        }
+
+      
+
+        #logo {
+            width: 100px;
+            height: 40px;
+            margin-right: 10px;
+            object-fit: contain;
+        }
+
+        #pageTitle {
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        /* Loading screen */
+        #loadingScreen {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: white;
+            font-size: 24px;
+            font-weight: bold;
+        }
+        .back {
+        font-size: 16px;
+        color: #fff;
+        padding: 10px;
+        background-color: #333;
+        text-align: center;
+        border-radius: 5px;
+        text-decoration: none;
+        display: inline-block;
+        transition: background-color 0.3s ease;
+      }
+
+      .back:hover {
+        background-color: #444;
+      }
+    </style>
+</head>
+<body>
+    <!-- Header with Logo and Page Title -->
+    <div style="display: flex; justify-content: space-around; margin: 20px 0;  width: 100vw;  " id="header">
+        <img id="logo" src="image/newlogo.png" alt="Logo" />
+        <a class="back" href="texture.html">Back</a>
+    </div>
+
+    <!-- Loading Screen (optional) -->
+
+    <script type="module">
+        import { ARButton } from 'https://cdn.jsdelivr.net/npm/three@0.128.0/examples/jsm/webxr/ARButton.js';
+
+        let cuboid; // Declare cuboid globally
+        let textureLoaded = false;
+        let texturePath = ''; // To store texture path after fetching from JSON
+
+        // Initialize the scene and load the texture
+        function init() {
+            const params = new URLSearchParams(window.location.search);
+            const textureSlug = params.get("texture");
+
+            if (!textureSlug) {
+                alert("No texture provided in the URL parameters.");
+                return;
+            }
+
+            // Fetch the texture data from texture.json
+            fetch('js/texture.json')
+                .then(response => response.json())
+                .then(data => {
+                    const textureData = data.textures.find(texture => texture.slug === textureSlug);
+                    
+                    if (!textureData) {
+                        alert("Texture not found in the JSON file.");
+                        return;
+                    }
+
+                    console.log(`Loading texture: ${textureData.name}`);
+                    texturePath = textureData.path;
+                    textureLoaded = true;
+
+                    // Now that texture is loaded, initialize AR and scene
+                    loadTexture(texturePath, setupARScene); // Load texture and pass setupARScene as a callback
+                })
+                .catch(error => {
+                    console.error("Error loading texture data:", error);
+                    alert("Error loading texture data.");
+                });
+        }
+
+        // Function to load texture from the given path
+        function loadTexture(texturePath, callback) {
+            const textureLoader = new THREE.TextureLoader();
+            textureLoader.load(texturePath, function (texture) {
+                console.log("Texture loaded successfully!");
+                callback(texture); // Call the callback with the loaded texture
+            });
+        }
+
+        // Function to setup AR scene and renderer
+        function setupARScene(texture) {
+            // Setup the scene, camera, and renderer
+            const scene = new THREE.Scene();
+            const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+            camera.position.set(0, 1, 6);
+
+            const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
+            document.body.appendChild(ARButton.createButton(renderer));
+            renderer.setSize(window.innerWidth, window.innerHeight);
+            renderer.xr.enabled = true;
+            document.body.appendChild(renderer.domElement);
+
+            // Ambient light
+            const ambientLight = new THREE.AmbientLight(0xffffff, 0.5);
+            scene.add(ambientLight);
+            
+            // Directional light
+            const directionalLight = new THREE.DirectionalLight(0xffffff, 1);
+            directionalLight.position.set(0, 5, 0);
+            directionalLight.castShadow = true;
+            scene.add(directionalLight);
+            
+            // Cuboid geometry and material with the texture
+            const cuboidGeometry = new THREE.BoxGeometry(4, 2, 4);
+            const cuboidMaterial = new THREE.MeshStandardMaterial({
+                map: texture,
+                roughness: 0.8,
+                metalness: 0.1,
+            });
+            console.log(texturePath)
+            cuboid = new THREE.Mesh(cuboidGeometry, cuboidMaterial);
+            cuboid.castShadow = true;
+            cuboid.receiveShadow = true;
+            cuboid.position.set(0, 3, -10);
+            cuboid.rotation.x = Math.PI / 6;
+            scene.add(cuboid);
+
+            // Start the animation loop
+            animate(scene, camera, renderer);
+        }
+
+        // Animation loop
+        function animate(scene, camera, renderer) {
+            function render() {
+                cuboid.rotation.y += 0.001;
+                renderer.render(scene, camera);
+                renderer.setAnimationLoop(render);
+            }
+            render();
+        }
+
+        window.onload = init;
+    </script>
+</body>
+</html>
