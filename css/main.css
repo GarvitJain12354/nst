@@ -3174,9 +3174,9 @@ form textarea:required:valid {
 .inner {
   position: relative;
 }
-.inner.inner-grid-bottom {
+/* .inner.inner-grid-bottom {
   padding: 11rem 0 2.5rem 0;
-}
+} */
 .inner.inner-stack {
   padding: 2.2rem 0 0.5rem 0;
 }
@@ -3642,7 +3642,7 @@ form textarea:required:valid {
 
 .grid-item {
   padding: 0 1rem;
-  margin-top: 2rem;
+  /* margin-top: 2rem; */
 }
 @media only screen and (min-width: 768px) {
   .grid-item {
@@ -4455,12 +4455,12 @@ form textarea:required:valid {
 /* ------------------------------------------------*/
 .footer {
   position: relative;
-  padding: 10.4rem 0 0 0;
+  /* padding: 10.4rem 0 0 0; */
   z-index: 3;
 }
-.footer.footer-marquee {
+/* .footer.footer-marquee {
   padding: 12.2rem 0 0 0;
-}
+} */
 @media only screen and (min-width: 768px) {
   .footer {
     padding: 14.6rem 0 0 0;
@@ -5182,6 +5182,15 @@ form textarea:required:valid {
   .items__container {
     height: 50vh;
   }
+  #marque{
+    height: 30vh !important;
+  }
+  #get{
+    height: 10vh !important;
+  }
+ /* .footer .items .items_container{
+  height: fit-content;
+ } */
   .item{
     width: 70vw;
   }
@@ -7087,9 +7096,9 @@ form textarea:required:valid {
 /* ------------------------------------------------*/
 /* Features Contact Data Start */
 /* ------------------------------------------------*/
-.contact-data__item {
+/* .contact-data__item {
   margin-bottom: 3.2rem;
-}
+} */
 .contact-data__item:last-of-type {
   margin-bottom: 0;
 }
@@ -7137,7 +7146,13 @@ form textarea:required:valid {
   padding: 10px;
   /* background-color: #0000007e; */
 }
-
+@media screen and (max-width: 768px) {
+  .logo-img {
+     height: 60px !important;
+     width: 50px;
+  }
+  
+}
 .imag {
   /* height: 100%; */
   object-fit: cover;
