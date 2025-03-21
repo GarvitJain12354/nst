@@ -580,8 +580,9 @@ h1 {
   }
 }
 .headline__title{
-  font-size: 8rem;
+  font-size: 5.5vw;
 width: 100%;
+text-wrap: nowrap;
   /* background-color: red; */
   /* text-wrap: nowrap; */
 }
@@ -589,6 +590,7 @@ width: 100%;
   .headline__title {
     font-size: 5.6rem;
     max-width: fit-content;
+    text-wrap: wrap;
   }
   
 }
