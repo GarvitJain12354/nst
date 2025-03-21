@@ -2935,7 +2935,8 @@ form textarea:required:valid {
 @media only screen and (min-width: 1200px) {
   .headline {
     position: absolute;
-    bottom: 0;
+    top: 50%;
+    transform: translateY(-50%);
     left: 0;
     margin-top: 0;
   }
@@ -4403,7 +4404,7 @@ form textarea:required:valid {
     background-color: transparent;
   }
   .menu__link.active .menu__caption {
-    color: var(--t-opp-bright);
+    color: var(--t-bright--dark);
     -moz-background-size: 0 1px, 100% 1px;
     background-size: 0 1px, 100% 1px;
   }
@@ -7173,6 +7174,21 @@ form textarea:required:valid {
      width: 250px !important;
   }
  
+}
+@media screen and (max-width: 1000px) {
+  .headline__title {
+  font-size: 7vw;
+  }
+  
+}
+@media screen and (max-width: 768px) {
+  .headline__title {
+  font-size: 5rem;
+  }
+  .headline__subtitle{
+    font-size: 2rem;
+  }
+  
 }
 .imag {
   /* height: 100%; */
