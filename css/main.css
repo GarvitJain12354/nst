@@ -5356,7 +5356,7 @@ form textarea:required:valid {
 }
 @media only screen and (min-width: 768px) {
   .item__text {
-    font-size: 8rem;
+    font-size: 6rem;
   }
 }
 @media only screen and (min-width: 1200px) {
@@ -5678,6 +5678,11 @@ form textarea:required:valid {
 .gallery__descr p {
   display: none;
 }
+.imgslider{
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+}
 @media only screen and (max-width: 768px) {
   .content__block.grid-block{
     padding: 10px;
@@ -5689,6 +5694,13 @@ form textarea:required:valid {
     margin-top: 50vh;
   }
 
+}
+.contact{
+  width: 100%;
+  display:flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 2vh;
 }
 @media only screen and (min-width: 1200px) {
   .gallery__descr {

@@ -84,8 +84,9 @@
           display: flex;
           justify-content: center;
           align-items: center;
-          height: 50vh !important; /* Full viewport height */
+          height: 100vh !important; /* Full viewport height */
           width: 100%;
+          padding: 0;
           position: relative;
           z-index: 10; /* Ensure it's above other elements */
         }
@@ -481,14 +482,14 @@
         <div class="main__intro">
           <!-- Intro Background Start -->
           <div class="intro__background intro-bg-01">
-            <div class="intro-bg-01__01" data-speed="0.6">
+            <!-- <div class="intro-bg-01__01" data-speed="0.6">
               <img
                 class="hero-img"
                 src="img/backgrounds/stonehaha.webp"
                 alt="Background Objects"
               />
               <div class="intro-bg__shadow"></div>
-            </div>
+            </div> -->
             <div class="intro-bg-01__02" data-speed="0.8">
               <img
                 class="hero-img"
@@ -566,7 +567,8 @@
                         <!-- change the background image in the main.css file - .main-image-1 -->
                         <!-- Image Slider Section Start -->
                         <div class="image-slider-wrapper">
-                          <section class="image-slider">
+                           <img class="imgslider" src="/image/Antique Black copings.jpg"/> 
+                          <!-- <section class="image-slider">
                             <div class="swiper mySwiper">
                               <div class="swiper-wrapper">
                                 <div class="swiper-slide">
@@ -687,12 +689,11 @@
                                   />
                                 </div>
                               </div>
-                              <!-- Pagination & Navigation -->
                               <div class="swiper-pagination"></div>
                               <div class="swiper-button-next"></div>
                               <div class="swiper-button-prev"></div>
                             </div>
-                          </section>
+                          </section> -->
                         </div>
                       </div>
                     </div>
@@ -1039,7 +1040,7 @@
                       <div class="stack-offset"></div>
                       <div class="services-stack">
                         <!-- services stack single item -->
-                        <!-- <div class="stack-item">
+                <div class="stack-item">
                           <div class="services-stack__inner">
                             <div class="services-stack__title">
                               <h3>Pavers</h3>
@@ -1078,7 +1079,7 @@
                               />
                             </a>
                           </div>
-                        </div> -->
+                        </div>
 
                         <!-- services stack single item -->
                         <div class="stack-item">
@@ -1243,6 +1244,44 @@
                           </div>
                         </div>
                         <!-- services stack single item -->
+                        <div class="stack-item">
+                          <div class="services-stack__inner">
+                            <div class="services-stack__title">
+                              <h3>Windows C</h3>
+                            </div>
+                            <div class="services-stack__descr">
+                              <p class="services-stack__text type-basic-160lh">
+                                <span
+                                  onclick="window.location.href='/product.html?section=jumbo-slabs-pier-caps'"
+                                  style="cursor: pointer"
+                                  class="servicespan"
+                                >
+                                  Click to view details</span
+                                >
+                                <br />For projects that demand grandeur, our
+                                jumbo slabs and pier caps are the ultimate
+                                solution. These stones not only provide
+                                structural stability but also add a touch of
+                                luxury to any project.
+                              </p>
+                            </div>
+                            <a
+                              href="/product.html?section=jumbo-slabs-pier-caps"
+                              class="services-stack__image"
+                            >
+                              <img
+                                class="service-img service-img-s"
+                                src="image/cat/jumbo12.jpg"
+                                alt="Service/Feature Image"
+                              />
+                              <img
+                                class="service-img service-img-m"
+                                src="image/cat/jumbo8.jpg"
+                                alt="Service/Feature Image"
+                              />
+                            </a>
+                          </div>
+                        </div>
                         <div class="stack-item">
                           <div class="services-stack__inner">
                             <div class="services-stack__title">
@@ -2078,7 +2117,7 @@
           <div class="container-fluid p-0">
             <div class="row g-0">
               <!-- Inner Section Name Start -->
-              <div class="col-12 col-xl-2">
+              <div class="contact">
                 <div class="inner__name">
                   <!-- Content Block - Section Name Start -->
                   <div class="content__block name-block">
