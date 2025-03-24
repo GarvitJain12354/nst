@@ -2928,6 +2928,9 @@ form textarea:required:valid {
   .headline {
     padding: 0 5rem;
     margin-top: 14.2rem;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center;
   }
   .headline.headline-95-desktop,
   .headline.headline-centered {
@@ -4390,7 +4393,7 @@ form textarea:required:valid {
     height: 4rem;
     padding: 0 2rem;
     font: normal var(--font-weight-medium) 1.6rem/4rem var(--_font-default);
-    color: var(--t-medium);
+    color: var(--t-opp-bright);
   }
   .menu__link i {
     display: none;
@@ -7180,7 +7183,7 @@ form textarea:required:valid {
   width: 20px;
   object-fit: contain;
   padding: 10px;
-  /* background-color: #0000007e; */
+  background-color: #0000007e;
 }
 @media screen and (max-width: 768px) {
   .logo-img {
