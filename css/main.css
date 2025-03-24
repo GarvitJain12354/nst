@@ -4253,9 +4253,9 @@ form textarea:required:valid {
 
 
 .color {
-  position: fixed;
+  /* position: fixed;
   top: 2rem;
-  right: 2rem;
+  right: 2rem; */
   display: -webkit-box;
   display: -moz-box;
   display: -ms-flexbox;
@@ -5408,11 +5408,26 @@ transition: all 0.3s linear;
   font: normal 300 4.6rem var(--_font-accent);
   color: var(--t-bright);
 }
-.topbtn{
+.h{
+  /* background-color: red; */
+  width: 25vw;
   position: fixed;
-  top: 0;
-  right: 0;
+  top: 2rem;
+  right: 2rem;
   z-index: 99999;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+@media screen and (max-width: 768px) {
+  .topb{
+   display: none;
+  }
+  .h{
+    width: fit-content;
+  }
+  
 }
 @media only screen and (min-width: 768px) {
   .item__text {
@@ -7255,12 +7270,22 @@ transition: all 0.3s linear;
   }
   
 }
+#stone1{
+  top: 0;
+ left: 75%;
+}
 @media screen and (max-width: 768px) {
   .headline__title {
   font-size: 5rem;
   }
+  #stone1{
+    top: 90%;
+    left: 0;
+  }
   .headline__subtitle{
     font-size: 2rem;
+    text-align: center;
+    width: 100%;
   }
   
 }
