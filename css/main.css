@@ -7461,9 +7461,9 @@ transition: all 0.3s linear;
 
 .servicespan{
   font-family: 'Poppins', sans-serif;
-  background-color: var(--t-opp-bright);
+  background-color: var(--t-bright);
   box-shadow: 0 0 1px .2px rgba(0, 0, 0, 0.384);
-  color: #00000083;
+  color: var(--t-opp-bright);
   /* color: t; */
   border-radius: 5px;
   padding: 6px 16px;
