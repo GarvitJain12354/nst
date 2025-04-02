@@ -4284,6 +4284,14 @@ form textarea:required:valid {
   overflow: hidden;
   z-index: 100;
 }
+#greenlogo{
+  height:15rem !important;
+  width:15rem !important;
+  object-fit: contain;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 5vh;
+}
 @media only screen and (min-width: 768px) {
   .color {
     top: 5rem;
@@ -4458,6 +4466,7 @@ form textarea:required:valid {
   .menu__link:hover {
     color: var(--t-bright);
   }
+
   .menu__link:hover .menu__caption {
     color: var(--t-bright);
   }

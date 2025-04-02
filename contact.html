@@ -10,6 +10,46 @@
     <link rel="stylesheet" type="text/css" href="css/main.css" />
   </head>
   <style>
+    .form-toggle-container {
+      display: flex;
+      justify-content: center;
+      margin-bottom: 30px;
+    }
+
+    .form-toggle-btn {
+      padding: 12px 30px;
+      border: none;
+      background: #f0f0f0;
+      cursor: pointer;
+      font-size: 16px;
+      transition: all 0.3s ease;
+      border-radius: 5px 5px 0 0;
+      margin: 0 5px;
+    }
+
+    .form-toggle-btn.active {
+      background: #007bff;
+      color: white;
+    }
+
+    .form-container {
+      display: none;
+      max-width: 600px;
+      margin: 0 auto;
+      padding: 20px;
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 10px;
+    }
+
+    .form-container.active {
+      display: block;
+    }
+
+    .form-title {
+      text-align: center;
+      margin-bottom: 30px;
+      font-size: 24px;
+    }
     .contact-data-wrapper {
       display: flex;
       flex-direction: row; /* Aligns sections horizontally */
@@ -27,7 +67,12 @@
       line-height: 1.2; /* Reduce default line spacing */
       margin-bottom: 5px; /* Reduce gap between lines */
     }
-
+.btn{
+  background-color: #0056b3;
+  color: white;
+  padding: 10px 20px;
+  border-radius: 20px;
+}
     @media (max-width: 768px) {
       .contact-data-wrapper {
         flex-direction: column; /* Stack items on mobile */
@@ -86,7 +131,7 @@
             </a>
           </li>
           <li class="mobile-menu__item">
-            <a class="mobile-menu__link btn" href="/contact.html">
+            <a class="mobile-menu__link btn" href="/index.html#contact">
               <i class="ph ph-envelope"></i>
               <span class="mobile-menu__caption">Contact</span>
             </a>
@@ -149,7 +194,7 @@
               </a>
             </li>
             <li class="menu__item">
-              <a class="menu__link btn" href="/contact.html">
+              <a class="menu__link btn" href="index.html#contact">
                 <span class="menu__caption">Contact</span>
                 <i class="ph ph-envelope"></i>
               </a>
@@ -185,93 +230,126 @@
       ></button>
     </div>
 
-    <section
-      style="z-index: 10"
-      id="services"
-      class="inner inner-stack-bottom services"
-    >
+    <section id="services" class="inner inner-stack-bottom services">
       <div class="inner__wrapper">
         <div class="container-fluid p-0">
           <div class="row g-0">
-            <!-- Inner Section Name Start -->
+            <!-- Section Name Column -->
             <div class="col-12 col-xl-2">
               <div class="inner__name">
-                <!-- Content Block - Section Name Start -->
                 <div class="content__block name-block">
                   <span class="section-name icon-right animate-in-up">
-                    <span class="section-name-caption"> About Us</span>
+                    <span class="section-name-caption">Forms</span>
                     <i class="ph ph-arrow-down-right"></i>
                   </span>
                 </div>
-                <!-- Content Block - Section Name Start -->
               </div>
             </div>
-            <!-- Inner Section Name End -->
 
-            <!-- Inner Section Content Start -->
+            <!-- Forms Content Column -->
             <div class="col-12 col-xl-8">
               <div class="inner__content">
-                <!-- Content Block - H2 Section Title Start -->
                 <div class="content__block pre-stack-text-block">
-                  <div class="block__descr">
-                    <h2
-                      style="font-size: 30px; font-weight: bold"
-                      class="reveal-type animate-in-up"
-                    ></h2>
-                    <p class="h2__text type-basic-160lh animate-in-up">
-                      <span
-                        style="
-                          font-weight: 500;
-                          text-decoration: underline;
-                          padding-right: 10px;
-                        "
-                      >
-                        Established in 2012
-                      </span>
-                      NATURAL STONE TRADERS INC. Is an emerging leader in the
-                      supply of ethically sourced natural stone landscape
-                      products in different parts of the world. <br /><br />
-                      NATURAL STONE TRADERS INC. Is based in
-                      <span
-                        style="font-weight: 500; text-decoration: underline"
-                      >
-                        Toronto, Canada
-                      </span>
-                      & has its operations spread out to most parts of Canada &
-                      North America.
-                      <br /><br />
-                      We at NATURAL STONE TRADERS INC. Offer an unbeatable
-                      selection of
-                      <span
-                        style="font-weight: 500; text-decoration: underline"
-                      >
-                        product range, sizes, colors, textures and much more
-                      </span>
-                      for a wide variety of applications - ALL SOURCE
-                      RESPONSIBLY & ETHICALLY.
-                    </p>
-                    <div
-                      style="padding-top: 20px; position: relative"
-                      class="gallery__btn animate-in-up"
+                  <div class="form-toggle-container">
+                    <button
+                      class="form-toggle-btn active"
+                      onclick="toggleForm('contactForm')"
                     >
-                      <a
-                        target="_blank"
-                        href="https://publuu.com/flip-book/73791/1180500"
-                        class="btn btn-line-circle-icon"
-                      >
-                        <span class="btn-caption">Catalogue</span>
-                        <span class="circle hover-circle">
-                          <em></em>
-                          <i class="ph ph-arrow-right"></i>
-                        </span>
-                      </a>
-                    </div>
+                      Contact Form
+                    </button>
+                    <button
+                      class="form-toggle-btn"
+                      onclick="toggleForm('dealershipForm')"
+                    >
+                      Dealership Inquiry
+                    </button>
+                  </div>
+
+                  <!-- Contact Form -->
+                  <div id="contactForm" class="form-container active">
+                    <h3 class="form-title">Get in Touch</h3>
+                    <form>
+                      <div class="row">
+                        <div class="col-md-6">
+                          <div class="form-group">
+                            <label>Full Name</label>
+                            <input type="text" class="form-control" required />
+                          </div>
+                        </div>
+                        <div class="col-md-6">
+                          <div class="form-group">
+                            <label>Email Address</label>
+                            <input type="email" class="form-control" required />
+                          </div>
+                        </div>
+                      </div>
+                      <div class="form-group">
+                        <label>Message</label>
+                        <textarea
+                          class="form-control"
+                          rows="5"
+                          required
+                        ></textarea>
+                      </div>
+                      <div class="text-center">
+                 
+                        <button type="submit" class="btn btn-primary">
+                          Send Message
+                        </button>
+                      </div>
+                    </form>
+                  </div>
+
+                  <!-- Dealership Form -->
+                  <div id="dealershipForm" class="form-container">
+                    <h3 class="form-title">Dealership Application</h3>
+                    <form>
+                      <div class="row">
+                        <div class="col-md-6">
+                          <div class="form-group">
+                            <label>Company Name</label>
+                            <input type="text" class="form-control" required />
+                          </div>
+                          <div class="form-group">
+                            <label>Contact Person</label>
+                            <input type="text" class="form-control" required />
+                          </div>
+                          <div class="form-group">
+                            <label>Phone Number</label>
+                            <input type="tel" class="form-control" required />
+                          </div>
+                        </div>
+                        <div class="col-md-6">
+                          <div class="form-group">
+                            <label>Business Address</label>
+                            <textarea
+                              class="form-control"
+                              rows="3"
+                              required
+                            ></textarea>
+                          </div>
+                          <div class="form-group">
+                            <label>Business Type</label>
+                            <select class="form-control" required>
+                              <option value="">Select Business Type</option>
+                              <option>Retailer</option>
+                              <option>Contractor</option>
+                              <option>Architecture Firm</option>
+                              <option>Other</option>
+                            </select>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="text-center mt-4">
+                        <button type="submit" class="btn bg-primary">
+                          Submit Application
+                        </button>
+                      </div>
+                    </form>
                   </div>
                 </div>
-                <!-- Content Block - H2 Section Title End -->
               </div>
             </div>
-            <!-- Inner Section Content End -->
           </div>
         </div>
       </div>
@@ -483,6 +561,21 @@ color: #fff !important;
     <script src="js/app.js"></script>
     <!-- <script src="js/button.js"></script> -->
     <script>
+      function toggleForm(formId) {
+        // Hide all forms
+        document.querySelectorAll(".form-container").forEach((form) => {
+          form.classList.remove("active");
+        });
+
+        // Remove active class from all buttons
+        document.querySelectorAll(".form-toggle-btn").forEach((btn) => {
+          btn.classList.remove("active");
+        });
+
+        // Show selected form and activate button
+        document.getElementById(formId).classList.add("active");
+        event.currentTarget.classList.add("active");
+      }
       // The array of areas we serve
       const areasWeServe = [
         "Ajax",
