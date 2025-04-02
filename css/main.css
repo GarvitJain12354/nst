@@ -666,23 +666,28 @@ h2 {
 }
 @media only screen and (min-width: 768px) {
   h2 {
-    font-size: 5rem;
+    font-size: 4rem;
   }
 }
 @media only screen and (min-width: 1200px) {
   h2 {
-    font-size: 6rem;
+    font-size: 5rem;
   }
 }
 @media only screen and (min-width: 1400px) {
   h2 {
-    font-size: 7rem;
+    font-size: 6rem;
   }
 }
 @media only screen and (min-width: 1600px) {
   h2 {
-    font-size: 14rem;
+    font-size: 8rem;
   }
+}
+
+#follow{
+  /* transform: translateY(-20vh) !important; */
+  margin-top: -20vh;
 }
 
 .h2__text {
@@ -4178,7 +4183,7 @@ form textarea:required:valid {
 @media only screen and (min-width: 1400px) {
   .header {
     position: fixed;
-    top: 3rem;
+    top: 5rem;
     display: flex !important;
     bottom: auto;
     left: -moz-calc(16.66666667% + 2.5rem);
@@ -4255,9 +4260,9 @@ form textarea:required:valid {
 }
 
 .color {
-  /* position: fixed;
-  top: 2rem;
-  right: 2rem; */
+  position: fixed;
+  top:5rem;
+  right: 2rem;
   display: -webkit-box;
   display: -moz-box;
   display: -ms-flexbox;
@@ -4281,7 +4286,7 @@ form textarea:required:valid {
 }
 @media only screen and (min-width: 768px) {
   .color {
-    top: 3rem;
+    top: 5rem;
     right: 5rem;
   }
 }
@@ -4445,7 +4450,7 @@ form textarea:required:valid {
     height: 4rem;
     padding: 0 2rem;
     font: normal var(--font-weight-medium) 1.6rem/4rem var(--_font-default);
-    color: var(--t-opp-bright--light);
+    color: var(--t-opp-dark);
   }
   .menu__link i {
     display: none;
@@ -4540,7 +4545,7 @@ form textarea:required:valid {
     padding: 16.1rem 0 9.8rem 0;
   }
   .footer.footer-marquee {
-    padding: 19rem 0 4rem 0;
+    padding: 1rem 0 4rem 0;
   }
 }
 @media only screen and (min-width: 1400px) {
@@ -4548,7 +4553,7 @@ form textarea:required:valid {
     padding: 18.1rem 0 9.7rem 0;
   }
   .footer.footer-marquee {
-    padding: 21.7rem 0 4rem 0;
+    padding: 2rem 0 4rem 0;
   }
 }
 @media only screen and (min-width: 1600px) {
@@ -4556,7 +4561,7 @@ form textarea:required:valid {
     padding: 21.2rem 0 11rem 0;
   }
   .footer.footer-marquee {
-    padding: 25.6rem 0 4rem 0;
+    padding: 1rem 0 4rem 0;
   }
 }
 
@@ -5429,17 +5434,17 @@ form textarea:required:valid {
 }
 @media only screen and (min-width: 768px) {
   .item__text {
-    font-size: 5rem;
+    font-size: 3.5rem;
   }
 }
 @media only screen and (min-width: 1200px) {
   .item__text {
-    font-size: 9rem;
+    font-size: 3.5rem;
   }
 }
 @media only screen and (min-width: 1400px) {
   .item__text {
-    font-size: 6rem;
+    font-size: 4.5rem;
   }
 }
 @media only screen and (min-width: 1600px) {

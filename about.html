@@ -11,30 +11,29 @@
   </head>
   <style>
     .contact-data-wrapper {
-    display: flex;
-    flex-direction: row; /* Aligns sections horizontally */
-    justify-content: space-between; /* Spaces them evenly */
-    flex-wrap: wrap; /* Ensures responsiveness */
-    gap: 30px; /* Adds spacing between sections */
-  }
-
-  .contact-data__item {
-    flex: 1; /* Distributes space evenly */
-    min-width: 200px; /* Prevents items from shrinking */
-  }
-
-  .contact-data__item .contact-data__text {
-    line-height: 1.2; /* Reduce default line spacing */
-    margin-bottom: 5px; /* Reduce gap between lines */
-}
-
-
-  @media (max-width: 768px) {
-    .contact-data-wrapper {
-      flex-direction: column; /* Stack items on mobile */
-      align-items: center;
+      display: flex;
+      flex-direction: row; /* Aligns sections horizontally */
+      justify-content: space-between; /* Spaces them evenly */
+      flex-wrap: wrap; /* Ensures responsiveness */
+      gap: 30px; /* Adds spacing between sections */
     }
-  }
+
+    .contact-data__item {
+      flex: 1; /* Distributes space evenly */
+      min-width: 200px; /* Prevents items from shrinking */
+    }
+
+    .contact-data__item .contact-data__text {
+      line-height: 1.2; /* Reduce default line spacing */
+      margin-bottom: 5px; /* Reduce gap between lines */
+    }
+
+    @media (max-width: 768px) {
+      .contact-data-wrapper {
+        flex-direction: column; /* Stack items on mobile */
+        align-items: center;
+      }
+    }
   </style>
   <body>
     <!-- Header Start -->
@@ -136,7 +135,7 @@
                 <i class="ph ph-sticker"></i>
               </a>
             </li>
-           
+
             <li class="menu__item">
               <a class="menu__link btn" href="categories.html">
                 <span class="menu__caption">Categories</span>
@@ -218,9 +217,7 @@
                     <h2
                       style="font-size: 30px; font-weight: bold"
                       class="reveal-type animate-in-up"
-                    >
-                     
-                    </h2>
+                    ></h2>
                     <p class="h2__text type-basic-160lh animate-in-up">
                       <span
                         style="
@@ -282,132 +279,211 @@
     <section
       id="contact"
       class="inner contact inner-grid-bottom no-padding-bottom"
-      style="z-index: 100; padding-top: 20px"
     >
-    <div class="inner__wrapper">
-      <div class="container-fluid p-0">
-        <div class="row g-0">
-          <!-- Inner Section Name Start -->
-          <div class="col-12 col-xl-2" style="opacity: 0">
-            <div class="inner__name">
-              <div class="content__block name-block">
-                <span class="section-name icon-right animate-in-up">
-                  <span class="section-name-caption">Contact</span>
-                  <i class="ph ph-arrow-down-right"></i>
-                </span>
+      <div class="inner__wrapper">
+        <div class="container-fluid p-0">
+          <div class="row g-0">
+            <!-- Inner Section Name Start -->
+            <div class="contact">
+              <div class="inner__name">
+                <!-- Content Block - Section Name Start -->
+                <div class="content__block name-block">
+                  <span class="section-name icon-right animate-in-up">
+                    <span class="section-name-caption">Contact</span>
+                    <i class="ph ph-arrow-down-right"></i>
+                  </span>
+                </div>
+                <!-- Content Block - Section Name Start -->
               </div>
             </div>
-          </div>
-          <!-- Inner Section Name End -->
-    
-          <!-- Inner Section Content Start -->
-          <div class="col-12 col-xl-8">
-            <div class="inner__content">
-              <div class="content__block grid-block">
-                <div class="container-fluid p-0 contact-data">
-                  <div class="row g-0 contact-data-wrapper">
+            <!-- Inner Section Name End -->
+
+            <!-- Content Block - Contact Data Start -->
+            <div class="content__block grid-block">
+              <div class="container-fluid p-0 contact-data">
+                <!-- Footer Background Box -->
+                <div class="footer-bg-box">
+                  <div
+                    class="row g-0 d-flex justify-content-between text-center"
+                  >
                     <!-- Location -->
-                    <div class="contact-data__item grid-item">
-                      <p class="contact-data__title tagline-chapter animate-in-up">Location</p>
-                      <p class="contact-data__text small type-basic-160lh">
-                        <a class="link-small-160lh animate-in-up" href="https://maps.app.goo.gl/g28hCHCGMMyEEqMU7" target="_blank">
-                          14004 Woodbine Avenue <br />Stouffville (Gormley),<br />Ontario, L0H 1G0 Canada
+                    <div class="col-md-3 col-12 contact-data__item grid-item">
+                      <p class="contact-data__title tagline-chapter">
+                        Location
+                      </p>
+                      <p class="contact-data__text type-basic-160lh">
+                        <a
+                          class="link-small-160lh"
+                          href="https://maps.app.goo.gl/g28hCHCGMMyEEqMU7"
+                          target="_blank"
+                        >
+                          14004 Woodbine Avenue <br />
+                          Stouffville(Gormley),<br />
+                          Ontario, L0H 1G0 Canada
                         </a>
                       </p>
                     </div>
+
                     <!-- Hours of Operation -->
-                    <div class="contact-data__item grid-item">
-                      <p class="contact-data__title tagline-chapter animate-in-up">Hours of Operation</p>
-                      <p class="contact-data__text small type-basic-160lh">
-                        <span class="animate-in-up">Monday - Friday: 8:00 AM - 4:30 PM</span><br />
-                        <span class="animate-in-up">Saturday: Appointments only</span><br />
-                        <span class="animate-in-up">Sunday: Closed</span>
+                    <div class="col-md-3 col-12 contact-data__item grid-item">
+                      <p class="contact-data__title tagline-chapter">
+                        Hours of Operation
+                      </p>
+                      <p class="footert type-basic-160lh">
+                        <span>Monday - Friday: 8:00 AM - 4:30 PM</span><br />
+                        <span>Saturday: Appointments only</span><br />
+                        <span>Sunday: Closed</span>
                       </p>
                     </div>
+
                     <!-- Phone -->
-                    <div class="contact-data__item grid-item">
-                      <p class="contact-data__title tagline-chapter animate-in-up">Phone</p>
-                      <p class="contact-data__text small type-basic-160lh">
-                        <a class="link-small-160lh animate-in-up" href="tel:+16472877869">+1 (647) 287-7869</a><br />
-                        <a class="link-small-160lh animate-in-up" href="tel:+16475233623">+1 (647)-523-3623</a>
+                    <div class="col-md-3 col-12 contact-data__item grid-item">
+                      <p class="contact-data__title tagline-chapter">Phone</p>
+                      <p class="contact-data__text type-basic-160lh">
+                        <a class="link-small-160lh" href="tel:+16472877869"
+                          >+1 (647) 287-7869</a
+                        ><br />
+                        <a class="link-small-160lh" href="tel:+16475233623"
+                          >+1 (647)-523-3623</a
+                        >
                       </p>
                     </div>
+
                     <!-- Email -->
-                    <div class="contact-data__item grid-item">
-                      <p class="contact-data__title tagline-chapter animate-in-up">Email</p>
-                      <p class="contact-data__text small type-basic-160lh">
-                        <a class="link-small-160lh animate-in-up" href="mailto:naturalstonetraders@gmail.com">naturalstonetraders@gmail.com</a><br />
-                        <a class="link-small-160lh animate-in-up" href="mailto:sales.nststone@gmail.com">sales.nststone@gmail.com</a>
+                    <div class="col-md-3 col-12 contact-data__item grid-item">
+                      <p class="contact-data__title tagline-chapter">Email</p>
+                      <p class="contact-data__text type-basic-160lh">
+                        <a
+                          class="link-small-160lh"
+                          href="mailto:naturalstonetraders@gmail.com"
+                          >naturalstonetraders@gmail.com</a
+                        ><br />
+                        <a
+                          class="link-small-160lh"
+                          href="mailto:sales.nststone@gmail.com"
+                          >sales.nststone@gmail.com</a
+                        >
                       </p>
                     </div>
-                    <div style="padding-top: 30px;" class="contact-data__item">
-                      <p class="contact-data__title tagline-chapter animate-in-up">
-                        Area we serve
-                      </p>
-                      <div class="contact-data__text small" id="areas-we-serve"></div>
-                    </div>
+                  </div>
+
+                  <!-- Areas We Serve -->
+                  <div
+                    class="contact-data__item text-center"
+                    style="padding-top: 30px"
+                  >
+                    <p class="contact-data__title tagline-chapter">
+                      Areas we serve
+                    </p>
+                    <div
+                      class="contact-data__text small"
+                      id="areas-we-serve"
+                    ></div>
                   </div>
                 </div>
               </div>
             </div>
+            <!-- Content Block - Contact Data End -->
+
+            <!-- CSS for Auto Dark/Light Theme -->
+            <style>
+              /* Default Light Theme */
+              :root {
+                --bg-color: #f9f9f9;
+                --text-color: #f7f6f6; /* Dark gray instead of black */
+                --secondary-text-color: #f8f7f7;
+                --link-color: #0056b3;
+                --link-hover-color: #ff9800;
+                --box-shadow: rgba(0, 0, 0, 0.1);
+              }
+              /* Dark Theme */
+              @media (prefers-color-scheme: dark) {
+                :root {
+                  --bg-color: #121212;
+                  --text-color: #ffffff;
+                  --secondary-text-color: #bbb;
+                  --link-color: #4da6ff;
+                  --link-hover-color: #ffcc00;
+                  --box-shadow: rgba(255, 255, 255, 0.1);
+                  --area-we-serve-text: #fff; /* Keeping white text in dark theme */
+                }
+              }
+
+              .footer-bg-box {
+                width: 100%;
+                max-width: 90%;
+                margin: 0 auto;
+                background-color: rgba(128, 128, 128, 0.251);
+                /* background-color: var(--bg-color); */
+                color: var(--text-color);
+                padding: 30px;
+                border-radius: 15px;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                box-shadow: 0px 4px 10px var(--box-shadow);
+              }
+
+              .contact-data__item {
+                padding: 20px;
+              }
+
+              .contact-data__title {
+                font-size: 1.8rem;
+                font-weight: bold;
+              }
+
+              .contact-data__text {
+                font-size: 1.5rem;
+                color: var(--secondary-text-color);
+              }
+
+              .link-small-160lh {
+                /* color: var(--link-color); */
+                text-decoration: none;
+              }
+
+              .link-small-160lh:hover {
+                color: var(--link-hover-color);
+              }
+
+              @media (max-width: 768px) {
+                .footer-bg-box {
+                  max-width: 100%;
+                  padding: 20px;
+                }
+              }
+              /* Force 'Area we serve' text to white in light mode
+#areas-we-serve {
+color: #fff !important;
+}
+
+/* Ensure it remains white in dark mode */
+              /* @media (prefers-color-scheme: dark) {
+#areas-we-serve {
+color: #fff !important;
+}
+} */
+            </style>
+            <!-- Content Block - Contact Data End -->
+
+            <!-- Inner Section Aside Start -->
+            <div class="col-12 col-xl-2"></div>
+            <!-- Inner Section Aside End -->
           </div>
-          <!-- Inner Section Content End -->
-          <div class="col-12 col-xl-2"></div>
         </div>
-      </div>
-    </div>
-      <div
-        style="
-          display: flex;
-          width: 100%;
-          text-decoration: none;
-          text-align: center;
-          padding-top: 50px;
-        "
-        class="col-12 col-md-6 col-lg-3 contact-data__item grid-item"
-      >
-        <div
-          style="
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            width: 100%;
-          "
-          class="contact-data__title tagline-chapter animate-in-up"
-        >
-          <span style="text-decoration: none; word-wrap: break-word"
-            >Copyright © 2024 Natural Stone Traders Inc. | All Rights
-            Reserved.</span
-          >
-          <span style="color: #a17c30; opacity: 0.7; text-decoration: underline"
-            >Powered by Knaptix</span
-          >
-        </div>
+
+        <!-- Inner Section Off-canvas Content (Footer Marquee Block) Start -->
+        <!-- Inner Section Off-canvas Content (Footer Marquee Block) Start -->
       </div>
     </section>
-    <div style="z-index: 1" class="bottom__background bottom-bg-01">
-      <div class="bottom-bg-01__02 animate-card-2">
-        <img
-          class="hero-img"
-          src="img/backgrounds/stonehaha.webp"
-          alt="Template background image"
-        />
-      </div>
-      <div class="bottom-bg-01__01 animate-card-2">
-        <img
-          class="hero-img"
-          src="img/backgrounds/stonehaha.webp"
-          alt="Template background image"
-        />
-      </div>
-    </div>
+
     <script src="js/libs.min.js"></script>
     <script src="js/app.js"></script>
     <!-- <script src="js/button.js"></script> -->
     <script>
       // The array of areas we serve
-const areasWeServe = [
+      const areasWeServe = [
         "Ajax",
         "Barrie",
         "Bolton",
