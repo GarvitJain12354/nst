@@ -27,7 +27,12 @@
       line-height: 1.2; /* Reduce default line spacing */
       margin-bottom: 5px; /* Reduce gap between lines */
     }
-
+    .logo-img {
+      width: 105%; /* Increase width by 5% */
+      height: 105%; /* Increase height by 5% */
+      max-width: 100%; /* Ensure the image does not exceed its container */
+      display: block;
+    }
     @media (max-width: 768px) {
       .contact-data-wrapper {
         flex-direction: column; /* Stack items on mobile */
@@ -162,12 +167,21 @@
     <!-- Header End -->
 
     <!-- Fixed Logo Start -->
-    <div class="logo loading__fade">
-      <a href="#home" class="logo__link">
-        <!-- logo icon -->
-        <img class="logo-img" src="image/newlogo.png" alt="" />
-        <!-- logo text -->
-        <!-- <span class="logo-text">NsT*</span> -->
+    <div
+      class="logo loading__fade"
+      style="display: inline-block; width: auto; height: auto"
+    >
+      <a
+        href="#home"
+        class="logo__link"
+        style="display: inline-block; width: auto; height: auto"
+      >
+        <img
+          class="logo-img"
+          src="image/newlogo.png"
+          alt=""
+          style="width: 300px; height: auto; display: block"
+        />
       </a>
     </div>
     <!-- Fixed Logo End -->
@@ -209,69 +223,145 @@
             <!-- Inner Section Name End -->
 
             <!-- Inner Section Content Start -->
+             <div class="d-flex col-12 col-xl-8 ">
+
+               <div class="">
+                 <div class="inner__content">
+                   <!-- Content Block - H2 Section Title Start -->
+                   <div class="content__block pre-stack-text-block">
+                     <div class="block__descr">
+                       <h2
+                         style="font-size: 30px; font-weight: bold"
+                         class="reveal-type animate-in-up"
+                       ></h2>
+                       <p class="h2__text type-basic-160lh animate-in-up">
+                         <span
+                           style="
+                             font-weight: 500;
+                             text-decoration: underline;
+                             padding-right: 10px;
+                           "
+                         >
+                           Established in 2012
+                         </span>
+                         NATURAL STONE TRADERS INC. Is an emerging leader in the
+                         supply of ethically sourced natural stone landscape
+                         products in different parts of the world. <br /><br />
+                         NATURAL STONE TRADERS INC. Is based in
+                         <span
+                           style="font-weight: 500; text-decoration: underline"
+                         >
+                           Toronto, Canada
+                         </span>
+                         & has its operations spread out to most parts of Canada &
+                         North America.
+                         <br /><br />
+                         We at NATURAL STONE TRADERS INC. Offer an unbeatable
+                         selection of
+                         <span
+                           style="font-weight: 500; text-decoration: underline"
+                         >
+                           product range, sizes, colors, textures and much more
+                         </span>
+                         for a wide variety of applications - ALL SOURCE
+                         RESPONSIBLY & ETHICALLY.
+                       </p>
+                       <!-- <div
+                         style="padding-top: 20px; position: relative"
+                         class="gallery__btn animate-in-up"
+                       >
+                         <a
+                           target="_blank"
+                           href="https://publuu.com/flip-book/73791/1180500"
+                           class="btn btn-line-circle-icon"
+                         >
+                           <span class="btn-caption">Catalogue</span>
+                           <span class="circle hover-circle">
+                             <em></em>
+                             <i class="ph ph-arrow-right"></i>
+                           </span>
+                         </a>
+                       </div> -->
+                     </div>
+                   </div>
+                   <!-- Content Block - H2 Section Title End -->
+                 </div>
+               </div>
+               <img class="h-100" src="/image/cat/coping800.jpg" alt="">
+             </div>
+            <!-- Inner Section Content End -->
+          </div>
+        </div>
+      </div>
+    </section>
+    <section id="services" class="inner inner-stack-bottom services">
+      <div class="inner__wrapper">
+        <div class="container-fluid p-0">
+          <div class="row g-0">
+            <!-- Inner Section Name Start -->
+            <div class="col-12 col-xl-2">
+              <div class="inner__name">
+                <!-- Content Block - Section Name Start -->
+                <div class="content__block name-block">
+                  <span class="section-name icon-right animate-in-up">
+                    <span class="section-name-caption">Catalogues</span>
+                    <i class="ri-folder-download-line"></i>
+                  </span>
+                </div>
+                <!-- Content Block - Section Name Start -->
+              </div>
+            </div>
+            <!-- Inner Section Name End -->
+            <!-- DOWNLOAD ITEM -->
+            <!-- Inner Section Content Start -->
             <div class="col-12 col-xl-8">
               <div class="inner__content">
                 <!-- Content Block - H2 Section Title Start -->
                 <div class="content__block pre-stack-text-block">
                   <div class="block__descr">
-                    <h2
-                      style="font-size: 30px; font-weight: bold"
-                      class="reveal-type animate-in-up"
-                    ></h2>
-                    <p class="h2__text type-basic-160lh animate-in-up">
-                      <span
-                        style="
-                          font-weight: 500;
-                          text-decoration: underline;
-                          padding-right: 10px;
-                        "
-                      >
-                        Established in 2012
-                      </span>
-                      NATURAL STONE TRADERS INC. Is an emerging leader in the
-                      supply of ethically sourced natural stone landscape
-                      products in different parts of the world. <br /><br />
-                      NATURAL STONE TRADERS INC. Is based in
-                      <span
-                        style="font-weight: 500; text-decoration: underline"
-                      >
-                        Toronto, Canada
-                      </span>
-                      & has its operations spread out to most parts of Canada &
-                      North America.
-                      <br /><br />
-                      We at NATURAL STONE TRADERS INC. Offer an unbeatable
-                      selection of
-                      <span
-                        style="font-weight: 500; text-decoration: underline"
-                      >
-                        product range, sizes, colors, textures and much more
-                      </span>
-                      for a wide variety of applications - ALL SOURCE
-                      RESPONSIBLY & ETHICALLY.
-                    </p>
+                    <h2 class="reveal-type animate-in-up">
+                      Download Our Catalogues
+                    </h2>
                     <div
-                      style="padding-top: 20px; position: relative"
-                      class="gallery__btn animate-in-up"
+                      style="gap: 20px; margin-top: 10vh"
+                      class="d-flex align-items-center justify-content-start flex-column flex-md-row"
                     >
-                      <a
-                        target="_blank"
-                        href="https://publuu.com/flip-book/73791/1180500"
-                        class="btn btn-line-circle-icon"
-                      >
-                        <span class="btn-caption">Catalogue</span>
-                        <span class="circle hover-circle">
-                          <em></em>
-                          <i class="ph ph-arrow-right"></i>
-                        </span>
-                      </a>
+                      <div style="padding-top: 10px" class="animate-in-up">
+                        <a
+                          href="https://publuu.com/flip-book/73791/1180500"
+                          class="btn btn-line-circle-icon"
+                        >
+                          <span class="btn-caption">NST NATURAL STONE</span>
+                          <span class="circle hover-circle">
+                            <em></em>
+                            <i class="ph ph-arrow-right"></i>
+                          </span>
+                        </a>
+                      </div>
+                      <div style="padding-top: 10px" class="animate-in-up">
+                        <a
+                          href="https://publuu.com/flip-book/73791/1180500"
+                          class="btn btn-line-circle-icon"
+                        >
+                          <span class="btn-caption">NST PORCELAIN </span>
+                          <span class="circle hover-circle">
+                            <em></em>
+                            <i class="ph ph-arrow-right"></i>
+                          </span>
+                        </a>
+                      </div>
                     </div>
                   </div>
                 </div>
-                <!-- Content Block - H2 Section Title End -->
+
+                <!-- Content Block - Services/Features Stacking Cards Block End -->
               </div>
             </div>
             <!-- Inner Section Content End -->
+
+            <!-- Inner Section Aside Start -->
+            <div class="col-12 col-xl-2"></div>
+            <!-- Inner Section Aside End -->
           </div>
         </div>
       </div>

@@ -4267,6 +4267,7 @@ form textarea:required:valid {
   display: -moz-box;
   display: -ms-flexbox;
   display: flex;
+  z-index: 9999;
   -webkit-box-align: center;
   -moz-box-align: center;
   -ms-flex-align: center;

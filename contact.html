@@ -62,12 +62,17 @@
       flex: 1; /* Distributes space evenly */
       min-width: 200px; /* Prevents items from shrinking */
     }
-
+    .logo-img {
+        width: 105%; /* Increase width by 5% */
+        height: 105%; /* Increase height by 5% */
+        max-width:100%; /* Ensure the image does not exceed its container */
+        display: block;
+      }
     .contact-data__item .contact-data__text {
       line-height: 1.2; /* Reduce default line spacing */
       margin-bottom: 5px; /* Reduce gap between lines */
     }
-.btn{
+.btn-primary{
   background-color: #0056b3;
   color: white;
   padding: 10px 20px;
@@ -207,14 +212,23 @@
     <!-- Header End -->
 
     <!-- Fixed Logo Start -->
-    <div class="logo loading__fade">
-      <a href="#home" class="logo__link">
-        <!-- logo icon -->
-        <img class="logo-img" src="image/newlogo.png" alt="" />
-        <!-- logo text -->
-        <!-- <span class="logo-text">NsT*</span> -->
-      </a>
-    </div>
+    <div
+    class="logo loading__fade"
+    style="display: inline-block; width: auto; height: auto"
+  >
+    <a
+      href="/index.html"
+      class="logo__link"
+      style="display: inline-block; width: auto; height: auto"
+    >
+      <img
+        class="logo-img"
+        src="image/newlogo.png"
+        alt=""
+        style="width: 300px; height: auto; display: block"
+      />
+    </a>
+  </div>
     <!-- Fixed Logo End -->
 
     <!-- Fixed Color Switch Start -->
