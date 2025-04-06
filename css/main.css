@@ -3697,9 +3697,9 @@ form textarea:required:valid {
 .content__block.name-block {
   padding: 0 2rem;
 }
-.content__block.grid-block {
+/* .content__block.grid-block {
   padding: 0 1rem;
-}
+} */
 @media only screen and (min-width: 768px) {
   .content__block {
     padding: 0 5rem;
@@ -3707,20 +3707,20 @@ form textarea:required:valid {
   .content__block.name-block {
     padding: 0 5rem;
   }
-  .content__block.grid-block {
+  /* .content__block.grid-block {
     padding: 0 3.5rem;
-  }
+  } */
 }
 @media only screen and (min-width: 1200px) {
   .content__block.name-block {
     padding: 0 0 0 5rem;
   }
 }
-@media only screen and (min-width: 1600px) {
+/* @media only screen and (min-width: 1600px) {
   .content__block.grid-block {
     padding: 0 2.5rem;
   }
-}
+} */
 
 .content__block.section-title {
   margin-bottom: 4rem;
@@ -4142,7 +4142,9 @@ form textarea:required:valid {
     margin-top: 2.6rem;
   }
 }
-
+.menu{
+  background-color: black;
+}
 /* ------------------------------------------------*/
 /* Blocks Common End */
 /* ------------------------------------------------*/
@@ -4152,7 +4154,8 @@ form textarea:required:valid {
 .header {
   position: fixed;
   bottom: 2rem;
-  left: 2rem;
+  left: 50%;
+  transform: translateX(-50%);
   width: auto;
   display: none !important;
   z-index: 11000;
@@ -4165,7 +4168,7 @@ form textarea:required:valid {
 @media only screen and (min-width: 768px) {
   .header {
     bottom: 3rem;
-    left: 5rem;
+    /* left: 5rem; */
   }
 }
 @media only screen and (min-width: 1200px) {
@@ -4174,8 +4177,8 @@ form textarea:required:valid {
     display: flex !important;
     top: 3rem;
     bottom: auto;
-    left: -moz-calc(16.66666667% + 3rem);
-    left: calc(16.66666667% + 3rem);
+    /* left: -moz-calc(16.66666667% + 3rem);
+    left: calc(16.66666667% + 3rem); */
     background-color: rgba(0, 0, 0, 0);
     z-index: 9;
   }
@@ -4186,8 +4189,8 @@ form textarea:required:valid {
     top: 5rem;
     display: flex !important;
     bottom: auto;
-    left: -moz-calc(16.66666667% + 2.5rem);
-    left: calc(16.66666667% + 2.5rem);
+    /* left: -moz-calc(16.66666667% + 2.5rem);
+    left: calc(16.66666667% + 2.5rem); */
   }
 }
 
@@ -4204,9 +4207,11 @@ form textarea:required:valid {
     height: 5rem;
   }
 }
-
+#frow{
+  width: 100% !important;
+}
 .logo {
-  max-width: 160px; /* Increased max-width for larger logo */
+  max-width: 200px; /* Increased max-width for larger logo */
   padding: 0.5rem; /* Added padding for better spacing */
   display: flex;
   position: fixed;
@@ -4227,7 +4232,7 @@ form textarea:required:valid {
   .logo {
     top: 3rem;
     left: 5rem;
-    max-width: 150px; /* Slightly larger for bigger screens */
+    max-width: 170px; /* Slightly larger for bigger screens */
   }
 }
 
@@ -4459,18 +4464,19 @@ form textarea:required:valid {
     height: 4rem;
     padding: 0 2rem;
     font: normal var(--font-weight-medium) 1.6rem/4rem var(--_font-default);
-    color: var(--t-opp-dark);
+  color: white;
+    /* color: var(--t-opp-dark); */
   }
   .menu__link i {
     display: none;
   }
-  .menu__link:hover {
+  /* .menu__link:hover {
     color: var(--t-bright);
-  }
+  } */
 
-  .menu__link:hover .menu__caption {
+  /* .menu__link:hover .menu__caption {
     color: var(--t-bright);
-  }
+  } */
   .menu__link.active {
     color: var(--t-opp-bright);
     background-color: transparent;
@@ -5772,9 +5778,9 @@ form textarea:required:valid {
   object-fit: cover;
 }
 @media only screen and (max-width: 768px) {
-  .content__block.grid-block {
+  /* .content__block.grid-block {
     padding: 10px;
-  }
+  } */
   .grid-item {
     padding: 1rem 1rem;
   }
@@ -7272,7 +7278,7 @@ form textarea:required:valid {
   width: 20px;
   object-fit: contain;
   padding: 10px;
-  background-color: #0000007e;
+  /* background-color: #0000007e; */
 }
 @media screen and (max-width: 768px) {
   .logo-img {

@@ -376,15 +376,18 @@
             <!-- Inner Section Name End -->
 
             <!-- Content Block - Contact Data Start -->
-            <div class="content__block grid-block">
+            <div class="grid-block">
               <div class="container-fluid p-0 contact-data">
                 <!-- Footer Background Box -->
                 <div class="footer-bg-box">
                   <div
                     class="row g-0 d-flex justify-content-between text-center"
+                    id="frow"
                   >
                     <!-- Location -->
-                    <div class="col-md-3 col-12 contact-data__item grid-item">
+                    <div
+                      class="col-md-3 col-12 relative contact-data__item grid-item"
+                    >
                       <p class="contact-data__title tagline-chapter">
                         Location
                       </p>
@@ -457,8 +460,49 @@
                       id="areas-we-serve"
                     ></div>
                   </div>
+                  <img src="/image/greenlogo.avif" id="greenlogo" alt="logo" />
+
+                  <div
+                    style="
+                      display: flex;
+                      width: 100%;
+                      text-decoration: none;
+                      text-align: center;
+                    "
+                    class="contact-data__item grid-item"
+                  >
+                    <div
+                      style="
+                        display: flex;
+                        flex-direction: column;
+                        align-items: center;
+                        justify-content: center;
+                        width: 100%;
+                      "
+                      id="fotter"
+                      class="contact-data__title tagline-chapter animate-in-up"
+                    >
+                      <span
+                        style="
+                          color: #5d93ac;
+                          text-decoration: none;
+                          word-wrap: break-word;
+                        "
+                        >Copyright © 2024 Natural Stone Traders Inc. | All
+                        Rights Reserved | Terms of service | Privacy policy
+                        .</span
+                      >
+                      <span
+                        style="
+                          color: #a17c30;
+                          opacity: 0.7;
+                          text-decoration: underline;
+                        "
+                        >Powered by Knaptix</span
+                      >
+                    </div>
+                  </div>
                 </div>
-                <img src="/image/greenlogo.avif" id="greenlogo" alt="logo" />
               </div>
             </div>
             <!-- Content Block - Contact Data End -->
@@ -489,7 +533,7 @@
 
               .footer-bg-box {
                 width: 100%;
-                max-width: 90%;
+                max-width: 100%;
                 margin: 0 auto;
                 background-color: rgba(128, 128, 128, 0.251);
                 /* background-color: var(--bg-color); */
@@ -546,12 +590,13 @@ color: #fff !important;
             <!-- Content Block - Contact Data End -->
 
             <!-- Inner Section Aside Start -->
-            <div class="col-12 col-xl-2"></div>
+            <!-- <div class="col-12 col-xl-2"></div> -->
             <!-- Inner Section Aside End -->
           </div>
         </div>
 
         <!-- Inner Section Off-canvas Content (Footer Marquee Block) Start -->
+
         <!-- Inner Section Off-canvas Content (Footer Marquee Block) Start -->
       </div>
     </section>
